@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Yeseva;
+  src: url("./assets/fonts/Yeseva/YesevaOne-Regular.ttf");
+}
+@font-face {
+  font-family: Urbanist-Medium;
+  src: url("./assets/fonts/Urbanist/Urbanist-Medium.ttf");
+}
+
+.canvas-element {
+  cursor:
+    url(./assets/cursor/plus1-svgrepo-com.svg) 32 32,
+    pointer;
+}
