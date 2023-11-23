@@ -3,7 +3,7 @@ import { Billboard, Html, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Perf } from "r3f-perf";
 
-const canvasElement = document.querySelector('canvas');
+const canvasElement = document.querySelector("canvas");
 
 export default function SceneLandscape() {
   const modelLandscape = useGLTF("./model.glb");
@@ -11,10 +11,9 @@ export default function SceneLandscape() {
   const refOrbitControls = useRef();
 
   const [parametersFog, setParametersFog] = useState([1, 20]);
-  const [enableOrbitControls, setEnableOrbitControls] =useState(true)
+  const [enableOrbitControls, setEnableOrbitControls] = useState(true);
 
   function cameraChanged() {
-   
     const cameraDistance = calculateCameraDistance(
       refOrbitControls.current.object.position,
       refOrbitControls.current.target,
@@ -28,23 +27,23 @@ export default function SceneLandscape() {
     }
   }
 
-  function disableScene(event){
-    if(event.key === "Escape"){
-      setEnableOrbitControls(false)
-      document.querySelector('canvas').style['opacity'] = 0.1;
-      console.log('disabled scene');
-    } 
-  }
-  
-  function enableScene(){
-    if(!enableOrbitControls){
-      setEnableOrbitControls(true)     
-      document.querySelector('canvas').style['opacity'] = 1;
-      console.log('enabled scene');
+  function disableScene(event) {
+    if (event.key === "Escape") {
+      setEnableOrbitControls(false);
+      document.querySelector("canvas").style["opacity"] = 0.1;
+      console.log("disabled scene");
     }
   }
 
-  window.addEventListener('keydown', disableScene)
+  function enableScene() {
+    if (!enableOrbitControls) {
+      setEnableOrbitControls(true);
+      document.querySelector("canvas").style["opacity"] = 1;
+      console.log("enabled scene");
+    }
+  }
+
+  window.addEventListener("keydown", disableScene);
 
   function calculateCameraDistance(
     cameraPositionVector = { x: 1, y: 1, z: 1 },
@@ -57,19 +56,18 @@ export default function SceneLandscape() {
     );
     return distance;
   }
-  
+
   return (
-    <Canvas 
+    <Canvas
       ref={refCanvas}
       camera={{ position: [0, 5, 0], near: 0.01, far: 100, fov: 35 }}
       onClick={enableScene}
-      
     >
-      
       <Perf />
- 
-      
-      <OrbitControls makeDefault enabled={enableOrbitControls}
+
+      <OrbitControls
+        makeDefault
+        enabled={enableOrbitControls}
         ref={refOrbitControls}
         maxPolarAngle={Math.PI * 0.48}
         minAzimuthAngle={Math.PI * -0.75}
@@ -103,8 +101,6 @@ export default function SceneLandscape() {
         <planeGeometry args={[50, 50]} />
         <meshStandardMaterial color={"#7A936C"} />
       </mesh>
-
-
     </Canvas>
   );
 }
