@@ -11,7 +11,7 @@
   src: url("./assets/fonts/Urbanist/Urbanist-Medium.ttf");
 }
 
-.canvas-element {
+.canvas-element > *{
   cursor:
     url(./assets/cursor/plus1-svgrepo-com.svg) 32 32,
     pointer;

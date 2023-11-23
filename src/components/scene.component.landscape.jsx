@@ -60,7 +60,7 @@ export default function SceneLandscape() {
   return (
     <Canvas
       ref={refCanvas}
-      camera={{ position: [0, 5, 0], near: 0.01, far: 100, fov: 35 }}
+      camera={{ position: [0, 5, 0], near: 0.01, far: 100, fov: 45 }}
       onClick={enableScene}
     >
       <Perf />
@@ -73,7 +73,7 @@ export default function SceneLandscape() {
         minAzimuthAngle={Math.PI * -0.75}
         maxAzimuthAngle={Math.PI * 0.5}
         minDistance={1}
-        maxDistance={8}
+        maxDistance={12}
         onChange={cameraChanged}
       />
       <directionalLight position={[-3, 4, 2]} />
@@ -93,14 +93,14 @@ export default function SceneLandscape() {
           <primitive object={modelLandscape.scene} scale={3} />
         </group>
       </Suspense>
-      <mesh position={[0, 0.5, 0]}>
+      {/* <mesh position={[0, 0.5, 0]}>
         <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial color={"#BADA55"} />
       </mesh>
       <mesh position={[0, 0, 0]} rotation-x={Math.PI * -0.5}>
         <planeGeometry args={[50, 50]} />
         <meshStandardMaterial color={"#7A936C"} />
-      </mesh>
+      </mesh> */}
     </Canvas>
   );
 }
