@@ -14,12 +14,11 @@ import SceneHomepage from "./components/scene.component.homepage";
 const App = () => {
   const screenHeight = window.screen.height;
   console.log(screenHeight);
-  
-  document.querySelector("body").style['overflow'] = "hidden";
+
+  document.querySelector("body").style["overflow"] = "hidden";
 
   return (
-    <main className="box-border flex flex-col p-6">   
-
+    <main className="box-border flex flex-col">
       <div className="canvas-element h-screen w-screen">
         <ComponentMainNav />
         <SceneHomepage />
