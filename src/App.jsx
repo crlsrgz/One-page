@@ -1,28 +1,21 @@
-import React, { Suspense, useState } from "react";
-// eslint-disable-next-line import/no-unresolved
-import plusIcon from "./assets/img/math-plus-box-svgrepo-com.svg";
-import { Scene } from "three";
-import SceneStarter from "./components/scene.component.starter";
-import SceneLandscape from "./components/scene.component.landscape";
-import { Canvas, useThree } from "@react-three/fiber";
-import { Clone, Html, Scroll, ScrollControls } from "@react-three/drei";
-import { ScrollRestoration } from "react-router-dom";
+import React from "react";
 import ComponentMainNav from "./components/navigation.component";
-import { Perf } from "r3f-perf";
 import SceneHomepage from "./components/scene.component.homepage";
+import ComponentDetail from "./components/component.detail";
 
 const App = () => {
   const screenHeight = window.screen.height;
   console.log(screenHeight);
 
-  document.querySelector("body").style["overflow"] = "hidden";
+  //  document.querySelector("body").style["overflow"] = "hidden";
 
   return (
     <main className="box-border flex flex-col">
       <div className="canvas-element h-screen w-screen">
         <ComponentMainNav />
-        <SceneHomepage />
+        {/* <SceneHomepage /> */}
         {/* <SceneLandscape /> */}
+        <ComponentDetail />
       </div>
     </main>
   );
