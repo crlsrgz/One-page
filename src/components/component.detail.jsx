@@ -52,7 +52,6 @@ export default function ComponentDetail() {
             disableSliders
           ></PivotControls>
           <ModelDetail />
-          <Box position={[0, -2, 0]} />
         </>
       </Stage>
     </Canvas>

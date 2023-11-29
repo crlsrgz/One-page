@@ -6,27 +6,69 @@ import React, { useRef, useState } from "react";
 import { useGLTF, useAnimations, Html, Box } from "@react-three/drei";
 import { MeshNormalMaterial } from "three";
 
+function ModelParts(props) {
+  const [hover, setHover] = useState(false);
+
+  return (
+    <mesh
+      name={props.name}
+      castShadow
+      receiveShadow
+      geometry={props.geometry}
+      // material={props.material}
+      position={props.position}
+      onPointerOver={(e) => {
+        e.stopPropagation(), setHover(true);
+      }}
+      onPointerOut={(e) => {
+        e.stopPropagation(), setHover(false);
+      }}
+    >
+      {hover ? props.material : props.materialAlternative}
+    </mesh>
+  );
+}
+
 export function ModelDetail(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF("/wall.glb");
-  const { actions } = useAnimations(animations, group);
-  console.log(materials);
-  const [hover, setHover] = useState(false);
+  const model = useGLTF("/wall.glb");
+  // const { nodes, materials, animations } = useGLTF("/wall.glb");
+  // const { actions } = useAnimations(animations, group);
+  // console.log(nodes);
 
   const myNormal = new MeshNormalMaterial();
 
   return (
-    <mesh
-      name="Plane"
-      castShadow
-      receiveShadow
-      geometry={nodes.DachZiegel001.geometry}
-      material={!hover ? myNormal : nodes.DachZiegel001.material}
-      position={nodes.DachZiegel001.position}
-      onPointerOver={() => setHover(true)}
-      onPointerLeave={() => setHover(false)}
-    />
-    // <Box />
+    <>
+      {model.scene.children.map((element, index) => {
+        return (
+          <ModelParts
+            key={index}
+            name={element.name}
+            geometry={element.geometry}
+            material={<meshNormalMaterial />}
+            materialAlternative={<meshBasicMaterial />}
+            position={element.position}
+          />
+        );
+      })}
+      {/* <ModelParts
+        name={model.scene.children[0].name}
+        geometry={model.scene.children[0].geometry}
+        material={<meshNormalMaterial />}
+        materialAlternative={<meshBasicMaterial />}
+        position={model.scene.children[0].position}
+      />
+      <ModelParts
+        name={model.scene.children[1].name}
+        geometry={model.scene.children[1].geometry}
+        material={<meshNormalMaterial />}
+        materialAlternative={<meshBasicMaterial />}
+        position={model.scene.children[1].position}
+      />
+      <Box />
+      <Box position={[0, 0, 2]} /> */}
+    </>
   );
 }
 
