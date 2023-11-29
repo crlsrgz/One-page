@@ -15,7 +15,7 @@ function ModelParts(props) {
       castShadow
       receiveShadow
       geometry={props.geometry}
-      // material={props.material}
+      material={hover ? props.materialAlternative : props.material}
       position={props.position}
       onPointerOver={(e) => {
         e.stopPropagation(), setHover(true);
@@ -24,7 +24,7 @@ function ModelParts(props) {
         e.stopPropagation(), setHover(false);
       }}
     >
-      {hover ? props.material : props.materialAlternative}
+      {/* {hover ? props.material : props.materialAlternative} */}
     </mesh>
   );
 }
@@ -46,8 +46,8 @@ export function ModelDetail(props) {
             key={index}
             name={element.name}
             geometry={element.geometry}
-            material={<meshNormalMaterial />}
-            materialAlternative={<meshBasicMaterial />}
+            material={element.material}
+            materialAlternative={myNormal}
             position={element.position}
           />
         );
