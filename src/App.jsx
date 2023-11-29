@@ -12,7 +12,7 @@ const App = () => {
   return (
     <main className="box-border flex flex-col" style={{ zIndex: "-1" }}>
       <div className="canvas-element h-screen w-screen">
-        <div className="info hideMe absolute left-4 top-16 h-2/4 w-96 text-zinc-100">
+        <div className="info hideMe absolute top-16 h-2/4 w-96 text-zinc-100">
           hello
         </div>
         <ComponentMainNav />
