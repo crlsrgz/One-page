@@ -9,6 +9,7 @@ import {
   Text,
   Line,
   Edges,
+  PivotControls,
 } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
 

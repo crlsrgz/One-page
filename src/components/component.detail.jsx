@@ -43,14 +43,6 @@ export default function ComponentDetail() {
         {/* <primitive object={model.scene} /> */}
 
         <>
-          <PivotControls
-            anchor={[0, 0, 0]}
-            lineWidth={1.2}
-            scale={0.5}
-            disableRotations
-            disableAxes
-            disableSliders
-          ></PivotControls>
           <ModelDetail />
         </>
       </Stage>
