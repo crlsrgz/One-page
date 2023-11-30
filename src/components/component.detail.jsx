@@ -32,7 +32,7 @@ export default function ComponentDetail() {
     >
       <color args={["black"]} attach="background" />
       <ambientLight intensity={2} />
-      <Perf />
+      <Perf position="top-left" />
       <GizmoViewport
         axisColors={["red", "green", "blue"]}
         labelColor="black"

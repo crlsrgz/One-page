@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   useGLTF,
   useAnimations,
@@ -12,6 +12,7 @@ import {
   PivotControls,
 } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
+import { useControls } from "leva";
 
 function ModelParts(props) {
   const [hover, setHover] = useState(false);
@@ -70,11 +71,21 @@ function ModelParts(props) {
 }
 
 export function ModelDetail(props) {
-  const group = useRef();
   const model = useGLTF("/wall.glb");
-  // const { nodes, materials, animations } = useGLTF("/wall.glb");
-  // const { actions } = useAnimations(animations, group);
-  // console.log(nodes);
+  const animations = useAnimations(model.animations, model.scene);
+
+  console.log(model.scene);
+  console.log(animations.names);
+  const listAnimations = Object.keys(animations.actions);
+
+  // const { animationName } = useControls({
+  //   animationName: { options: animations.names },
+  // });
+
+  useEffect(() => {
+    const action = animations.actions[listAnimations[0]];
+    action.play();
+  }, []);
 
   const materialHover = new MeshStandardMaterial({
     color: "#7a0e0e",
