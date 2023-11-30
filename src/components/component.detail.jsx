@@ -22,7 +22,14 @@ export default function ComponentDetail() {
   // console.log(model.scene.animations);
 
   return (
-    <Canvas camera={{ position: [-18, 1, 15], near: 0.01, far: 100, fov: 45 }}>
+    <Canvas
+      camera={{
+        position: [-4, 3, 3],
+        near: 0.01,
+        far: 100,
+        fov: 35,
+      }}
+    >
       <color args={["black"]} attach="background" />
       <ambientLight intensity={2} />
       <Perf />
@@ -33,17 +40,26 @@ export default function ComponentDetail() {
         scale={0.4}
       />
 
-      <OrbitControls makeDefault />
-
+      <OrbitControls makeDefault target={[0, 1, 0]} />
       <Stage
         contactShadow={{ opacity: 0.5, blur: 5 }}
         environment="city"
         intensity={0.8}
+        adjustCamera={false}
       >
         {/* <primitive object={model.scene} /> */}
 
         <>
-          <ModelDetail />
+          <Suspense
+          // fallback={
+          //   <mesh>
+          //     <boxGeometry />
+          //     <meshBasicMaterial wireframe color={"red"} />
+          //   </mesh>
+          // }
+          >
+            <ModelDetail />
+          </Suspense>
         </>
       </Stage>
     </Canvas>

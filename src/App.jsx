@@ -10,7 +10,10 @@ const App = () => {
   //  document.querySelector("body").style["overflow"] = "hidden";
 
   return (
-    <main className="box-border flex flex-col" style={{ zIndex: "-1" }}>
+    <main
+      className="box-border flex h-screen  w-screen flex-col"
+      style={{ zIndex: "-1" }}
+    >
       <div className="canvas-element h-full w-full">
         <div className="info hideMe absolute top-16 h-2/4 w-96 text-zinc-100">
           hello
