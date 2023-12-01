@@ -11,6 +11,12 @@
   src: url("./assets/fonts/Urbanist/Urbanist-Medium.ttf");
 }
 
+body {
+  background-color: rgb(25,25,25);
+  color: #f4f4f4;
+}
+
+
 .canvas-element > *{
   cursor:
     url(./assets/cursor/plus1-svgrepo-com.svg) 32 32,

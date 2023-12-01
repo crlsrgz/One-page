@@ -84,7 +84,7 @@ export function ModelDetail(props) {
 
   useEffect(() => {
     const action = animations.actions[listAnimations[0]];
-    action.play();
+    // action.play();
   }, []);
 
   const materialHover = new MeshStandardMaterial({

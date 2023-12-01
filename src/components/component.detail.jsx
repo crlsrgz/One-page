@@ -30,9 +30,9 @@ export default function ComponentDetail() {
         fov: 35,
       }}
     >
-      <color args={["black"]} attach="background" />
+      {/* <color args={["black"]} attach="background" /> */}
       <ambientLight intensity={2} />
-      <Perf position="top-left" />
+      {/* <Perf position="top-left" /> */}
       <GizmoViewport
         axisColors={["red", "green", "blue"]}
         labelColor="black"

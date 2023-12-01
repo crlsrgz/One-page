@@ -7,7 +7,7 @@ import SceneStarter from "./scene.component.starter";
 export default function SceneHomepage(props) {
   return (
     <Canvas camera={{ position: [6, 1, 0], near: 0.01, far: 100, fov: 35 }}>
-      <Perf />
+      {/* <Perf /> */}
       <ScrollControls pages={3} damping={0.1}>
         <Scroll>
           <SceneStarter
