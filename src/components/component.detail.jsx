@@ -24,7 +24,7 @@ export default function ComponentDetail() {
   return (
     <Canvas
       camera={{
-        position: [-4, 3, 3],
+        position: [-4, 0, 3],
         near: 0.01,
         far: 100,
         fov: 35,
@@ -40,7 +40,7 @@ export default function ComponentDetail() {
         scale={0.4}
       />
 
-      <OrbitControls makeDefault target={[0, 1, 0]} />
+      <OrbitControls makeDefault target={[0, -0.5, 0]} />
       <Stage
         contactShadow={{ opacity: 0.5, blur: 5 }}
         environment="city"
@@ -48,7 +48,6 @@ export default function ComponentDetail() {
         adjustCamera={false}
       >
         {/* <primitive object={model.scene} /> */}
-
         <>
           <Suspense
           // fallback={
