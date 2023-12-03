@@ -18,7 +18,7 @@ const App = () => {
       <div className="canvas-element flex h-full w-full flex-col ">
         <div className="info hideMe absolute top-28 h-2/4 w-96">hello</div>
         <BrowserRouter>
-          <header className="mx-12 mt-4 flex h-24 flex-row items-baseline  justify-start gap-4">
+          <header className="mx-12 mt-4 flex h-24 flex-row  items-baseline justify-start gap-4">
             <ComponentMainNav />
           </header>
           <div className="flex flex-grow ">

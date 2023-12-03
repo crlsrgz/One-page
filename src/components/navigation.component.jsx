@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink, Routes } from "react-router-dom";
 
 export default function ComponentMainNav() {
@@ -10,16 +10,25 @@ export default function ComponentMainNav() {
       setMobileNav(true);
     }
   }
+
   return (
     <>
-      <h1 className="font-yeseva text-6xl">
+      <h1 className="cursor-pointer font-yeseva text-6xl">
         <Link to={"/"}>Title</Link>
       </h1>{" "}
-      <nav className=" mx-12 hidden w-full flex-row items-center justify-start gap-6 text-lg sm:flex ">
-        <Link to={"/"}>Home</Link>
-        <Link to={"/detail"}>Detail</Link>
-        <Link to={"/"}>Product</Link>
-        <Link to={"/"}>Landscape</Link>
+      <nav className="mx-12 hidden w-full flex-row items-center justify-start gap-8 text-xl sm:flex">
+        <Link to={"/"} className="underline-offset-8 hover:underline">
+          Home
+        </Link>
+        <Link to={"/detail"} className="underline-offset-8 hover:underline">
+          Detail
+        </Link>
+        <Link to={"/"} className="underline-offset-8 hover:underline">
+          Product
+        </Link>
+        <Link to={"/"} className="underline-offset-8 hover:underline">
+          Landscape
+        </Link>
       </nav>
       <nav className={`mx-4 w-full sm:hidden`}>
         <div className="flex w-full cursor-pointer flex-row items-baseline justify-end">
@@ -37,17 +46,19 @@ export default function ComponentMainNav() {
         </div>
 
         <div
-          className={`mt fixed left-0 top-0 z-10 h-screen w-screen cursor-pointer bg-neutral-800 p-4 pt-36 text-xl ${
-            mobileNav ? "" : "hidden"
+          className={`${
+            mobileNav
+              ? "mt fixed left-0 top-0 z-10 h-screen w-screen cursor-pointer bg-neutral-800 p-4 pt-36 text-xl opacity-100 transition-all"
+              : "mt top-50 fixed left-0 z-10 hidden h-screen w-screen cursor-pointer bg-neutral-800 p-4 pt-36 text-xl opacity-20 transition-all"
           }`}
         >
           <ul className="flex w-full flex-col items-center justify-start gap-2 ">
-            <li className="h-24 w-5/6 py-8  text-center hover:bg-neutral-600">
+            <li className="h-24 w-full py-8  text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
               <Link className="block h-24" to={"/"} onClick={hideNavigation}>
                 Home
               </Link>
             </li>
-            <li className="h-24 w-5/6 py-8 text-center hover:bg-neutral-600">
+            <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
               <Link
                 className="block h-24"
                 to={"/detail"}
@@ -56,12 +67,12 @@ export default function ComponentMainNav() {
                 Detail
               </Link>
             </li>
-            <li className="h-24 w-5/6 py-8 text-center hover:bg-neutral-600">
+            <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
               <Link className="block h-24" to={"/"} onClick={hideNavigation}>
                 Product
               </Link>
             </li>
-            <li className="h-24 w-5/6 py-8 text-center hover:bg-neutral-600">
+            <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
               <Link className="block h-24" to={"/"} onClick={hideNavigation}>
                 Landscape
               </Link>
