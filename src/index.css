@@ -30,7 +30,7 @@ body {
   position: absolute;
   left: 0px;  
   background-color: red; */
-  z-index: 10000;
+  z-index: 5;
   left: 50px;
   transition: left 0.5s;
 }
