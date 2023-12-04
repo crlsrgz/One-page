@@ -36,6 +36,7 @@ function ModelParts(props) {
     const div = document.querySelector(".info");
     div.classList.add("hideMe");
   }
+
   return (
     <>
       <mesh
@@ -84,12 +85,34 @@ export function ModelDetail(props) {
   const { animationName } = useControls({
     animationName: { options: animations.names },
   });
+  /* ::::::::: Animation functions and States ::::::::: */
+
+  const materialHover = new MeshStandardMaterial({
+    color: "#7a0e0e",
+    roughness: 0.9,
+  });
+
+  const [animationState, setAnimationState] = useState(true);
+  const [animationTry, setAnimationTry] = useState("animVerkleidung");
+  function playAnimation() {
+    if (animationState) {
+      setAnimationState(!animationState);
+      setAnimationTry("anim001");
+    } else {
+      setAnimationState(!animationState);
+      setAnimationTry("animVerkleidung");
+    }
+  }
+  document.querySelector("body").addEventListener("dblclick", playAnimation);
 
   useEffect(() => {
-    const action = animations.actions[animationName];
+    // const action = animations.actions[animationName];
+    const action = animations.actions[animationTry];
     console.log(listAnimations);
     console.log(animationName);
 
+    action.repetitions = 1;
+    action.clampWhenFinished = true;
     action //
       .reset() //
       .fadeIn(0.5) //
@@ -100,15 +123,11 @@ export function ModelDetail(props) {
       action.fadeOut(0.5);
       console.log("dispose");
     };
-  }, [listAnimations]);
-
-  const materialHover = new MeshStandardMaterial({
-    color: "#7a0e0e",
-    roughness: 0.9,
-  });
+  }, [listAnimations, animationState]);
 
   return (
     <>
+      <Edges color={"red"}></Edges>
       <primitive object={model.scene} />
       {/* {model.scene.children.map((element, index) => {
         return (

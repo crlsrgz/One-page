@@ -24,6 +24,27 @@ export default function SceneDetail() {
   // console.log(model.scene.animations);
   return (
     <Suspense fallback={<LoadPercent />}>
+      <div className="absolute left-12 top-28 z-30 flex h-full w-96 flex-col gap-4">
+        <button className="w-48 cursor-pointer rounded-xl p-2 outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100">
+          Roof tiles
+        </button>
+        <button className="w-48 cursor-pointer rounded-xl p-2 outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100">
+          Tile Batten
+        </button>
+        <button className="w-48 cursor-pointer rounded-xl p-2 outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100">
+          Counter Batten
+        </button>
+        <button className="w-48 cursor-pointer rounded-xl p-2 outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100">
+          Breather Membrane
+        </button>
+        <button className="w-48 cursor-pointer rounded-xl p-2 outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100">
+          Roof deck
+        </button>
+        <button className="w-48 cursor-pointer rounded-xl p-2 outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100">
+          Rafter
+        </button>
+      </div>
+
       <Canvas
         camera={{
           position: [-4, -0.5, 3],
@@ -65,8 +86,10 @@ export default function SceneDetail() {
           </>
         </Stage>
       </Canvas>
-      <div className="absolute right-0 top-0 -z-30 flex h-full w-full items-center justify-center bg-clip-text pb-10 text-[24rem] text-zinc-800 ">
-        <h2>DETAIL</h2>
+      <div className="absolute right-0 top-0 -z-30 flex h-full w-full select-none items-center justify-center overflow-hidden bg-clip-text pb-10 text-[24rem] text-zinc-800">
+        <h2 className=" bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-900 bg-clip-text text-transparent">
+          DETAIL
+        </h2>
       </div>
     </Suspense>
   );
