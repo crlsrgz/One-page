@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ComponentMainNav from "./components/navigation.component";
 import SceneHomepage from "./components/scene.component.homepage";
 import ComponentDetail from "./components/component.detail";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useProgress } from "@react-three/drei";
 
 const App = () => {
   const screenHeight = window.screen.height;
@@ -17,6 +18,7 @@ const App = () => {
     >
       <div className="canvas-element flex h-full w-full flex-col ">
         <div className="info hideMe absolute top-28 h-2/4 w-96">hello</div>
+
         <BrowserRouter>
           <header className="mx-12 mt-4 flex h-24 flex-row  items-baseline justify-start gap-4">
             <ComponentMainNav />

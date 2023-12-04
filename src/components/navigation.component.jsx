@@ -1,3 +1,4 @@
+import { Icon } from "@iconify/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -32,42 +33,36 @@ export default function ComponentMainNav() {
       </nav>
       <nav className={`mx-4 w-full select-none sm:hidden`}>
         <div className={`flex w-full cursor-pointer `}>
-          <svg
-            className={` absolute right-8 top-12 z-20 fill-current text-zinc-100 ${
-              mobileNav ? "hidden" : ""
-            }`}
-            xmlns="http://www.w3.org/2000/svg"
-            width="32px"
-            height="32px"
-            onClick={hideNavigation}
-          >
-            <title>Mobile Menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-          </svg>
-
-          <svg
-            className={` absolute right-8 top-12 z-20 fill-current text-zinc-100 ${
-              mobileNav ? "" : "hidden"
-            }`}
-            xmlns="http://www.w3.org/2000/svg"
-            width="32px"
-            height="32px"
-            onClick={hideNavigation}
-          >
-            <title>Mobile Menu</title>
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M8 8.707l3.646 3.647.708-.707L8.707 8l3.647-3.646-.707-.708L8 7.293 4.354 3.646l-.707.708L7.293 8l-3.646 3.646.707.708L8 8.707z"
+          <button onClick={hideNavigation}>
+            <Icon
+              icon="tdesign:menu-application"
+              className={` absolute right-8 top-8 z-20 fill-current text-zinc-100 ${
+                mobileNav ? "hidden" : ""
+              }`}
+              width={36}
+              height={36}
             />
-          </svg>
+          </button>
+          <button onClick={hideNavigation}>
+            <Icon
+              icon="tdesign:close"
+              className={` absolute right-8 top-8 z-20 fill-current text-zinc-100 ${
+                mobileNav ? "" : "hidden"
+              }`}
+              width={36}
+              height={36}
+            />
+          </button>
         </div>
 
         <div
-          className={`${
+          className={`
+          
+          fixed left-0 top-0 z-10 h-screen w-screen cursor-pointer bg-neutral-800 p-4 pt-20 text-xl  transition-all
+          ${
             mobileNav
-              ? "fixed left-0 top-0 z-10 h-screen w-screen cursor-pointer bg-neutral-800 p-4 pt-20 text-xl opacity-100 transition-all"
-              : "pt-18 fixed left-0 top-24 z-10 hidden h-screen w-screen cursor-pointer bg-neutral-800 p-4 pt-20 text-xl opacity-20 transition-all"
+              ? "animate-mobile-menu-in"
+              : "animate-mobile-menu-out hidden"
           }`}
         >
           <ul className="flex w-full flex-col items-center justify-start gap-2 ">
