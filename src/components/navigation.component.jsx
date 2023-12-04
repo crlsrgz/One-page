@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Link, NavLink, Routes } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function ComponentMainNav() {
   const [mobileNav, setMobileNav] = useState(false);
@@ -13,7 +13,7 @@ export default function ComponentMainNav() {
 
   return (
     <>
-      <h1 className="cursor-pointer font-yeseva text-6xl">
+      <h1 className="cursor-pointer select-none font-yeseva text-6xl">
         <Link to={"/"}>Title</Link>
       </h1>{" "}
       <nav className="mx-12 hidden w-full flex-row items-center justify-start gap-8 text-xl sm:flex">
@@ -30,26 +30,44 @@ export default function ComponentMainNav() {
           Landscape
         </Link>
       </nav>
-      <nav className={`mx-4 w-full sm:hidden`}>
-        <div className="flex w-full cursor-pointer flex-row items-baseline justify-end">
+      <nav className={`mx-4 w-full select-none sm:hidden`}>
+        <div className={`flex w-full cursor-pointer `}>
           <svg
-            className="z-20 fill-current text-zinc-100"
+            className={` absolute right-8 top-12 z-20 fill-current text-zinc-100 ${
+              mobileNav ? "hidden" : ""
+            }`}
             xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 20 20"
+            width="32px"
+            height="32px"
             onClick={hideNavigation}
           >
             <title>Mobile Menu</title>
             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+          </svg>
+
+          <svg
+            className={` absolute right-8 top-12 z-20 fill-current text-zinc-100 ${
+              mobileNav ? "" : "hidden"
+            }`}
+            xmlns="http://www.w3.org/2000/svg"
+            width="32px"
+            height="32px"
+            onClick={hideNavigation}
+          >
+            <title>Mobile Menu</title>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8 8.707l3.646 3.647.708-.707L8.707 8l3.647-3.646-.707-.708L8 7.293 4.354 3.646l-.707.708L7.293 8l-3.646 3.646.707.708L8 8.707z"
+            />
           </svg>
         </div>
 
         <div
           className={`${
             mobileNav
-              ? "mt fixed left-0 top-0 z-10 h-screen w-screen cursor-pointer bg-neutral-800 p-4 pt-36 text-xl opacity-100 transition-all"
-              : "mt top-50 fixed left-0 z-10 hidden h-screen w-screen cursor-pointer bg-neutral-800 p-4 pt-36 text-xl opacity-20 transition-all"
+              ? "fixed left-0 top-0 z-10 h-screen w-screen cursor-pointer bg-neutral-800 p-4 pt-20 text-xl opacity-100 transition-all"
+              : "pt-18 fixed left-0 top-24 z-10 hidden h-screen w-screen cursor-pointer bg-neutral-800 p-4 pt-20 text-xl opacity-20 transition-all"
           }`}
         >
           <ul className="flex w-full flex-col items-center justify-start gap-2 ">
