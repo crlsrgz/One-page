@@ -74,18 +74,33 @@ export function ModelDetail(props) {
   const model = useGLTF("/wall.glb");
   const animations = useAnimations(model.animations, model.scene);
 
-  console.log(model.scene);
-  console.log(animations.names);
   const listAnimations = Object.keys(animations.actions);
+  // console.log(model.scene);
+  // console.log(animations.names);
+  // console.log(animations.actions);
+  // console.log(listAnimations);
 
-  // const { animationName } = useControls({
-  //   animationName: { options: animations.names },
-  // });
+  // console.log(listAnimations[0]);
+  const { animationName } = useControls({
+    animationName: { options: animations.names },
+  });
 
   useEffect(() => {
-    const action = animations.actions[listAnimations[0]];
-    // action.play();
-  }, []);
+    const action = animations.actions[animationName];
+    console.log(listAnimations);
+    console.log(animationName);
+
+    action //
+      .reset() //
+      .fadeIn(0.5) //
+      .play();
+
+    //Cleanup
+    return () => {
+      action.fadeOut(0.5);
+      console.log("dispose");
+    };
+  }, [listAnimations]);
 
   const materialHover = new MeshStandardMaterial({
     color: "#7a0e0e",
@@ -94,7 +109,8 @@ export function ModelDetail(props) {
 
   return (
     <>
-      {model.scene.children.map((element, index) => {
+      <primitive object={model.scene} />
+      {/* {model.scene.children.map((element, index) => {
         return (
           <ModelParts
             key={index}
@@ -105,7 +121,7 @@ export function ModelDetail(props) {
             position={element.position}
           />
         );
-      })}
+      })} */}
     </>
   );
 }
