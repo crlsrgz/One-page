@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import ComponentMainNav from "./components/navigation.component";
 import SceneHomepage from "./components/scene.component.homepage";
-import ComponentDetail from "./components/component.detail";
+import SceneDetail from "./components/scene.component.detail";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useProgress } from "@react-three/drei";
 
@@ -27,7 +27,7 @@ const App = () => {
             <Routes>
               {/* <Route path={'/Landscape'} element={<SceneLandscape/>}/> */}
               <Route path={"/"} element={<SceneHomepage />} />
-              <Route path={"/detail"} element={<ComponentDetail />} />
+              <Route path={"/detail"} element={<SceneDetail />} />
             </Routes>
           </div>
         </BrowserRouter>

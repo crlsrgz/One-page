@@ -15,10 +15,10 @@ import { Canvas } from "@react-three/fiber";
 import { Perf } from "r3f-perf";
 import { Suspense, useState } from "react";
 import { BoxGeometry, MeshNormalMaterial } from "three";
-import { ModelDetail } from "./model.detail";
+import { ModelDetail } from "./scene-detail/model.detail";
 import LoadPercent from "./component.loadPercent";
 
-export default function ComponentDetail() {
+export default function SceneDetail() {
   // const model = useGLTF("./wall.glb");
   // console.log(model.scene.children);
   // console.log(model.scene.animations);
@@ -26,7 +26,7 @@ export default function ComponentDetail() {
     <Suspense fallback={<LoadPercent />}>
       <Canvas
         camera={{
-          position: [-4, 0, 3],
+          position: [-4, -0.5, 3],
           near: 0.01,
           far: 100,
           fov: 35,
@@ -40,9 +40,19 @@ export default function ComponentDetail() {
           labelColor="black"
           position={[-2, 0, 0]}
           scale={0.4}
+          hideAxisHeads
         />
 
-        <OrbitControls makeDefault target={[0, -0.5, 0]} />
+        <OrbitControls
+          makeDefault
+          target={[0, 0.0, 0]}
+          maxPolarAngle={Math.PI * 0.65}
+          minPolarAngle={Math.PI * -0.85}
+          maxAzimuthAngle={Math.PI * 0.5}
+          minAzimuthAngle={Math.PI * -0.45}
+          maxDistance={5}
+          minDistance={2}
+        />
         <Stage
           contactShadow={{ opacity: 0.5, blur: 5 }}
           environment="city"
@@ -51,19 +61,13 @@ export default function ComponentDetail() {
         >
           {/* <primitive object={model.scene} /> */}
           <>
-            {/* <Suspense
-            fallback={
-              <mesh>
-                <boxGeometry />
-                <meshBasicMaterial wireframe color={"red"} />
-              </mesh>
-            }
-          > */}
             <ModelDetail />
-            {/* </Suspense> */}
           </>
         </Stage>
       </Canvas>
+      <div className="absolute right-0 top-0 -z-30 flex h-full w-full items-center justify-center bg-clip-text pb-10 text-[24rem] text-zinc-800 ">
+        <h2>DETAIL</h2>
+      </div>
     </Suspense>
   );
 }
