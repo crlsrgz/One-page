@@ -8,7 +8,14 @@ import LoadPercent from "./component.loadPercent";
 export default function SceneHomepage(props) {
   return (
     <Suspense fallback={<LoadPercent />}>
-      <Canvas camera={{ position: [6, 1, 0], near: 0.01, far: 100, fov: 35 }}>
+      <Canvas
+        camera={{
+          position: [6, 1, 0],
+          near: 0.01,
+          far: 100,
+          fov: 35,
+        }}
+      >
         {/* <Perf /> */}
         <ScrollControls pages={3} damping={0.1}>
           <Scroll>

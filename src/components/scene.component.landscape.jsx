@@ -46,8 +46,16 @@ export default function SceneLandscape() {
   window.addEventListener("keydown", disableScene);
 
   function calculateCameraDistance(
-    cameraPositionVector = { x: 1, y: 1, z: 1 },
-    targetPositionVector = { x: 0, y: 0, z: 0 },
+    cameraPositionVector = {
+      x: 1,
+      y: 1,
+      z: 1,
+    },
+    targetPositionVector = {
+      x: 0,
+      y: 0,
+      z: 0,
+    },
   ) {
     const distance = Math.sqrt(
       Math.pow(cameraPositionVector.x - targetPositionVector.x, 2) +
@@ -60,7 +68,12 @@ export default function SceneLandscape() {
   return (
     <Canvas
       ref={refCanvas}
-      camera={{ position: [0, 5, 0], near: 0.01, far: 100, fov: 45 }}
+      camera={{
+        position: [0, 5, 0],
+        near: 0.01,
+        far: 100,
+        fov: 45,
+      }}
       onClick={enableScene}
     >
       <Perf />

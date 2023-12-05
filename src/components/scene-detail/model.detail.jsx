@@ -83,7 +83,9 @@ export function ModelDetail(props) {
 
   // console.log(listAnimations[0]);
   const { animationName } = useControls({
-    animationName: { options: animations.names },
+    animationName: {
+      options: animations.names,
+    },
   });
   /* ::::::::: Animation functions and States ::::::::: */
 
@@ -92,38 +94,38 @@ export function ModelDetail(props) {
     roughness: 0.9,
   });
 
-  const [animationState, setAnimationState] = useState(true);
-  const [animationTry, setAnimationTry] = useState("animVerkleidung");
-  function playAnimation() {
-    if (animationState) {
-      setAnimationState(!animationState);
-      setAnimationTry("anim001");
-    } else {
-      setAnimationState(!animationState);
-      setAnimationTry("animVerkleidung");
-    }
-  }
-  document.querySelector("body").addEventListener("dblclick", playAnimation);
+  // const [animationState, setAnimationState] = useState(true);
+  // const [animationTry, setAnimationTry] = useState("animVerkleidung");
+  // function playAnimation() {
+  //   if (animationState) {
+  //     setAnimationState(!animationState);
+  //     setAnimationTry("anim001");
+  //   } else {
+  //     setAnimationState(!animationState);
+  //     setAnimationTry("animVerkleidung");
+  //   }
+  // }
+  // document.querySelector("body").addEventListener("dblclick", playAnimation);
 
-  useEffect(() => {
-    // const action = animations.actions[animationName];
-    const action = animations.actions[animationTry];
-    console.log(listAnimations);
-    console.log(animationName);
+  // useEffect(() => {
+  //   // const action = animations.actions[animationName];
+  //   const action = animations.actions[animationTry];
+  //   console.log(listAnimations);
+  //   console.log(animationName);
 
-    action.repetitions = 1;
-    action.clampWhenFinished = true;
-    action //
-      .reset() //
-      .fadeIn(0.5) //
-      .play();
+  //   action.repetitions = 1;
+  //   action.clampWhenFinished = true;
+  //   action //
+  //     .reset() //
+  //     .fadeIn(0.5) //
+  //     .play();
 
-    //Cleanup
-    return () => {
-      action.fadeOut(0.5);
-      console.log("dispose");
-    };
-  }, [listAnimations, animationState]);
+  //   //Cleanup
+  //   return () => {
+  //     action.fadeOut(0.5);
+  //     console.log("dispose");
+  //   };
+  // }, [listAnimations, animationState]);
 
   return (
     <>
