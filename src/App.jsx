@@ -4,6 +4,7 @@ import SceneHomepage from "./components/scene.component.homepage";
 import SceneDetail from "./components/scene.component.detail";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useProgress } from "@react-three/drei";
+import SceneCube from "./components/scene.component.cube";
 
 const App = () => {
   const screenHeight = window.screen.height;
@@ -26,6 +27,7 @@ const App = () => {
               {/* <Route path={'/Landscape'} element={<SceneLandscape/>}/> */}
               <Route path={"/"} element={<SceneHomepage />} />
               <Route path={"/detail"} element={<SceneDetail />} />
+              <Route path={"/cube"} element={<SceneCube />} />
             </Routes>
           </div>
         </BrowserRouter>

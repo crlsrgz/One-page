@@ -30,6 +30,9 @@ export default function ComponentMainNav() {
         <Link to={"/"} className="underline-offset-8 hover:underline">
           Landscape
         </Link>
+        <Link to={"/cube"} className="underline-offset-8 hover:underline">
+          Cube
+        </Link>
       </nav>
       <nav className={`mx-4 w-full select-none sm:hidden`}>
         <div className={`flex w-full cursor-pointer `}>
