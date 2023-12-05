@@ -93,6 +93,15 @@ export default function ComponentMainNav() {
                 Landscape
               </Link>
             </li>
+            <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
+              <Link
+                className="block h-24"
+                to={"/cube"}
+                onClick={hideNavigation}
+              >
+                Cube
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>

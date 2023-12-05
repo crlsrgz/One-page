@@ -82,11 +82,14 @@ export function ModelDetail(props) {
   // console.log(listAnimations);
 
   // console.log(listAnimations[0]);
-  const { animationName } = useControls({
-    animationName: {
-      options: animations.names,
-    },
-  });
+
+  /* ::::::::: Leva ::::::::: */
+  // const { animationName } = useControls({
+  //   animationName: {
+  //     options: animations.names,
+  //   },
+  // });
+
   /* ::::::::: Animation functions and States ::::::::: */
 
   const materialHover = new MeshStandardMaterial({

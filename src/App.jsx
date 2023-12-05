@@ -17,7 +17,7 @@ const App = () => {
       className="box-border flex h-screen  w-screen flex-col"
       style={{ zIndex: "-1" }}
     >
-      <div className="canvas-element flex h-full w-full flex-col ">
+      <div className="canvas-element flex h-full w-full select-none flex-col ">
         <BrowserRouter>
           <header className="mx-12 mt-4 flex h-24 flex-row  items-baseline justify-start gap-4">
             <ComponentMainNav />

@@ -24,25 +24,39 @@ export default function SceneDetail() {
     <Suspense fallback={<LoadPercent />}>
       <div
         className={`absolute ${
-          sideMenu ? "left-[24px]" : " left-[-230px]"
-        } top-28 z-30 flex h-full w-auto flex-row-reverse gap-4 p-4 outline-2 outline-zinc-100 transition-all`}
+          sideMenu ? "left-[0px]" : " left-[-280px]"
+        } top-28 z-30 flex h-[80%] w-auto select-none flex-row-reverse  gap-4 rounded-md bg-zinc-900 bg-opacity-80  ps-6 outline-2 transition-all`}
       >
-        <div className="">
+        <div
+          className={`h-full w-14 rounded-br-md rounded-tr-md bg-zinc-600 bg-opacity-50 hover:animate-pulse ${
+            sideMenu ? "" : "animate-pulse-slow"
+          }`}
+        >
           <button
-            className=" flex cursor-pointer flex-col items-center justify-center"
+            className="mt-2 flex cursor-pointer flex-col items-center justify-center"
             onClick={switchSideMenu}
           >
             <Icon
               icon={`tdesign:chevron-left`}
               // width={64}
               // height={64}
-              className={`h-12 w-12  p-0 transition-all hover:h-16 hover:w-16  ${
+              className={`h-12  w-12 p-0 transition-all hover:h-16 hover:w-16  ${
                 sideMenu ? "rotate-0" : "rotate-180"
+              }`}
+            />
+            <Icon
+              icon={`${
+                sideMenu ? "tdesign:chevron-left" : "tdesign:chevron-right"
+              }`}
+              // width={64}
+              // height={64}
+              className={`absolute inline-flex h-12 w-12 p-0 opacity-75 blur-sm transition-all hover:h-16 hover:w-16 ${
+                sideMenu ? "" : "animate-ping-slow"
               }`}
             />
           </button>
         </div>
-        <div className="flex h-full w-auto flex-col gap-4">
+        <div className="mt-6 flex w-auto flex-col gap-4 overflow-auto p-4">
           <button className=" h-10 w-48 cursor-pointer rounded-md p-2 text-start outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100 focus:bg-zinc-300 focus:text-sm focus:text-zinc-800 focus:outline-4 ">
             Roof tiles
           </button>
@@ -60,6 +74,48 @@ export default function SceneDetail() {
           </button>
           <button className=" h-10 w-48 cursor-pointer rounded-md p-2 text-start outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100 focus:bg-zinc-300 focus:text-sm focus:text-zinc-800 focus:outline-4 ">
             Rafter
+          </button>
+          <button className=" h-10 w-48 cursor-pointer rounded-md p-2 text-start outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100 focus:bg-zinc-300 focus:text-sm focus:text-zinc-800 focus:outline-4 ">
+            Timber Post
+          </button>
+          <button className=" h-10 w-48 cursor-pointer rounded-md p-2 text-start outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100 focus:bg-zinc-300 focus:text-sm focus:text-zinc-800 focus:outline-4 ">
+            Cellulose insulation
+          </button>
+          <button className=" h-10 w-48 cursor-pointer rounded-md p-2 text-start outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100 focus:bg-zinc-300 focus:text-sm focus:text-zinc-800 focus:outline-4 ">
+            OSB Board
+          </button>
+          <button className=" h-10 w-48 cursor-pointer rounded-md p-2 text-start outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100 focus:bg-zinc-300 focus:text-sm focus:text-zinc-800 focus:outline-4 ">
+            Wooden Framework
+          </button>
+          <button className=" h-10 w-48 cursor-pointer rounded-md p-2 text-start outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100 focus:bg-zinc-300 focus:text-sm focus:text-zinc-800 focus:outline-4 ">
+            Wood-fibre Insulation
+          </button>
+          <button className=" h-10 w-48 cursor-pointer rounded-md p-2 text-start outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100 focus:bg-zinc-300 focus:text-sm focus:text-zinc-800 focus:outline-4 ">
+            Drywall sheet
+          </button>
+          <button className=" h-10 w-48 cursor-pointer rounded-md p-2 text-start outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100 focus:bg-zinc-300 focus:text-sm focus:text-zinc-800 focus:outline-4 ">
+            Roof deck
+          </button>
+          <button className=" h-10 w-48 cursor-pointer rounded-md p-2 text-start outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100 focus:bg-zinc-300 focus:text-sm focus:text-zinc-800 focus:outline-4 ">
+            Rafter
+          </button>
+          <button className=" h-10 w-48 cursor-pointer rounded-md p-2 text-start outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100 focus:bg-zinc-300 focus:text-sm focus:text-zinc-800 focus:outline-4 ">
+            Timber Post
+          </button>
+          <button className=" h-10 w-48 cursor-pointer rounded-md p-2 text-start outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100 focus:bg-zinc-300 focus:text-sm focus:text-zinc-800 focus:outline-4 ">
+            Cellulose insulation
+          </button>
+          <button className=" h-10 w-48 cursor-pointer rounded-md p-2 text-start outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100 focus:bg-zinc-300 focus:text-sm focus:text-zinc-800 focus:outline-4 ">
+            OSB Board
+          </button>
+          <button className=" h-10 w-48 cursor-pointer rounded-md p-2 text-start outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100 focus:bg-zinc-300 focus:text-sm focus:text-zinc-800 focus:outline-4 ">
+            Wooden Framework
+          </button>
+          <button className=" h-10 w-48 cursor-pointer rounded-md p-2 text-start outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100 focus:bg-zinc-300 focus:text-sm focus:text-zinc-800 focus:outline-4 ">
+            Wood-fibre Insulation
+          </button>
+          <button className=" h-10 w-48 cursor-pointer rounded-md p-2 text-start outline outline-1 outline-zinc-300 hover:outline-2 hover:outline-zinc-100 focus:bg-zinc-300 focus:text-sm focus:text-zinc-800 focus:outline-4 ">
+            Drywall sheet
           </button>
         </div>
       </div>
