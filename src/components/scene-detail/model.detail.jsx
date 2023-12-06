@@ -73,6 +73,12 @@ function ModelParts(props) {
 
 export function ModelDetail(props) {
   const model = useGLTF("/wall.glb");
+  model.scene.traverse(function (node) {
+    if (node.isMesh) {
+      node.castShadow = true;
+      node.receiveShadow = true;
+    }
+  });
   const animations = useAnimations(model.animations, model.scene);
 
   const listAnimations = Object.keys(animations.actions);
@@ -134,7 +140,9 @@ export function ModelDetail(props) {
   return (
     <>
       <Edges color={"red"}>
-        <primitive object={model.scene} />
+        <mesh>
+          <primitive object={model.scene} castShadow />
+        </mesh>
       </Edges>
       {/* {model.scene.children.map((element, index) => {
         return (

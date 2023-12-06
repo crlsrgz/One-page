@@ -137,8 +137,21 @@ export default function SceneCube() {
             minPolarAngle={Math.PI * -0.85}
             maxAzimuthAngle={Math.PI * 0.5}
             minAzimuthAngle={Math.PI * -0.45}
-            maxDistance={5}
+            maxDistance={10}
             minDistance={2}
+          />
+          <directionalLight
+            position={[0, 2, 2]}
+            intensity={0.5}
+            castShadow
+            shadow-normalBias={0.5}
+            shadow-mapSize={[512, 512]}
+            shadow-camera-top={50}
+            shadow-camera-right={50}
+            shadow-camera-bottom={-50}
+            shadow-camera-left={-50}
+            shadow-camera-near={0}
+            shadow-camera-far={50}
           />
           {/* <Stage
             contactShadow={{
@@ -148,8 +161,9 @@ export default function SceneCube() {
             environment="city"
             intensity={0.4}
             adjustCamera={false}
+            center={false}
+            shadows={false}
           > */}
-          {/* <primitive object={model.scene} /> */}
           <>
             <Cube isActive={move} />
 
@@ -164,6 +178,24 @@ export default function SceneCube() {
                 Click!
               </button>
             </Html>
+            <mesh
+              scale={4}
+              rotation-x={Math.PI * -0.5}
+              receiveShadow
+              castShadow
+            >
+              <planeGeometry castShadow receiveShadow />
+              <meshStandardMaterial color={"slategrey"} />
+            </mesh>
+            <mesh
+              scale={1}
+              rotation-x={Math.PI * -0.5}
+              receiveShadow
+              castShadow
+            >
+              <boxGeometry castShadow receiveShadow />
+              <meshStandardMaterial color={"slategrey"} />
+            </mesh>
           </>
           {/* </Stage> */}
         </Canvas>

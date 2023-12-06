@@ -152,13 +152,27 @@ export default function SceneDetail() {
             minPolarAngle={Math.PI * -0.85}
             maxAzimuthAngle={Math.PI * 0.5}
             minAzimuthAngle={Math.PI * -0.45}
-            maxDistance={5}
+            maxDistance={10}
             minDistance={2}
           />
 
           <ambientLight intensity={1.3} />
 
-          <Stage
+          <directionalLight
+            position={[0, 2, 1]}
+            intensity={1.5}
+            castShadow
+            shadow-normalBias={0.5}
+            shadow-mapSize={[512, 512]}
+            shadow-camera-top={20}
+            shadow-camera-right={20}
+            shadow-camera-bottom={-20}
+            shadow-camera-left={-20}
+            shadow-camera-near={1}
+            shadow-camera-far={20}
+          />
+
+          {/* <Stage
             contactShadow={{
               opacity: 0.5,
               blur: 5,
@@ -167,9 +181,17 @@ export default function SceneDetail() {
             environment={null}
             preset="rembrandt"
             adjustCamera={false}
-          >
-            <ModelDetail action={animationToPlay} />
-          </Stage>
+          > */}
+          <ModelDetail action={animationToPlay} />
+          <mesh scale={4} rotation-x={Math.PI * -0.5} receiveShadow castShadow>
+            <planeGeometry />
+            <meshStandardMaterial color={"slategrey"} />
+          </mesh>
+          <mesh scale={1} rotation-x={Math.PI * -0.5} receiveShadow castShadow>
+            <boxGeometry />
+            <meshStandardMaterial color={"slategrey"} />
+          </mesh>
+          {/* </Stage> */}
         </Canvas>
         <div className="absolute right-0 top-0 -z-30 flex h-full w-full select-none items-center justify-center overflow-hidden bg-clip-text pb-10 text-[24rem] text-zinc-800">
           <h2 className=" bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-900 bg-clip-text text-transparent">
