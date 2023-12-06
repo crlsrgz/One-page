@@ -1,16 +1,25 @@
 import {
+  ContactShadows,
   Environment,
   GizmoViewport,
   Html,
   OrbitControls,
   Stage,
+  useHelper,
 } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Suspense, useRef, useState } from "react";
 import LoadPercent from "./component.loadPercent";
 import { Icon } from "@iconify/react";
-import { Euler, MathUtils, Quaternion, Vector3 } from "three";
+import {
+  DirectionalLightHelper,
+  Euler,
+  MathUtils,
+  Quaternion,
+  Vector3,
+} from "three";
 import ButtonSideMenu from "./scene-detail/component.buttonSide";
+import * as THREE from "three";
 
 function Cube(props) {
   const refCube = useRef();
@@ -53,6 +62,29 @@ export default function SceneCube() {
 
   /* ═══ Sidebar navigation States ═══ */
   const [sideMenu, setSideMenu] = useState(false);
+  function SceneLights() {
+    const refTest = useRef();
+    useHelper(refTest, THREE.DirectionalLightHelper, 1);
+    return (
+      <>
+        <directionalLight
+          ref={refTest}
+          position={[-3, 2, -2]}
+          intensity={1.0}
+          castShadow
+          shadow-normalBias={0.05}
+          shadow-mapSize={[2048, 2048]}
+          shadow-camera-top={50}
+          shadow-camera-right={50}
+          shadow-camera-bottom={-50}
+          shadow-camera-left={-50}
+          shadow-camera-near={0}
+          shadow-camera-far={50}
+        />
+        <ambientLight intensity={0.5} />
+      </>
+    );
+  }
 
   function switchSideMenu() {
     if (sideMenu) {
@@ -123,6 +155,7 @@ export default function SceneCube() {
           }}
           shadows={true}
         >
+          <SceneLights />
           <GizmoViewport
             axisColors={["red", "green", "blue"]}
             labelColor="black"
@@ -141,19 +174,7 @@ export default function SceneCube() {
             maxDistance={10}
             minDistance={2}
           />
-          <directionalLight
-            position={[1, 2, 2]}
-            intensity={1.0}
-            castShadow
-            // shadow-normalBias={0.1}
-            shadow-mapSize={[1024, 1024]}
-            shadow-camera-top={50}
-            shadow-camera-right={50}
-            shadow-camera-bottom={-50}
-            shadow-camera-left={-50}
-            shadow-camera-near={0}
-            shadow-camera-far={50}
-          />
+
           {/* <Stage
             contactShadow={{
               opacity: 0.5,
@@ -179,24 +200,12 @@ export default function SceneCube() {
                 Click!
               </button>
             </Html>
-            <mesh
-              scale={4}
-              rotation-x={Math.PI * -0.5}
-              position={[0, -0.25, 0]}
-              receiveShadow
-              castShadow
-            >
-              <planeGeometry />
+            <mesh scale={4} position={[0, -0.25, 0]} receiveShadow castShadow>
+              <boxGeometry args={[1, 0.01, 1]} />
               <meshStandardMaterial color={"slategrey"} />
             </mesh>
-            <mesh
-              scale={4}
-              rotation-x={Math.PI * -0.5}
-              position={[2, -0.55, 0]}
-              receiveShadow
-              castShadow
-            >
-              <planeGeometry />
+            <mesh scale={4} position={[2, -0.55, 0]} receiveShadow castShadow>
+              <boxGeometry args={[1, 0.01, 1]} />
               <meshStandardMaterial color={"slategrey"} />
             </mesh>
           </>
