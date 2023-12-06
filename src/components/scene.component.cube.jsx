@@ -1,4 +1,10 @@
-import { GizmoViewport, Html, OrbitControls, Stage } from "@react-three/drei";
+import {
+  Environment,
+  GizmoViewport,
+  Html,
+  OrbitControls,
+  Stage,
+} from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Suspense, useRef, useState } from "react";
 import LoadPercent from "./component.loadPercent";
@@ -134,7 +140,7 @@ export default function SceneCube() {
             maxDistance={5}
             minDistance={2}
           />
-          <Stage
+          {/* <Stage
             contactShadow={{
               opacity: 0.5,
               blur: 5,
@@ -142,23 +148,24 @@ export default function SceneCube() {
             environment="city"
             intensity={0.4}
             adjustCamera={false}
-          >
-            {/* <primitive object={model.scene} /> */}
-            <>
-              <Cube isActive={move} />
-              <Html center position={[-1, 0.5, 0]}>
-                {" "}
-                <button
-                  className=" p-2 outline outline-zinc-100"
-                  onClick={() => {
-                    setMove(!move);
-                  }}
-                >
-                  Click!
-                </button>
-              </Html>
-            </>
-          </Stage>
+          > */}
+          {/* <primitive object={model.scene} /> */}
+          <>
+            <Cube isActive={move} />
+
+            <Html center position={[-1, 0.5, 0]}>
+              {" "}
+              <button
+                className=" p-2 outline outline-zinc-100"
+                onClick={() => {
+                  setMove(!move);
+                }}
+              >
+                Click!
+              </button>
+            </Html>
+          </>
+          {/* </Stage> */}
         </Canvas>
         <div className="absolute right-0 top-0 -z-30 flex h-full w-full select-none items-center justify-center overflow-hidden bg-clip-text pb-10 text-[24rem] text-zinc-800">
           <h2 className=" bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-900 bg-clip-text text-transparent">

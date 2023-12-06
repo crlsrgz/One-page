@@ -133,8 +133,9 @@ export function ModelDetail(props) {
 
   return (
     <>
-      <Edges color={"red"}></Edges>
-      <primitive object={model.scene} />
+      <Edges color={"red"}>
+        <primitive object={model.scene} />
+      </Edges>
       {/* {model.scene.children.map((element, index) => {
         return (
           <ModelParts

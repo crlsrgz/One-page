@@ -1,13 +1,26 @@
-import { GizmoViewport, OrbitControls, Stage } from "@react-three/drei";
+import {
+  Box,
+  Environment,
+  GizmoViewport,
+  OrbitControls,
+  Stage,
+  useGLTF,
+} from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useState } from "react";
 import { ModelDetail } from "./scene-detail/model.detail";
 import LoadPercent from "./component.loadPercent";
 import { Icon } from "@iconify/react";
 import ButtonSideMenu from "./scene-detail/component.buttonSide";
+import {
+  ACESFilmicToneMapping,
+  CineonToneMapping,
+  ReinhardToneMapping,
+  SRGBColorSpace,
+} from "three";
 
 export default function SceneDetail() {
-  // const model = useGLTF("./wall.glb");
+  const model = useGLTF("./wall.glb");
   // console.log(model.scene.children);
   // console.log(model.scene.animations);
 
@@ -115,8 +128,15 @@ export default function SceneDetail() {
             far: 100,
             fov: 35,
           }}
+          onCreated={() => {
+            console.log("canvas ready");
+          }}
+          gl={{
+            toneMapping: ACESFilmicToneMapping,
+            // outputColorSpace: SRGBColorSpace,
+          }}
         >
-          <ambientLight intensity={2} />
+          {/* <ambientLight intensity={2} /> */}
           <GizmoViewport
             axisColors={["red", "green", "blue"]}
             labelColor="black"
@@ -135,19 +155,20 @@ export default function SceneDetail() {
             maxDistance={5}
             minDistance={2}
           />
+
+          <ambientLight intensity={1.3} />
+
           <Stage
             contactShadow={{
               opacity: 0.5,
               blur: 5,
             }}
-            environment="city"
-            intensity={0.8}
+            intensity={1.0}
+            environment={null}
+            preset="rembrandt"
             adjustCamera={false}
           >
-            {/* <primitive object={model.scene} /> */}
-            <>
-              <ModelDetail action={animationToPlay} />
-            </>
+            <ModelDetail action={animationToPlay} />
           </Stage>
         </Canvas>
         <div className="absolute right-0 top-0 -z-30 flex h-full w-full select-none items-center justify-center overflow-hidden bg-clip-text pb-10 text-[24rem] text-zinc-800">
