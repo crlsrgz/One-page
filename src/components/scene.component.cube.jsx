@@ -41,7 +41,7 @@ function Cube(props) {
     }
   });
   return (
-    <mesh ref={refCube} rotation-y={Math.PI * 1}>
+    <mesh ref={refCube} rotation-y={Math.PI * 1} castShadow receiveShadow>
       <boxGeometry args={[0.5, 0.5, 0.5]} />
       <meshStandardMaterial color={"slategray"} />
     </mesh>
@@ -121,6 +121,7 @@ export default function SceneCube() {
             far: 100,
             fov: 45,
           }}
+          shadows={true}
         >
           <GizmoViewport
             axisColors={["red", "green", "blue"]}
@@ -141,11 +142,11 @@ export default function SceneCube() {
             minDistance={2}
           />
           <directionalLight
-            position={[0, 2, 2]}
-            intensity={0.5}
+            position={[1, 2, 2]}
+            intensity={1.0}
             castShadow
-            shadow-normalBias={0.5}
-            shadow-mapSize={[512, 512]}
+            // shadow-normalBias={0.1}
+            shadow-mapSize={[1024, 1024]}
             shadow-camera-top={50}
             shadow-camera-right={50}
             shadow-camera-bottom={-50}
@@ -181,19 +182,21 @@ export default function SceneCube() {
             <mesh
               scale={4}
               rotation-x={Math.PI * -0.5}
+              position={[0, -0.25, 0]}
               receiveShadow
               castShadow
             >
-              <planeGeometry castShadow receiveShadow />
+              <planeGeometry />
               <meshStandardMaterial color={"slategrey"} />
             </mesh>
             <mesh
-              scale={1}
+              scale={4}
               rotation-x={Math.PI * -0.5}
+              position={[2, -0.55, 0]}
               receiveShadow
               castShadow
             >
-              <boxGeometry castShadow receiveShadow />
+              <planeGeometry />
               <meshStandardMaterial color={"slategrey"} />
             </mesh>
           </>

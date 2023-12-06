@@ -135,6 +135,7 @@ export default function SceneDetail() {
             toneMapping: ACESFilmicToneMapping,
             // outputColorSpace: SRGBColorSpace,
           }}
+          shadows={true}
         >
           {/* <ambientLight intensity={2} /> */}
           <GizmoViewport
@@ -156,14 +157,14 @@ export default function SceneDetail() {
             minDistance={2}
           />
 
-          <ambientLight intensity={1.3} />
+          {/* <ambientLight intensity={1.3} /> */}
 
           <directionalLight
-            position={[0, 2, 1]}
+            position={[0, 6, 1]}
             intensity={1.5}
             castShadow
-            shadow-normalBias={0.5}
-            shadow-mapSize={[512, 512]}
+            shadow-normalBias={0.1}
+            shadow-mapSize={[1024, 1024]}
             shadow-camera-top={20}
             shadow-camera-right={20}
             shadow-camera-bottom={-20}
@@ -182,6 +183,7 @@ export default function SceneDetail() {
             preset="rembrandt"
             adjustCamera={false}
           > */}
+          <Environment intensity={1} files={"env.hdr"} />
           <ModelDetail action={animationToPlay} />
           <mesh scale={4} rotation-x={Math.PI * -0.5} receiveShadow castShadow>
             <planeGeometry />
