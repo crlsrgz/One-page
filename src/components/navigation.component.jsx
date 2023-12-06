@@ -15,7 +15,7 @@ export default function ComponentMainNav() {
   return (
     <>
       <h1 className="cursor-pointer select-none font-yeseva text-6xl">
-        <Link to={"/"}>Title</Link>
+        <Link to={"/"}>Cubos</Link>
       </h1>{" "}
       <nav className="mx-12 hidden w-full flex-row items-center justify-start gap-8 text-xl sm:flex">
         <Link to={"/"} className="underline-offset-8 hover:underline">
@@ -27,7 +27,7 @@ export default function ComponentMainNav() {
         <Link to={"/"} className="underline-offset-8 hover:underline">
           Product
         </Link>
-        <Link to={"/"} className="underline-offset-8 hover:underline">
+        <Link to={"/landscape"} className="underline-offset-8 hover:underline">
           Landscape
         </Link>
         <Link to={"/cube"} className="underline-offset-8 hover:underline">
@@ -89,7 +89,11 @@ export default function ComponentMainNav() {
               </Link>
             </li>
             <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
-              <Link className="block h-24" to={"/"} onClick={hideNavigation}>
+              <Link
+                className="block h-24"
+                to={"/landscape"}
+                onClick={hideNavigation}
+              >
                 Landscape
               </Link>
             </li>
