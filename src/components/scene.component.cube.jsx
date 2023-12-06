@@ -97,7 +97,7 @@ export default function SceneCube() {
               />
             </button>
           </div>
-          <div className="mt-6 flex w-auto flex-col gap-4 overflow-auto p-4">
+          <div className="mt-6 flex w-64 flex-col gap-4 overflow-auto p-4">
             <ButtonSideMenu
               textContent={"Move Cube"}
               handleClick={() => {

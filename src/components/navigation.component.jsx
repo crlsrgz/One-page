@@ -21,6 +21,9 @@ export default function ComponentMainNav() {
         <Link to={"/"} className="underline-offset-8 hover:underline">
           Home
         </Link>
+        <Link to={"/cube"} className="underline-offset-8 hover:underline">
+          Cube
+        </Link>
         <Link to={"/detail"} className="underline-offset-8 hover:underline">
           Detail
         </Link>
@@ -29,9 +32,6 @@ export default function ComponentMainNav() {
         </Link>
         <Link to={"/landscape"} className="underline-offset-8 hover:underline">
           Landscape
-        </Link>
-        <Link to={"/cube"} className="underline-offset-8 hover:underline">
-          Cube
         </Link>
       </nav>
       <nav className={`mx-4 w-full select-none sm:hidden`}>
@@ -77,6 +77,15 @@ export default function ComponentMainNav() {
             <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
               <Link
                 className="block h-24"
+                to={"/cube"}
+                onClick={hideNavigation}
+              >
+                Cube
+              </Link>
+            </li>
+            <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
+              <Link
+                className="block h-24"
                 to={"/detail"}
                 onClick={hideNavigation}
               >
@@ -95,15 +104,6 @@ export default function ComponentMainNav() {
                 onClick={hideNavigation}
               >
                 Landscape
-              </Link>
-            </li>
-            <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
-              <Link
-                className="block h-24"
-                to={"/cube"}
-                onClick={hideNavigation}
-              >
-                Cube
               </Link>
             </li>
           </ul>
