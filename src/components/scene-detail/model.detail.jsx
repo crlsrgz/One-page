@@ -97,38 +97,39 @@ export function ModelDetail(props) {
     roughness: 0.9,
   });
 
-  // const [animationState, setAnimationState] = useState(true);
-  // const [animationTry, setAnimationTry] = useState("animVerkleidung");
+  const [animationState, setAnimationState] = useState(true);
+  const [animationTry, setAnimationTry] = useState(
+    props.action ? props.action : "001",
+  );
   // function playAnimation() {
   //   if (animationState) {
   //     setAnimationState(!animationState);
-  //     setAnimationTry("anim001");
+  //     setAnimationTry(props.action);
   //   } else {
   //     setAnimationState(!animationState);
-  //     setAnimationTry("animVerkleidung");
+  //     setAnimationTry(props.action);
   //   }
   // }
   // document.querySelector("body").addEventListener("dblclick", playAnimation);
 
-  // useEffect(() => {
-  //   // const action = animations.actions[animationName];
-  //   const action = animations.actions[animationTry];
-  //   console.log(listAnimations);
-  //   console.log(animationName);
+  useEffect(() => {
+    // const action = animations.actions[animationName];
+    const action = animations.actions[props.action ? props.action : "001"];
+    console.log(listAnimations);
 
-  //   action.repetitions = 1;
-  //   action.clampWhenFinished = true;
-  //   action //
-  //     .reset() //
-  //     .fadeIn(0.5) //
-  //     .play();
+    action.repetitions = 1;
+    action.clampWhenFinished = true;
+    action //
+      .reset() //
+      .fadeIn(0.5) //
+      .play();
 
-  //   //Cleanup
-  //   return () => {
-  //     action.fadeOut(0.5);
-  //     console.log("dispose");
-  //   };
-  // }, [listAnimations, animationState]);
+    //Cleanup
+    return () => {
+      action.fadeOut(0.08);
+      console.log("dispose");
+    };
+  }, [props.action, animationState]);
 
   return (
     <>

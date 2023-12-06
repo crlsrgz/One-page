@@ -12,6 +12,11 @@ export default function SceneDetail() {
   // console.log(model.scene.animations);
 
   const [sideMenu, setSideMenu] = useState(false);
+  const [animationToPlay, setAnimationToPlay] = useState(null);
+
+  function switchAnimation(animationName) {
+    setAnimationToPlay(animationName);
+  }
 
   function switchSideMenu() {
     if (sideMenu) {
@@ -62,9 +67,27 @@ export default function SceneDetail() {
             </button>
           </div>
           <div className="mt-6 flex  w-64 flex-col gap-4 overflow-auto p-4">
-            <ButtonSideMenu textContent={"Roof tiles"} />
-            <ButtonSideMenu textContent={"Tile Batten"} />
-            <ButtonSideMenu textContent={"Counter Batten"} />
+            <ButtonSideMenu
+              textContent={"Roof tiles"}
+              handleClick={() => {
+                setAnimationToPlay("002");
+                console.log(animationToPlay);
+              }}
+            />
+            <ButtonSideMenu
+              textContent={"Tile Batten"}
+              handleClick={() => {
+                setAnimationToPlay("003");
+                console.log(animationToPlay);
+              }}
+            />
+            <ButtonSideMenu
+              textContent={"Counter Batten"}
+              handleClick={() => {
+                setAnimationToPlay("001");
+                console.log(animationToPlay);
+              }}
+            />
             <ButtonSideMenu textContent={"Breather Membrane"} />
             <ButtonSideMenu textContent={"Roof deck"} />
             <ButtonSideMenu textContent={"Rafter"} />
@@ -123,7 +146,7 @@ export default function SceneDetail() {
           >
             {/* <primitive object={model.scene} /> */}
             <>
-              <ModelDetail />
+              <ModelDetail action={animationToPlay} />
             </>
           </Stage>
         </Canvas>
