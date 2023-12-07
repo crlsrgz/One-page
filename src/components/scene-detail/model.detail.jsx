@@ -10,6 +10,7 @@ import {
   Line,
   Edges,
   PivotControls,
+  RoundedBox,
 } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
 import { useControls } from "leva";
@@ -55,7 +56,7 @@ function ModelParts(props) {
         onClick={displayName}
         onPointerMissed={hideName}
       >
-        <Edges color={"red"}></Edges>
+        {/* <Edges color={"red"}></Edges> */}
         {/* {hover ? props.material : props.materialAlternative} */}
       </mesh>
 
@@ -73,12 +74,6 @@ function ModelParts(props) {
 
 export function ModelDetail(props) {
   const model = useGLTF("/wall.glb");
-  model.scene.traverse(function (node) {
-    if (node.isMesh) {
-      node.castShadow = true;
-      node.receiveShadow = true;
-    }
-  });
   const animations = useAnimations(model.animations, model.scene);
 
   const listAnimations = Object.keys(animations.actions);
@@ -101,6 +96,16 @@ export function ModelDetail(props) {
   const materialHover = new MeshStandardMaterial({
     color: "#7a0e0e",
     roughness: 0.9,
+  });
+  /* ═══ Traverse model to cahnge parameters ═══ */
+
+  model.scene.traverse(function (node) {
+    if (node.isMesh) {
+      node.castShadow = true;
+      node.receiveShadow = true;
+      // console.log(node);
+      // node.material = materialHover;
+    }
   });
 
   const [animationState, setAnimationState] = useState(true);
@@ -139,11 +144,10 @@ export function ModelDetail(props) {
 
   return (
     <>
-      <Edges color={"red"}>
-        <mesh>
-          <primitive object={model.scene} castShadow />
-        </mesh>
-      </Edges>
+      <mesh>
+        <primitive object={model.scene} castShadow />
+      </mesh>
+
       {/* {model.scene.children.map((element, index) => {
         return (
           <ModelParts
