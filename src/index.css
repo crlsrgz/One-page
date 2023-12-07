@@ -59,3 +59,34 @@ body {
     -ms-user-select: none;
   }
 }
+
+:root {
+  --scrollbar-bg: #333;
+  --scrollbar-bg-over: rgb(164, 220, 228);
+  --scrollbar-color: rgb(113, 195, 206);
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color);
+  border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-bg-over);
+}
+
+#sidebar-nav > * {
+  scrollbar-color: var(--scrollbar-color) var(--scrollbar-bg);
+  scrollbar-width: thin;
+}
