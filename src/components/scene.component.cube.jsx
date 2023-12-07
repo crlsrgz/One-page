@@ -11,15 +11,9 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Suspense, useRef, useState } from "react";
 import LoadPercent from "./component.loadPercent";
 import { Icon } from "@iconify/react";
-import {
-  DirectionalLightHelper,
-  Euler,
-  MathUtils,
-  Quaternion,
-  Vector3,
-} from "three";
+import { Euler, MathUtils, Quaternion, Vector3 } from "three";
 import ButtonSideMenu from "./scene-detail/component.buttonSide";
-import * as THREE from "three";
+import LightSetup from "./scene-detail/component.lights";
 
 function Cube(props) {
   const refCube = useRef();
@@ -62,29 +56,6 @@ export default function SceneCube() {
 
   /* ═══ Sidebar navigation States ═══ */
   const [sideMenu, setSideMenu] = useState(false);
-  function SceneLights() {
-    const refTest = useRef();
-    useHelper(refTest, THREE.DirectionalLightHelper, 1);
-    return (
-      <>
-        <directionalLight
-          ref={refTest}
-          position={[-3, 2, -2]}
-          intensity={1.0}
-          castShadow
-          shadow-normalBias={0.05}
-          shadow-mapSize={[2048, 2048]}
-          shadow-camera-top={50}
-          shadow-camera-right={50}
-          shadow-camera-bottom={-50}
-          shadow-camera-left={-50}
-          shadow-camera-near={0}
-          shadow-camera-far={50}
-        />
-        <ambientLight intensity={0.5} />
-      </>
-    );
-  }
 
   function switchSideMenu() {
     if (sideMenu) {
@@ -155,7 +126,7 @@ export default function SceneCube() {
           }}
           shadows={true}
         >
-          <SceneLights />
+          <LightSetup />
           <GizmoViewport
             axisColors={["red", "green", "blue"]}
             labelColor="black"

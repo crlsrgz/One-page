@@ -18,6 +18,7 @@ import {
   ReinhardToneMapping,
   SRGBColorSpace,
 } from "three";
+import LightSetup from "./scene-detail/component.lights";
 
 export default function SceneDetail() {
   const model = useGLTF("./wall.glb");
@@ -123,7 +124,7 @@ export default function SceneDetail() {
 
         <Canvas
           camera={{
-            position: [-4, -0.5, 3],
+            position: [-4, 7, 5],
             near: 0.01,
             far: 100,
             fov: 35,
@@ -148,7 +149,7 @@ export default function SceneDetail() {
 
           <OrbitControls
             makeDefault
-            target={[0, 0.0, 0]}
+            target={[0, 1, 0]}
             maxPolarAngle={Math.PI * 0.65}
             minPolarAngle={Math.PI * -0.85}
             maxAzimuthAngle={Math.PI * 0.5}
@@ -157,40 +158,26 @@ export default function SceneDetail() {
             minDistance={2}
           />
 
-          {/* <ambientLight intensity={1.3} /> */}
-
-          <directionalLight
-            position={[0, 6, 1]}
-            intensity={1.5}
-            castShadow
-            shadow-normalBias={0.1}
-            shadow-mapSize={[1024, 1024]}
-            shadow-camera-top={20}
-            shadow-camera-right={20}
-            shadow-camera-bottom={-20}
-            shadow-camera-left={-20}
-            shadow-camera-near={1}
-            shadow-camera-far={20}
-          />
+          <LightSetup />
+          <Environment intensity={1} files={"env.hdr"} />
 
           {/* <Stage
             contactShadow={{
               opacity: 0.5,
               blur: 5,
+              normalBias: 0.1,
+            }}
+            shadows={{
+              normalBias: 0.05,
             }}
             intensity={1.0}
             environment={null}
             preset="rembrandt"
             adjustCamera={false}
           > */}
-          <Environment intensity={1} files={"env.hdr"} />
           <ModelDetail action={animationToPlay} />
           <mesh scale={4} rotation-x={Math.PI * -0.5} receiveShadow castShadow>
             <planeGeometry />
-            <meshStandardMaterial color={"slategrey"} />
-          </mesh>
-          <mesh scale={1} rotation-x={Math.PI * -0.5} receiveShadow castShadow>
-            <boxGeometry />
             <meshStandardMaterial color={"slategrey"} />
           </mesh>
           {/* </Stage> */}
