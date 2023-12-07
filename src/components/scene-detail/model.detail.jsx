@@ -110,36 +110,35 @@ export function ModelDetail(props) {
 
   const [animationState, setAnimationState] = useState(true);
   const [animationTry, setAnimationTry] = useState(
-    props.action ? props.action : "001",
+    props.action ? props.action : ["001"],
   );
-  // function playAnimation() {
-  //   if (animationState) {
-  //     setAnimationState(!animationState);
-  //     setAnimationTry(props.action);
-  //   } else {
-  //     setAnimationState(!animationState);
-  //     setAnimationTry(props.action);
-  //   }
-  // }
-  // document.querySelector("body").addEventListener("dblclick", playAnimation);
 
   useEffect(() => {
     // const action = animations.actions[animationName];
-    const action = animations.actions[props.action ? props.action : "001"];
-    console.log(listAnimations);
-
-    action.repetitions = 1;
-    action.clampWhenFinished = true;
-    action //
-      .reset() //
-      .fadeIn(0.5) //
-      .play();
-
-    //Cleanup
-    return () => {
-      action.fadeOut(0.08);
-      console.log("dispose");
-    };
+    // const actionsLength = props.action.length;
+    // console.log(actionsLength);
+    // for (let i = 0; i < actionsLength; i++) {
+    //   const action = animations.actions[props.action[i]];
+    //   console.log(listAnimations);
+    //   action.repetitions = 1;
+    //   action.clampWhenFinished = true;
+    //   action //
+    //     //.reset() //
+    //     //.fadeIn(0.5) //
+    //     .play();
+    // }
+    // for (let i = 0; i < actionsLength; i++) {
+    //   const action = animations.actions[props.action[i]];
+    //   //Cleanup
+    //   return () => {
+    //     action.fadeOut(0.08);
+    //     console.log("dispose animation");
+    //   };
+    // }
+    //////////////////////////
+    // const action = animations.actions[animationName];
+    animations.actions["000"].play();
+    console.log(animations.actions["000"]);
   }, [props.action, animationState]);
 
   return (

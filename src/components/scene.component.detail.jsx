@@ -27,7 +27,7 @@ export default function SceneDetail() {
   // console.log(model.scene.animations);
 
   const [sideMenu, setSideMenu] = useState(false);
-  const [animationToPlay, setAnimationToPlay] = useState(null);
+  const [animationToPlay, setAnimationToPlay] = useState(["020"]);
 
   function switchAnimation(animationName) {
     setAnimationToPlay(animationName);
@@ -103,7 +103,7 @@ export default function SceneDetail() {
             <ButtonSideMenu
               textContent={"Roof tiles"}
               handleClick={() => {
-                setAnimationToPlay("002");
+                setAnimationToPlay(["000", "001", "002"]);
                 // console.log(animationToPlay);
                 infotagsShowHide("000");
               }}
@@ -111,17 +111,17 @@ export default function SceneDetail() {
             <ButtonSideMenu
               textContent={"Tile Batten"}
               handleClick={() => {
-                setAnimationToPlay("003");
+                setAnimationToPlay(["000"]);
                 // console.log(animationToPlay);
-                infotagsShowHide("001");
+                infotagsShowHide("002");
               }}
             />
             <ButtonSideMenu
               textContent={"Counter Batten"}
               handleClick={() => {
-                setAnimationToPlay("001");
+                setAnimationToPlay(["003"]);
                 // console.log(animationToPlay);
-                infotagsShowHide("002");
+                infotagsShowHide("003");
               }}
             />
             <ButtonSideMenu textContent={"Breather Membrane"} />
