@@ -109,36 +109,35 @@ export function ModelDetail(props) {
   });
 
   const [animationState, setAnimationState] = useState(true);
-  const [animationTry, setAnimationTry] = useState(
-    props.action ? props.action : ["001"],
-  );
 
   useEffect(() => {
-    // const action = animations.actions[animationName];
-    // const actionsLength = props.action.length;
-    // console.log(actionsLength);
-    // for (let i = 0; i < actionsLength; i++) {
-    //   const action = animations.actions[props.action[i]];
-    //   console.log(listAnimations);
-    //   action.repetitions = 1;
-    //   action.clampWhenFinished = true;
-    //   action //
-    //     //.reset() //
-    //     //.fadeIn(0.5) //
-    //     .play();
-    // }
-    // for (let i = 0; i < actionsLength; i++) {
-    //   const action = animations.actions[props.action[i]];
-    //   //Cleanup
-    //   return () => {
-    //     action.fadeOut(0.08);
-    //     console.log("dispose animation");
-    //   };
-    // }
+    const actionsLength = props.action.length;
+    console.log(actionsLength);
+    for (let i = 0; i < actionsLength; i++) {
+      const action = animations.actions[props.action[i]];
+      console.log(listAnimations);
+      action.repetitions = 1;
+      action.clampWhenFinished = true;
+      action //
+        //.reset() //
+        //.fadeIn(0.5) //
+        .play();
+    }
+    for (let i = 0; i < actionsLength; i++) {
+      const action = animations.actions[props.action[i]];
+      //Cleanup
+      return () => {
+        action.fadeOut(0.08);
+        console.log("dispose animation");
+      };
+    }
+    //////////////////////////
     //////////////////////////
     // const action = animations.actions[animationName];
-    animations.actions["000"].play();
-    console.log(animations.actions["000"]);
+    // animations.actions["000"].repetitions = 2;
+    // animations.actions["000"].play();
+    // animations.mixer.addEventListener("finished", () => {
+    //   animations.actions["001"].play();
   }, [props.action, animationState]);
 
   return (
