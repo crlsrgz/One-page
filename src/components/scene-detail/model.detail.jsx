@@ -102,50 +102,28 @@ export function ModelDetail(props) {
 
   const [animationState, setAnimationState] = useState(true);
 
-  function delay(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
-  async function playAction(animations, actionsLength) {
+  useEffect(() => {
+    const actionsLength = props.action.length;
+    console.log(actionsLength);
     for (let i = 0; i < actionsLength; i++) {
       const action = animations.actions[props.action[i]];
-      console.log(action.time);
-      await delay(action.time * 1400);
+      console.log(listAnimations);
       action.repetitions = 1;
       action.clampWhenFinished = true;
       action //
-        .reset() //
-        .fadeIn(0.5) //
+        //.reset() //
+        //.fadeIn(0.5) //
         .play();
     }
-  }
-
-  function disposeAction(actionsLength) {
     for (let i = 0; i < actionsLength; i++) {
-      animations.actions[props.action[i]].fadeOut(0.08);
+      const action = animations.actions[props.action[i]];
+      //Cleanup
+      return () => {
+        action.fadeOut(0.08);
+        console.log("dispose animation");
+      };
     }
-  }
-
-  useEffect(() => {
-    // const action = animations.actions[animationName];
-    const actionsLength = props.action.length;
-    // const action = animations.actions[props.action[0]];
-    // action.repetitions = 1;
-    // action.clampWhenFinished = true;
-    // action //
-    //   .reset() //
-    //   .fadeIn(0.5) //
-    //   .play();
-    playAction(animations, actionsLength);
-    return () => {
-      disposeAction(actionsLength);
-    };
-    //Cleanup
-    // return () => {
-    //   action.fadeOut(0.08);
-    //   actionTwo.fadeOut(0.08);
-    //   console.log("dispose animation");
-    // };
+    //////////////////////////
     //////////////////////////
     // const action = animations.actions[animationName];
     // animations.actions["000"].repetitions = 2;
