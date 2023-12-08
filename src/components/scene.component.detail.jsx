@@ -27,7 +27,7 @@ export default function SceneDetail() {
   // console.log(model.scene.animations);
 
   const [sideMenu, setSideMenu] = useState(false);
-  const [animationToPlay, setAnimationToPlay] = useState(["020"]);
+  const [animationToPlay, setAnimationToPlay] = useState(["020", "001"]);
 
   function switchAnimation(animationName) {
     setAnimationToPlay(animationName);
@@ -111,7 +111,7 @@ export default function SceneDetail() {
             <ButtonSideMenu
               textContent={"Tile Batten"}
               handleClick={() => {
-                setAnimationToPlay(["000"]);
+                setAnimationToPlay(["001", "002"]);
                 // console.log(animationToPlay);
                 infotagsShowHide("002");
               }}

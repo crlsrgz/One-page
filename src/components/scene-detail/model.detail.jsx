@@ -76,14 +76,6 @@ export function ModelDetail(props) {
   const model = useGLTF("/wall.glb");
   const animations = useAnimations(model.animations, model.scene);
 
-  const listAnimations = Object.keys(animations.actions);
-  // console.log(model.scene);
-  // console.log(animations.names);
-  // console.log(animations.actions);
-  // console.log(listAnimations);
-
-  // console.log(listAnimations[0]);
-
   /* ::::::::: Leva ::::::::: */
   // const { animationName } = useControls({
   //   animationName: {
@@ -109,36 +101,57 @@ export function ModelDetail(props) {
   });
 
   const [animationState, setAnimationState] = useState(true);
-  const [animationTry, setAnimationTry] = useState(
-    props.action ? props.action : ["001"],
-  );
+
+  function delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async function playAction(animations, actionsLength) {
+    for (let i = 0; i < actionsLength; i++) {
+      const action = animations.actions[props.action[i]];
+      console.log(action.time);
+      await delay(action.time * 1400);
+      action.repetitions = 1;
+      action.clampWhenFinished = true;
+      action //
+        .reset() //
+        .fadeIn(0.5) //
+        .play();
+    }
+  }
+
+  function disposeAction(actionsLength) {
+    for (let i = 0; i < actionsLength; i++) {
+      animations.actions[props.action[i]].fadeOut(0.08);
+    }
+  }
 
   useEffect(() => {
     // const action = animations.actions[animationName];
-    // const actionsLength = props.action.length;
-    // console.log(actionsLength);
-    // for (let i = 0; i < actionsLength; i++) {
-    //   const action = animations.actions[props.action[i]];
-    //   console.log(listAnimations);
-    //   action.repetitions = 1;
-    //   action.clampWhenFinished = true;
-    //   action //
-    //     //.reset() //
-    //     //.fadeIn(0.5) //
-    //     .play();
-    // }
-    // for (let i = 0; i < actionsLength; i++) {
-    //   const action = animations.actions[props.action[i]];
-    //   //Cleanup
-    //   return () => {
-    //     action.fadeOut(0.08);
-    //     console.log("dispose animation");
-    //   };
-    // }
+    const actionsLength = props.action.length;
+    // const action = animations.actions[props.action[0]];
+    // action.repetitions = 1;
+    // action.clampWhenFinished = true;
+    // action //
+    //   .reset() //
+    //   .fadeIn(0.5) //
+    //   .play();
+    playAction(animations, actionsLength);
+    return () => {
+      disposeAction(actionsLength);
+    };
+    //Cleanup
+    // return () => {
+    //   action.fadeOut(0.08);
+    //   actionTwo.fadeOut(0.08);
+    //   console.log("dispose animation");
+    // };
     //////////////////////////
     // const action = animations.actions[animationName];
-    animations.actions["000"].play();
-    console.log(animations.actions["000"]);
+    // animations.actions["000"].repetitions = 2;
+    // animations.actions["000"].play();
+    // animations.mixer.addEventListener("finished", () => {
+    //   animations.actions["001"].play();
   }, [props.action, animationState]);
 
   return (
