@@ -1,11 +1,8 @@
 import {
-  ContactShadows,
-  Environment,
   GizmoViewport,
   Html,
   OrbitControls,
-  Stage,
-  useHelper,
+  useSelect,
 } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Suspense, useRef, useState } from "react";
@@ -14,9 +11,16 @@ import { Icon } from "@iconify/react";
 import { Euler, MathUtils, Quaternion, Vector3 } from "three";
 import ButtonSideMenu from "./scene-detail/component.buttonSide";
 import LightSetup from "./scene-detail/component.lights";
+import {
+  EffectComposer,
+  Outline,
+  Selection,
+  Select,
+} from "@react-three/postprocessing";
 
 function Cube(props) {
   const refCube = useRef();
+  const selected = useSelect();
 
   const targetPositionOne = new Vector3(0, 1.5, 0);
   const targetPositionTwo = new Vector3(0, 0, 0);
@@ -44,7 +48,14 @@ function Cube(props) {
     }
   });
   return (
-    <mesh ref={refCube} rotation-y={Math.PI * 1} castShadow receiveShadow>
+    <mesh
+      ref={refCube}
+      rotation-y={Math.PI * 1}
+      castShadow
+      receiveShadow
+      onPointerOver={props.onPointerOver}
+      onPointerOut={props.onPointerOut}
+    >
       <boxGeometry args={[0.5, 0.5, 0.5]} />
       <meshStandardMaterial color={"slategray"} />
     </mesh>
@@ -53,6 +64,7 @@ function Cube(props) {
 
 export default function SceneCube() {
   const [move, setMove] = useState(false);
+  const [hovered, hover] = useState(null);
 
   /* ═══ Sidebar navigation States ═══ */
   const [sideMenu, setSideMenu] = useState(false);
@@ -146,19 +158,24 @@ export default function SceneCube() {
             minDistance={2}
           />
 
-          {/* <Stage
-            contactShadow={{
-              opacity: 0.5,
-              blur: 5,
-            }}
-            environment="city"
-            intensity={0.4}
-            adjustCamera={false}
-            center={false}
-            shadows={false}
-          > */}
           <>
-            <Cube isActive={move} />
+            <Selection>
+              <EffectComposer multisampling={8} autoClear={false}>
+                <Outline
+                  // blur
+                  visibleEdgeColor="dodgerblue"
+                  edgeStrength={5}
+                  width={800}
+                />
+              </EffectComposer>
+              <Select enabled={hovered}>
+                <Cube
+                  isActive={move}
+                  onPointerOver={() => hover(true)}
+                  onPointerOut={() => hover(false)}
+                />
+              </Select>
+            </Selection>
 
             <Html center position={[-1, 0.5, 0]}>
               {" "}
@@ -180,7 +197,6 @@ export default function SceneCube() {
               <meshStandardMaterial color={"slategrey"} />
             </mesh>
           </>
-          {/* </Stage> */}
         </Canvas>
         <div className="absolute right-0 top-0 -z-30 flex h-full w-full select-none items-center justify-center overflow-hidden bg-clip-text pb-10 text-[24rem] text-zinc-800">
           <h2 className=" bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-900 bg-clip-text text-transparent">

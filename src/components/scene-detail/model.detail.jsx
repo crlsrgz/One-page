@@ -11,6 +11,7 @@ import {
   Edges,
   PivotControls,
   RoundedBox,
+  CycleRaycast,
 } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
 import { useControls } from "leva";

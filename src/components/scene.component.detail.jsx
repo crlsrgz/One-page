@@ -1,9 +1,11 @@
 import {
   Box,
+  CycleRaycast,
   Environment,
   GizmoViewport,
   Html,
   OrbitControls,
+  Select,
   Stage,
   useGLTF,
 } from "@react-three/drei";
@@ -27,7 +29,7 @@ export default function SceneDetail() {
   // console.log(model.scene.animations);
 
   const [sideMenu, setSideMenu] = useState(false);
-  const [animationToPlay, setAnimationToPlay] = useState("020");
+  const [animationToPlay, setAnimationToPlay] = useState("all");
 
   function switchAnimation(animationName) {
     setAnimationToPlay(animationName);
@@ -58,6 +60,8 @@ export default function SceneDetail() {
     }
     setDisplayTags(storeTags);
   }
+
+  const [{ objects, cycle }, set] = useState({ objects: [], cycle: 0 });
 
   return (
     <div className="relative h-full w-full">
