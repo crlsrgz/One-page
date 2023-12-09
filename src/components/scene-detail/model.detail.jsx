@@ -75,7 +75,7 @@ function ModelParts(props) {
 export function ModelDetail(props) {
   const model = useGLTF("/wall.glb");
   const animations = useAnimations(model.animations, model.scene);
-
+  console.log(animations.actions);
   /* ::::::::: Leva ::::::::: */
   // const { animationName } = useControls({
   //   animationName: {
@@ -103,26 +103,19 @@ export function ModelDetail(props) {
   const [animationState, setAnimationState] = useState(true);
 
   useEffect(() => {
-    const actionsLength = props.action.length;
-    console.log(actionsLength);
-    for (let i = 0; i < actionsLength; i++) {
-      const action = animations.actions[props.action[i]];
-      console.log(listAnimations);
-      action.repetitions = 1;
-      action.clampWhenFinished = true;
-      action //
-        //.reset() //
-        //.fadeIn(0.5) //
-        .play();
-    }
-    for (let i = 0; i < actionsLength; i++) {
-      const action = animations.actions[props.action[i]];
-      //Cleanup
-      return () => {
-        action.fadeOut(0.08);
-        console.log("dispose animation");
-      };
-    }
+    const action = animations.actions[props.action];
+    action.repetitions = 1;
+    action.clampWhenFinished = true;
+    action //
+      .reset() //
+      .fadeIn(0.5) //
+      .play();
+
+    //Cleanup
+    return () => {
+      action.fadeOut(0.08);
+      console.log("dispose animation");
+    };
     //////////////////////////
     //////////////////////////
     // const action = animations.actions[animationName];

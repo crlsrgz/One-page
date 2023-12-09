@@ -27,7 +27,7 @@ export default function SceneDetail() {
   // console.log(model.scene.animations);
 
   const [sideMenu, setSideMenu] = useState(false);
-  const [animationToPlay, setAnimationToPlay] = useState(["020", "001"]);
+  const [animationToPlay, setAnimationToPlay] = useState("020");
 
   function switchAnimation(animationName) {
     setAnimationToPlay(animationName);
@@ -103,25 +103,25 @@ export default function SceneDetail() {
             <ButtonSideMenu
               textContent={"Roof tiles"}
               handleClick={() => {
-                setAnimationToPlay(["000", "001", "002"]);
+                setAnimationToPlay("roofTiles");
                 // console.log(animationToPlay);
-                infotagsShowHide("000");
+                infotagsShowHide("roofTiles");
               }}
             />
             <ButtonSideMenu
               textContent={"Tile Batten"}
               handleClick={() => {
-                setAnimationToPlay(["001", "002"]);
+                setAnimationToPlay("tileBatten");
                 // console.log(animationToPlay);
-                infotagsShowHide("002");
+                infotagsShowHide("000");
               }}
             />
             <ButtonSideMenu
               textContent={"Counter Batten"}
               handleClick={() => {
-                setAnimationToPlay(["003"]);
+                setAnimationToPlay("counterBatten");
                 // console.log(animationToPlay);
-                infotagsShowHide("003");
+                infotagsShowHide("002");
               }}
             />
             <ButtonSideMenu textContent={"Breather Membrane"} />
