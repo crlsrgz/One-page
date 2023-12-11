@@ -1,52 +1,134 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  useGLTF,
-  useAnimations,
-  Html,
-  Box,
-  ScreenSpace,
-  Billboard,
-  Text,
-  Line,
-  Edges,
-  PivotControls,
-  RoundedBox,
-  CycleRaycast,
-} from "@react-three/drei";
+import { useGLTF, useAnimations, Html } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
 import { useControls } from "leva";
 import { useFrame } from "@react-three/fiber";
 
 function ModelParts(props) {
+  const explodedModelPositions = {
+    ziegel: {
+      name: "ziegel",
+      position: {
+        x: 0,
+        y: Math.random() * 0.05 + 0.2,
+        z: 0,
+      },
+      alpha: 0.1,
+    },
+    konterlattung: {
+      name: "konterlattung",
+      position: {
+        x: 0,
+        y: 1,
+        z: 0,
+      },
+      alpha: 0.01,
+    },
+    dachlattung: {
+      name: "dachlattung",
+      position: {
+        x: 0,
+        y: 1,
+        z: 0,
+      },
+      alpha: 0.01,
+    },
+    sparren: {
+      name: "sparren",
+      position: {
+        x: -1,
+        y: -1,
+        z: 0,
+      },
+      alpha: 0.01,
+    },
+    verkleidung: {
+      name: "verkleidung",
+      position: {
+        x: -1,
+        y: -1,
+        z: 0,
+      },
+      alpha: 0.01,
+    },
+  };
   const [hover, setHover] = useState(false);
   const [nameVisible, setNameVisible] = useState(false);
   const [alternatePosition, setAlternatePosition] = useState(props.position);
 
   const refModelPart = useRef();
-  const externPositon = {
-    x: props.position.x,
-    y: props.position.y + Math.random() * 0.75 + 1,
-    z: props.position.z,
-  };
-  useFrame(({ clock }) => {
+
+  useFrame(() => {
     // console.log(refCube.current.rotation);
-    setTimeout(() => {
-      if (props.name.toLowerCase().includes("ziegel")) {
-        refModelPart.current.position.lerp(externPositon, 0.05);
-      }
-      if (props.name.toLowerCase().includes("sparren")) {
-        refModelPart.current.position.lerp(
-          {
-            x: props.position.x - 1,
-            y: props.position.y + -1,
-            z: props.position.z,
-          },
-          0.008,
-        );
-      } else {
-        refModelPart.current.position.lerp(props.position, 0.2);
-      }
-    }, 1000);
+    if (
+      props.name.toLowerCase().includes(explodedModelPositions.sparren.name) &&
+      props.explodedModel
+    ) {
+      refModelPart.current.position.lerp(
+        {
+          x: explodedModelPositions.sparren.position.x + props.position.x,
+          y: explodedModelPositions.sparren.position.y + props.position.y,
+          z: explodedModelPositions.sparren.position.z + props.position.z,
+        },
+        explodedModelPositions.sparren.alpha,
+      );
+    } else if (
+      props.name.toLowerCase().includes(explodedModelPositions.ziegel.name) &&
+      props.explodedModel
+    ) {
+      refModelPart.current.position.lerp(
+        {
+          x: explodedModelPositions.ziegel.position.x + props.position.x,
+          y: explodedModelPositions.ziegel.position.y + props.position.y,
+          z: explodedModelPositions.ziegel.position.z + props.position.z,
+        },
+        explodedModelPositions.ziegel.alpha,
+      );
+    } else if (
+      props.name
+        .toLowerCase()
+        .includes(explodedModelPositions.verkleidung.name) &&
+      props.explodedModel
+    ) {
+      refModelPart.current.position.lerp(
+        {
+          x: explodedModelPositions.verkleidung.position.x + props.position.x,
+          y: explodedModelPositions.verkleidung.position.y + props.position.y,
+          z: explodedModelPositions.verkleidung.position.z + props.position.z,
+        },
+        explodedModelPositions.verkleidung.alpha,
+      );
+    } else if (
+      props.name
+        .toLowerCase()
+        .includes(explodedModelPositions.konterlattung.name) &&
+      props.explodedModel
+    ) {
+      refModelPart.current.position.lerp(
+        {
+          x: explodedModelPositions.konterlattung.position.x + props.position.x,
+          y: explodedModelPositions.konterlattung.position.y + props.position.y,
+          z: explodedModelPositions.konterlattung.position.z + props.position.z,
+        },
+        explodedModelPositions.konterlattung.alpha,
+      );
+    } else if (
+      props.name
+        .toLowerCase()
+        .includes(explodedModelPositions.dachlattung.name) &&
+      props.explodedModel
+    ) {
+      refModelPart.current.position.lerp(
+        {
+          x: explodedModelPositions.dachlattung.position.x + props.position.x,
+          y: explodedModelPositions.dachlattung.position.y + props.position.y,
+          z: explodedModelPositions.dachlattung.position.z + props.position.z,
+        },
+        explodedModelPositions.dachlattung.alpha,
+      );
+    } else {
+      refModelPart.current.position.lerp(props.position, 0.2);
+    }
   });
 
   function displayName(e) {
@@ -140,31 +222,6 @@ export function ModelDetail(props) {
     }
   });
 
-  // const [animationState, setAnimationState] = useState(true);
-
-  // useEffect(() => {
-  //   const action = animations.actions[props.action];
-  //   action.repetitions = 1;
-  //   action.clampWhenFinished = true;
-  //   action //
-  //     .reset() //
-  //     .fadeIn(0.5) //
-  //     .play();
-
-  //   //Cleanup
-  //   return () => {
-  //     action.fadeOut(0.08);
-  //     console.log("dispose animation");
-  //   };
-  //   //////////////////////////
-  //   //////////////////////////
-  //   // const action = animations.actions[animationName];
-  //   // animations.actions["000"].repetitions = 2;
-  //   // animations.actions["000"].play();
-  //   // animations.mixer.addEventListener("finished", () => {
-  //   //   animations.actions["001"].play();
-  // }, [props.action, animationState]);
-
   return (
     <>
       {/* <mesh>
@@ -180,6 +237,7 @@ export function ModelDetail(props) {
             material={element.material}
             materialAlternative={materialHover}
             position={element.position}
+            explodedModel={props.explodedModel}
           />
         );
       })}
