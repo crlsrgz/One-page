@@ -1,26 +1,21 @@
 import { Html, OrbitControls } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useEffect } from "react";
+import { MathUtils } from "three";
 
 const CameraFunctionality = (props) => {
   const { camera } = useThree();
-  camera.position.set(-1, 6, 2);
-
-  function setCameraPosition() {
-    camera.position.set(-1, 6, 2);
-    camera.lookAt(0, 2, 0);
-  }
 
   useEffect(() => {
-    setCameraPosition();
-    console.log(props.cameraChanged);
+    camera.position.set(-3, 2, 5);
+    // setCameraPosition();
   }, [props.cameraChanged]);
 
   return (
     <>
       <OrbitControls
         makeDefault
-        target={[0, 2, 0]}
+        target={[0, 2.5, 0]}
         maxPolarAngle={Math.PI * 0.65}
         minPolarAngle={Math.PI * -0.85}
         maxAzimuthAngle={Math.PI * 0.5}
