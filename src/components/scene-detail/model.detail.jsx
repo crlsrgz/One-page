@@ -10,7 +10,7 @@ function ModelParts(props) {
       name: "ziegel",
       position: {
         x: 0,
-        y: Math.random() * 0.05 + 0.2,
+        y: Math.random() * 0.05 + 0.35,
         z: 0,
       },
       alpha: 0.1,
@@ -19,7 +19,7 @@ function ModelParts(props) {
       name: "konterlattung",
       position: {
         x: 0,
-        y: 1,
+        y: 0.25,
         z: 0,
       },
       alpha: 0.01,
@@ -28,7 +28,16 @@ function ModelParts(props) {
       name: "dachlattung",
       position: {
         x: 0,
-        y: 1,
+        y: 0.2,
+        z: 0,
+      },
+      alpha: 0.01,
+    },
+    dachbahn: {
+      name: "bahn",
+      position: {
+        x: 0.5,
+        y: 0.1,
         z: 0,
       },
       alpha: 0.01,
@@ -125,6 +134,18 @@ function ModelParts(props) {
           z: explodedModelPositions.dachlattung.position.z + props.position.z,
         },
         explodedModelPositions.dachlattung.alpha,
+      );
+    } else if (
+      props.name.toLowerCase().includes(explodedModelPositions.dachbahn.name) &&
+      props.explodedModel
+    ) {
+      refModelPart.current.position.lerp(
+        {
+          x: explodedModelPositions.dachbahn.position.x + props.position.x,
+          y: explodedModelPositions.dachbahn.position.y + props.position.y,
+          z: explodedModelPositions.dachbahn.position.z + props.position.z,
+        },
+        explodedModelPositions.dachbahn.alpha,
       );
     } else {
       refModelPart.current.position.lerp(props.position, 0.2);
