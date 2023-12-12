@@ -13,13 +13,14 @@ import { Suspense, useState } from "react";
 import { ModelDetail } from "./scene-detail/model.detail";
 import LoadPercent from "./component.loadPercent";
 import { ACESFilmicToneMapping } from "three";
-import LightSetup from "./scene-detail/component.lights";
-import CameraFunctionality from "./scene-detail/component.cameraDetail";
+
+import Detail from "./scene-detail/component.detail";
+import { Perf } from "r3f-perf";
+import { doc } from "prettier";
 
 export default function SceneDetail() {
   const [explodeModel, setExplodeModel] = useState(false);
-  const [sideMenu, setSideMenu] = useState(false);
-  const [cameraPosition, setCameraPostion] = useState(true);
+  const [resetCamera, setResetCamera] = useState(false);
 
   return (
     <div className="relative h-full w-full">
@@ -45,8 +46,8 @@ export default function SceneDetail() {
             <button
               className="h-16 w-16  bg-slate-300"
               onClick={() => {
-                // location.reload();
-                setCameraPostion(!cameraPosition);
+                //location.reload();
+                setResetCamera(!resetCamera);
               }}
             >
               x
@@ -59,7 +60,7 @@ export default function SceneDetail() {
 
         <Canvas
           camera={{
-            position: [-1, 6, 2],
+            position: [-3, 3, 4],
             near: 0.01,
             far: 100,
             fov: 35,
@@ -73,23 +74,8 @@ export default function SceneDetail() {
           }}
           shadows={true}
         >
-          <CameraFunctionality
-            resetCamera={false}
-            cameraChanged={cameraPosition}
-          />
-          <GizmoViewport
-            axisColors={["red", "green", "blue"]}
-            labelColor="black"
-            position={[-2, 0, 0]}
-            scale={0.4}
-            hideAxisHeads
-          />
-
-          <LightSetup posX={-3} posY={5} posZ={4} />
-          <Environment intensity={1} files={"env.hdr"} />
-
-          {/* /* ═══ Models ═══ */}
-          <ModelDetail explodedModel={explodeModel} />
+          <Perf position="bottom-right" />
+          <Detail exploded={explodeModel} resetMe={resetCamera} />
         </Canvas>
         <div className="absolute right-0 top-0 -z-30 flex h-full w-full select-none items-center justify-center overflow-hidden bg-clip-text pb-10 text-[24rem] text-zinc-800">
           <h2 className=" bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-900 bg-clip-text text-transparent">
