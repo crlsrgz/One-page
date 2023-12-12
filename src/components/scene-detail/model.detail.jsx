@@ -3,153 +3,127 @@ import { useGLTF, useAnimations, Html } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
 import { useControls } from "leva";
 import { useFrame } from "@react-three/fiber";
+import explodedModelPositions from "./lerpPositions";
 
 function ModelParts(props) {
-  const explodedModelPositions = {
-    ziegel: {
-      name: "ziegel",
-      position: {
-        x: 0,
-        y: Math.random() * 0.05 + 0.35,
-        z: 0,
-      },
-      alpha: 0.1,
-    },
-    konterlattung: {
-      name: "konterlattung",
-      position: {
-        x: 0,
-        y: 0.25,
-        z: 0,
-      },
-      alpha: 0.01,
-    },
-    dachlattung: {
-      name: "dachlattung",
-      position: {
-        x: 0,
-        y: 0.2,
-        z: 0,
-      },
-      alpha: 0.01,
-    },
-    dachbahn: {
-      name: "bahn",
-      position: {
-        x: 0.5,
-        y: 0.1,
-        z: 0,
-      },
-      alpha: 0.01,
-    },
-    sparren: {
-      name: "sparren",
-      position: {
-        x: -1,
-        y: -1,
-        z: 0,
-      },
-      alpha: 0.01,
-    },
-    verkleidung: {
-      name: "verkleidung",
-      position: {
-        x: -1,
-        y: -1,
-        z: 0,
-      },
-      alpha: 0.01,
-    },
-  };
   const [hover, setHover] = useState(false);
   const [nameVisible, setNameVisible] = useState(false);
   const [alternatePosition, setAlternatePosition] = useState(props.position);
 
   const refModelPart = useRef();
 
+  const explodedModelPositionsKeys = Object.keys(explodedModelPositions);
+  const explodedModelPositionsLength = explodedModelPositionsKeys.length;
+  console.log(explodedModelPositionsLength);
+
+  if (
+    props.name.toLowerCase().includes(explodedModelPositions.sparren.name) &&
+    props.explodedModel
+  ) {
+    refModelPart.current.position.lerp(
+      {
+        x: explodedModelPositions.sparren.position.x + props.position.x,
+        y: explodedModelPositions.sparren.position.y + props.position.y,
+        z: explodedModelPositions.sparren.position.z + props.position.z,
+      },
+      explodedModelPositions.sparren.alpha,
+    );
+  }
+  console.log(
+    explodedModelPositions.sparren.name,
+    explodedModelPositions.sparren,
+  );
+  console.log(
+    "-->",
+    explodedModelPositions[explodedModelPositionsKeys[0]].name,
+    explodedModelPositions[explodedModelPositionsKeys[0]],
+  );
+
   useFrame(() => {
     // console.log(refCube.current.rotation);
-    if (
-      props.name.toLowerCase().includes(explodedModelPositions.sparren.name) &&
-      props.explodedModel
-    ) {
-      refModelPart.current.position.lerp(
-        {
-          x: explodedModelPositions.sparren.position.x + props.position.x,
-          y: explodedModelPositions.sparren.position.y + props.position.y,
-          z: explodedModelPositions.sparren.position.z + props.position.z,
-        },
-        explodedModelPositions.sparren.alpha,
-      );
-    } else if (
-      props.name.toLowerCase().includes(explodedModelPositions.ziegel.name) &&
-      props.explodedModel
-    ) {
-      refModelPart.current.position.lerp(
-        {
-          x: explodedModelPositions.ziegel.position.x + props.position.x,
-          y: explodedModelPositions.ziegel.position.y + props.position.y,
-          z: explodedModelPositions.ziegel.position.z + props.position.z,
-        },
-        explodedModelPositions.ziegel.alpha,
-      );
-    } else if (
-      props.name
-        .toLowerCase()
-        .includes(explodedModelPositions.verkleidung.name) &&
-      props.explodedModel
-    ) {
-      refModelPart.current.position.lerp(
-        {
-          x: explodedModelPositions.verkleidung.position.x + props.position.x,
-          y: explodedModelPositions.verkleidung.position.y + props.position.y,
-          z: explodedModelPositions.verkleidung.position.z + props.position.z,
-        },
-        explodedModelPositions.verkleidung.alpha,
-      );
-    } else if (
-      props.name
-        .toLowerCase()
-        .includes(explodedModelPositions.konterlattung.name) &&
-      props.explodedModel
-    ) {
-      refModelPart.current.position.lerp(
-        {
-          x: explodedModelPositions.konterlattung.position.x + props.position.x,
-          y: explodedModelPositions.konterlattung.position.y + props.position.y,
-          z: explodedModelPositions.konterlattung.position.z + props.position.z,
-        },
-        explodedModelPositions.konterlattung.alpha,
-      );
-    } else if (
-      props.name
-        .toLowerCase()
-        .includes(explodedModelPositions.dachlattung.name) &&
-      props.explodedModel
-    ) {
-      refModelPart.current.position.lerp(
-        {
-          x: explodedModelPositions.dachlattung.position.x + props.position.x,
-          y: explodedModelPositions.dachlattung.position.y + props.position.y,
-          z: explodedModelPositions.dachlattung.position.z + props.position.z,
-        },
-        explodedModelPositions.dachlattung.alpha,
-      );
-    } else if (
-      props.name.toLowerCase().includes(explodedModelPositions.dachbahn.name) &&
-      props.explodedModel
-    ) {
-      refModelPart.current.position.lerp(
-        {
-          x: explodedModelPositions.dachbahn.position.x + props.position.x,
-          y: explodedModelPositions.dachbahn.position.y + props.position.y,
-          z: explodedModelPositions.dachbahn.position.z + props.position.z,
-        },
-        explodedModelPositions.dachbahn.alpha,
-      );
-    } else {
-      refModelPart.current.position.lerp(props.position, 0.2);
-    }
+    // if (
+    //   props.name.toLowerCase().includes(explodedModelPositions.sparren.name) &&
+    //   props.explodedModel
+    // ) {
+    //   refModelPart.current.position.lerp(
+    //     {
+    //       x: explodedModelPositions.sparren.position.x + props.position.x,
+    //       y: explodedModelPositions.sparren.position.y + props.position.y,
+    //       z: explodedModelPositions.sparren.position.z + props.position.z,
+    //     },
+    //     explodedModelPositions.sparren.alpha,
+    //   );
+    // } else if (
+    //   props.name.toLowerCase().includes(explodedModelPositions.ziegel.name) &&
+    //   props.explodedModel
+    // ) {
+    //   refModelPart.current.position.lerp(
+    //     {
+    //       x: explodedModelPositions.ziegel.position.x + props.position.x,
+    //       y: explodedModelPositions.ziegel.position.y + props.position.y,
+    //       z: explodedModelPositions.ziegel.position.z + props.position.z,
+    //     },
+    //     explodedModelPositions.ziegel.alpha,
+    //   );
+    // } else if (
+    //   props.name
+    //     .toLowerCase()
+    //     .includes(explodedModelPositions.verkleidung.name) &&
+    //   props.explodedModel
+    // ) {
+    //   refModelPart.current.position.lerp(
+    //     {
+    //       x: explodedModelPositions.verkleidung.position.x + props.position.x,
+    //       y: explodedModelPositions.verkleidung.position.y + props.position.y,
+    //       z: explodedModelPositions.verkleidung.position.z + props.position.z,
+    //     },
+    //     explodedModelPositions.verkleidung.alpha,
+    //   );
+    // } else if (
+    //   props.name
+    //     .toLowerCase()
+    //     .includes(explodedModelPositions.konterlattung.name) &&
+    //   props.explodedModel
+    // ) {
+    //   refModelPart.current.position.lerp(
+    //     {
+    //       x: explodedModelPositions.konterlattung.position.x + props.position.x,
+    //       y: explodedModelPositions.konterlattung.position.y + props.position.y,
+    //       z: explodedModelPositions.konterlattung.position.z + props.position.z,
+    //     },
+    //     explodedModelPositions.konterlattung.alpha,
+    //   );
+    // } else if (
+    //   props.name
+    //     .toLowerCase()
+    //     .includes(explodedModelPositions.dachlattung.name) &&
+    //   props.explodedModel
+    // ) {
+    //   refModelPart.current.position.lerp(
+    //     {
+    //       x: explodedModelPositions.dachlattung.position.x + props.position.x,
+    //       y: explodedModelPositions.dachlattung.position.y + props.position.y,
+    //       z: explodedModelPositions.dachlattung.position.z + props.position.z,
+    //     },
+    //     explodedModelPositions.dachlattung.alpha,
+    //   );
+    // } else if (
+    //   props.name
+    //     .toLowerCase()
+    //     .includes(explodedModelPositions.unterdeckbahn.name) &&
+    //   props.explodedModel
+    // ) {
+    //   refModelPart.current.position.lerp(
+    //     {
+    //       x: explodedModelPositions.unterdeckbahn.position.x + props.position.x,
+    //       y: explodedModelPositions.unterdeckbahn.position.y + props.position.y,
+    //       z: explodedModelPositions.unterdeckbahn.position.z + props.position.z,
+    //     },
+    //     explodedModelPositions.unterdeckbahn.alpha,
+    //   );
+    // } else {
+    //   refModelPart.current.position.lerp(props.position, 0.2);
+    // }
   });
 
   function displayName(e) {
