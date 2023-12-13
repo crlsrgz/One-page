@@ -5,7 +5,7 @@ import {
   useSelect,
 } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Suspense, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import LoadPercent from "./component.loadPercent";
 import { Icon } from "@iconify/react";
 import { Euler, MathUtils, Quaternion, Vector3 } from "three";
@@ -17,6 +17,7 @@ import {
   Selection,
   Select,
 } from "@react-three/postprocessing";
+import gsap from "gsap";
 
 function Cube(props) {
   const refCube = useRef();
@@ -29,24 +30,24 @@ function Cube(props) {
   const quaternionRotation = new Quaternion();
   quaternionRotation.setFromEuler(eulerRotation);
 
-  useFrame(({ clock }) => {
-    // console.log(refCube.current.rotation);
+  useEffect(() => {
     if (props.isActive) {
-      refCube.current.position.lerp(targetPositionOne, 0.05);
-      refCube.current.rotation.y = MathUtils.lerp(
-        refCube.current.rotation.y,
-        Math.PI * 0.25,
-        0.025,
-      );
+      gsap.to(refCube.current.position, {
+        x: targetPositionOne.x,
+        y: targetPositionOne.y,
+        z: targetPositionOne.z,
+        duration: 0.5,
+      });
     } else {
-      refCube.current.position.lerp(targetPositionTwo, 0.2);
-      refCube.current.rotation.y = MathUtils.lerp(
-        refCube.current.rotation.y,
-        Math.PI * -0.35,
-        0.025,
-      );
+      gsap.to(refCube.current.position, {
+        x: targetPositionTwo.x,
+        y: targetPositionTwo.y,
+        z: targetPositionTwo.z,
+        duration: 0.5,
+      });
     }
-  });
+  }, [props.isActive]);
+
   return (
     <mesh
       ref={refCube}
