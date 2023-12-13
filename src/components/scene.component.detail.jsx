@@ -1,22 +1,10 @@
-import {
-  Box,
-  CycleRaycast,
-  Environment,
-  GizmoViewport,
-  Html,
-  OrbitControls,
-  PerspectiveCamera,
-  useGLTF,
-} from "@react-three/drei";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { Suspense, useState } from "react";
-import { ModelDetail } from "./scene-detail/model.detail";
 import LoadPercent from "./component.loadPercent";
 import { ACESFilmicToneMapping } from "three";
 
 import Detail from "./scene-detail/component.detail";
 import { Perf } from "r3f-perf";
-import { doc } from "prettier";
 
 export default function SceneDetail() {
   const [explodeModel, setExplodeModel] = useState(false);
@@ -70,7 +58,6 @@ export default function SceneDetail() {
           }}
           gl={{
             toneMapping: ACESFilmicToneMapping,
-            // outputColorSpace: SRGBColorSpace,
           }}
           shadows={true}
         >

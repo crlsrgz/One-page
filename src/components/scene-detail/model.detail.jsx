@@ -1,130 +1,48 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useGLTF, useAnimations, Html } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
-import { useControls } from "leva";
-import { useFrame } from "@react-three/fiber";
 import explodedModelPositions from "./lerpPositions";
+import gsap from "gsap";
 
 function ModelParts(props) {
   const [hover, setHover] = useState(false);
   const [nameVisible, setNameVisible] = useState(false);
-  const [alternatePosition, setAlternatePosition] = useState(props.position);
 
   const refModelPart = useRef();
 
   const explodedModelPositionsKeys = Object.keys(explodedModelPositions);
   const explodedModelPositionsLength = explodedModelPositionsKeys.length;
-  console.log(explodedModelPositionsLength);
 
-  if (
-    props.name.toLowerCase().includes(explodedModelPositions.sparren.name) &&
-    props.explodedModel
-  ) {
-    refModelPart.current.position.lerp(
-      {
-        x: explodedModelPositions.sparren.position.x + props.position.x,
-        y: explodedModelPositions.sparren.position.y + props.position.y,
-        z: explodedModelPositions.sparren.position.z + props.position.z,
-      },
-      explodedModelPositions.sparren.alpha,
-    );
-  }
-  console.log(
-    explodedModelPositions.sparren.name,
-    explodedModelPositions.sparren,
-  );
-  console.log(
-    "-->",
-    explodedModelPositions[explodedModelPositionsKeys[0]].name,
-    explodedModelPositions[explodedModelPositionsKeys[0]],
-  );
-
-  useFrame(() => {
-    // console.log(refCube.current.rotation);
-    // if (
-    //   props.name.toLowerCase().includes(explodedModelPositions.sparren.name) &&
-    //   props.explodedModel
-    // ) {
-    //   refModelPart.current.position.lerp(
-    //     {
-    //       x: explodedModelPositions.sparren.position.x + props.position.x,
-    //       y: explodedModelPositions.sparren.position.y + props.position.y,
-    //       z: explodedModelPositions.sparren.position.z + props.position.z,
-    //     },
-    //     explodedModelPositions.sparren.alpha,
-    //   );
-    // } else if (
-    //   props.name.toLowerCase().includes(explodedModelPositions.ziegel.name) &&
-    //   props.explodedModel
-    // ) {
-    //   refModelPart.current.position.lerp(
-    //     {
-    //       x: explodedModelPositions.ziegel.position.x + props.position.x,
-    //       y: explodedModelPositions.ziegel.position.y + props.position.y,
-    //       z: explodedModelPositions.ziegel.position.z + props.position.z,
-    //     },
-    //     explodedModelPositions.ziegel.alpha,
-    //   );
-    // } else if (
-    //   props.name
-    //     .toLowerCase()
-    //     .includes(explodedModelPositions.verkleidung.name) &&
-    //   props.explodedModel
-    // ) {
-    //   refModelPart.current.position.lerp(
-    //     {
-    //       x: explodedModelPositions.verkleidung.position.x + props.position.x,
-    //       y: explodedModelPositions.verkleidung.position.y + props.position.y,
-    //       z: explodedModelPositions.verkleidung.position.z + props.position.z,
-    //     },
-    //     explodedModelPositions.verkleidung.alpha,
-    //   );
-    // } else if (
-    //   props.name
-    //     .toLowerCase()
-    //     .includes(explodedModelPositions.konterlattung.name) &&
-    //   props.explodedModel
-    // ) {
-    //   refModelPart.current.position.lerp(
-    //     {
-    //       x: explodedModelPositions.konterlattung.position.x + props.position.x,
-    //       y: explodedModelPositions.konterlattung.position.y + props.position.y,
-    //       z: explodedModelPositions.konterlattung.position.z + props.position.z,
-    //     },
-    //     explodedModelPositions.konterlattung.alpha,
-    //   );
-    // } else if (
-    //   props.name
-    //     .toLowerCase()
-    //     .includes(explodedModelPositions.dachlattung.name) &&
-    //   props.explodedModel
-    // ) {
-    //   refModelPart.current.position.lerp(
-    //     {
-    //       x: explodedModelPositions.dachlattung.position.x + props.position.x,
-    //       y: explodedModelPositions.dachlattung.position.y + props.position.y,
-    //       z: explodedModelPositions.dachlattung.position.z + props.position.z,
-    //     },
-    //     explodedModelPositions.dachlattung.alpha,
-    //   );
-    // } else if (
-    //   props.name
-    //     .toLowerCase()
-    //     .includes(explodedModelPositions.unterdeckbahn.name) &&
-    //   props.explodedModel
-    // ) {
-    //   refModelPart.current.position.lerp(
-    //     {
-    //       x: explodedModelPositions.unterdeckbahn.position.x + props.position.x,
-    //       y: explodedModelPositions.unterdeckbahn.position.y + props.position.y,
-    //       z: explodedModelPositions.unterdeckbahn.position.z + props.position.z,
-    //     },
-    //     explodedModelPositions.unterdeckbahn.alpha,
-    //   );
-    // } else {
-    //   refModelPart.current.position.lerp(props.position, 0.2);
-    // }
-  });
+  useEffect(() => {
+    for (let i = 0; i < explodedModelPositionsLength; i++) {
+      if (
+        props.name.toLowerCase().includes(explodedModelPositionsKeys[i]) &&
+        props.changePosition
+      ) {
+        gsap.to(refModelPart.current.position, {
+          x:
+            explodedModelPositions[explodedModelPositionsKeys[i]].position.x +
+            props.position.x,
+          y:
+            explodedModelPositions[explodedModelPositionsKeys[i]].position.y +
+            props.position.y,
+          z:
+            explodedModelPositions[explodedModelPositionsKeys[i]].position.z +
+            props.position.z,
+          duration: 1.5,
+          delay: 0.5,
+        });
+      } else {
+        gsap.to(refModelPart.current.position, {
+          x: props.position.x,
+          y: props.position.y,
+          z: props.position.z,
+          duration: 0.2,
+          delay: 0.2,
+        });
+      }
+    }
+  }, [props.changePosition]);
 
   function displayName(e) {
     e.stopPropagation();
@@ -165,6 +83,7 @@ function ModelParts(props) {
         geometry={props.geometry}
         material={hover ? props.materialAlternative : props.material}
         position={props.position}
+        changePosition={props.changePosition}
         onPointerOver={(e) => {
           e.stopPropagation(), setHover(true);
         }}
@@ -192,28 +111,17 @@ function ModelParts(props) {
 
 export function ModelDetail(props) {
   const model = useGLTF("/wall.glb");
-  const animations = useAnimations(model.animations, model.scene);
-  /* ::::::::: Leva ::::::::: */
-  // const { animationName } = useControls({
-  //   animationName: {
-  //     options: animations.names,
-  //   },
-  // });
-
-  /* ::::::::: Animation functions and States ::::::::: */
 
   const materialHover = new MeshStandardMaterial({
     color: "#7a0e0e",
     roughness: 0.9,
   });
-  /* ═══ Traverse model to cahnge parameters ═══ */
+  /* ═══ Traverse model to changge parameters ═══ */
 
   model.scene.traverse(function (node) {
     if (node.isMesh) {
       node.castShadow = true;
       node.receiveShadow = true;
-      // console.log(node);
-      // node.material = materialHover;
     }
   });
 
@@ -233,6 +141,7 @@ export function ModelDetail(props) {
             materialAlternative={materialHover}
             position={element.position}
             explodedModel={props.explodedModel}
+            changePosition={props.explodedModel}
           />
         );
       })}
