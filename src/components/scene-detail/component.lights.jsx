@@ -20,14 +20,14 @@ export default function LightSetup({ posX = -3, posY = 2, posZ = -2 }) {
         position={[posx, posy, posz]}
         intensity={1.0}
         castShadow
-        shadow-normalBias={0.18}
-        shadow-mapSize={[2048, 2048]}
-        shadow-camera-top={50}
-        shadow-camera-right={50}
-        shadow-camera-bottom={-50}
-        shadow-camera-left={-50}
+        shadow-normalBias={0.12}
+        shadow-mapSize={[1024, 1024]}
+        shadow-camera-top={20}
+        shadow-camera-right={20}
+        shadow-camera-bottom={-20}
+        shadow-camera-left={-20}
         shadow-camera-near={0}
-        shadow-camera-far={50}
+        shadow-camera-far={20}
       />
       <ambientLight intensity={0.5} />
     </>

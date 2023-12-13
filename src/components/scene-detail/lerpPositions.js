@@ -1,67 +1,92 @@
 const explodedModelPositions = {
   ziegel: {
-    name: "ziegel",
+    name: `Ziegel`,
+    description: "Description",
     position: {
       x: 0,
       y: Math.random() * 0.05 + 0.35,
       z: 0,
     },
     alpha: 0.1,
+    titlePosition: [1.5, 4.5, 0],
   },
   konterlattung: {
-    name: "konterlattung",
+    name: "Konterlattung",
+    description: "Holz",
     position: {
       x: 0,
       y: 0.25,
       z: 0,
     },
     alpha: 0.01,
+    titlePosition: [1.2, 4, 0],
   },
   dachlattung: {
-    name: "dachlattung",
+    name: "Dachlattung",
+    description: "-",
     position: {
       x: 0,
       y: 0.15,
       z: 0,
     },
     alpha: 0.01,
+    titlePosition: [1.2, 4, 0],
   },
   unterdeckbahn: {
-    name: "unterdeckbahn",
+    name: "Unterdeckbahn",
+    description: "-",
     position: {
       x: 0.5,
       y: 0.4,
       z: 0,
     },
     alpha: 0.01,
+    titlePosition: [1.2, 4, 0],
   },
   sparren: {
-    name: "sparren",
+    name: "Sparren",
+    description: `Description Sparren`,
     position: {
       x: 0,
       y: 0,
       z: 0,
     },
     alpha: 0.01,
+    titlePosition: [1.2, 4, 0],
   },
-  verkleidungdassade: {
-    name: "verkleidungfassade",
+  verkleidungfassade: {
+    name: "Verkleidungfassade",
+    description: "-",
     position: {
       x: -1,
       y: -1,
       z: 0,
     },
     alpha: 0.01,
+    titlePosition: [1.2, 4, 0],
   },
 
-  gipsverkleidung: {
-    name: "gipsverkleidung",
+  dämmung: {
+    name: "Dämmung",
+    description: "-",
     position: {
       x: -1,
       y: -1,
       z: 0,
     },
     alpha: 0.01,
+    titlePosition: [1.2, 4, 0],
+  },
+  gipsverkleidung: {
+    name: "Gipsverkleidung",
+    description: "-",
+    position: {
+      x: -1,
+      y: -1,
+      z: 0,
+    },
+    alpha: 0.01,
+    titlePosition: [1.2, 4, 0],
   },
 };
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useGLTF, useAnimations, Html } from "@react-three/drei";
+import { useGLTF, Html, Edges } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
 import explodedModelPositions from "./lerpPositions";
 import gsap from "gsap";
@@ -7,11 +7,15 @@ import gsap from "gsap";
 function ModelParts(props) {
   const [hover, setHover] = useState(false);
   const [nameVisible, setNameVisible] = useState(false);
+  const [alternatePosition, setAlternatePosition] = useState(props.position);
+  const [objectName, setObjectName] = useState(["-", "..."]);
 
   const refModelPart = useRef();
 
   const explodedModelPositionsKeys = Object.keys(explodedModelPositions);
+
   const explodedModelPositionsLength = explodedModelPositionsKeys.length;
+  console.log(explodedModelPositions[explodedModelPositionsKeys[0]]);
 
   useEffect(() => {
     for (let i = 0; i < explodedModelPositionsLength; i++) {
@@ -46,27 +50,34 @@ function ModelParts(props) {
 
   function displayName(e) {
     e.stopPropagation();
-    if (nameVisible) {
-      setNameVisible(false);
-    } else {
-      setNameVisible(true);
-      console.log(props.position);
-      console.log(props.name);
-      console.log(props.name.toLowerCase().includes("sparren"));
 
-      if (props.name.toLowerCase().includes("ziegel")) {
-        let { x, y, z } = props.position;
-        y += 1;
-        setAlternatePosition({ x, y, z });
-      }
-      if (props.name.toLowerCase().includes("sparren")) {
-        let { x, y, z } = props.position;
-        x += -1;
-        y += -1;
-        setAlternatePosition({ x, y, z });
+    for (let i = 0; i < explodedModelPositionsLength; i++) {
+      if (nameVisible) {
+        setNameVisible(false);
+      } else {
+        if (
+          props.name.toLowerCase().includes(explodedModelPositionsKeys[i]) &&
+          explodedModelPositions[explodedModelPositionsKeys[i]].titlePosition
+        ) {
+          setAlternatePosition([
+            explodedModelPositions[explodedModelPositionsKeys[i]]
+              .titlePosition[0],
+            explodedModelPositions[explodedModelPositionsKeys[i]]
+              .titlePosition[1],
+            explodedModelPositions[explodedModelPositionsKeys[i]]
+              .titlePosition[2],
+          ]);
+          setObjectName([
+            explodedModelPositions[explodedModelPositionsKeys[i]].name,
+            explodedModelPositions[explodedModelPositionsKeys[i]].description,
+          ]);
+        }
+
+        setNameVisible(true);
       }
     }
   }
+
   function hideName(e) {
     e.stopPropagation();
     setNameVisible(false);
@@ -94,14 +105,18 @@ function ModelParts(props) {
         onPointerMissed={hideName}
       >
         {/* <Edges color={"red"}></Edges> */}
+
         {/* {hover ? props.material : props.materialAlternative} */}
       </mesh>
 
       {nameVisible ? (
         <>
-          <Html position={[0, 3.5, 0]} center distanceFactor={undefined}>
-            <h3 className=" text-3xl text-zinc-50">{props.name}</h3>
-            <div className="info hidden">Div</div>
+          <Html position={alternatePosition} distanceFactor={undefined}>
+            <div className=" flex flex-row items-baseline gap-2">
+              <div className="h-4 w-4 bg-gray-100"></div>
+              <h3 className=" text-3xl text-zinc-50">{objectName[0]}</h3>
+            </div>
+            <p className=" mx-6 text-xl text-zinc-50">{objectName[1]}</p>
           </Html>
         </>
       ) : null}
