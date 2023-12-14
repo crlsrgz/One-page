@@ -18,8 +18,9 @@ export default function Detail(props) {
       x: -3,
       y: 3,
       z: 4,
-      duration: 1,
-      delay: 0.01,
+      duration: 1.2,
+      delay: 0.02,
+      ease: "back.inOut",
     });
 
     gsap.to(camera.lookAt, {

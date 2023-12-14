@@ -15,7 +15,6 @@ function ModelParts(props) {
   const explodedModelPositionsKeys = Object.keys(explodedModelPositions);
 
   const explodedModelPositionsLength = explodedModelPositionsKeys.length;
-  console.log(explodedModelPositions[explodedModelPositionsKeys[0]]);
 
   useEffect(() => {
     for (let i = 0; i < explodedModelPositionsLength; i++) {
@@ -35,14 +34,16 @@ function ModelParts(props) {
             props.position.z,
           duration: 1.5,
           delay: 0.5,
+          ease: "sine.inOut",
         });
       } else {
         gsap.to(refModelPart.current.position, {
           x: props.position.x,
           y: props.position.y,
           z: props.position.z,
-          duration: 0.2,
-          delay: 0.2,
+          duration: 0.5,
+          delay: 0.05,
+          ease: "ease",
         });
       }
     }

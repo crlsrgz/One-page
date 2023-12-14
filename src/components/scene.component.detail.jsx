@@ -5,7 +5,9 @@ import { ACESFilmicToneMapping } from "three";
 
 import Detail from "./scene-detail/component.detail";
 import { Perf } from "r3f-perf";
-
+import { ButtonSideDetail } from "./scene-detail/component.buttonSide";
+import image from "../assets/img/math-plus-box-svgrepo-com.svg";
+console.log(image);
 export default function SceneDetail() {
   const [explodeModel, setExplodeModel] = useState(false);
   const [resetCamera, setResetCamera] = useState(false);
@@ -15,35 +17,33 @@ export default function SceneDetail() {
       <Suspense fallback={<LoadPercent />}>
         <div
           id="sidebar-nav"
-          className={`absolute top-2 z-30 flex h-full w-24 select-none flex-col items-center justify-start gap-4 rounded-md bg-zinc-900 bg-opacity-80 outline-2`}
+          className={`absolute top-2 z-30 flex h-full w-24 select-none flex-col items-center justify-start gap-4 rounded-md bg-zinc-900 bg-opacity-0 outline-2`}
         >
-          <div className=" flex h-20 w-20 flex-row items-center justify-center bg-slate-500">
-            <button
-              className="h-16 w-16  bg-slate-300"
-              onClick={() => {
-                setExplodeModel(!explodeModel);
-              }}
-            >
-              x
-            </button>
-            <div className="absolute left-24 top-0 h-12 w-24 bg-zinc-500 p-2">
-              <div>--</div>
-            </div>
-          </div>
-          <div className=" flex h-20 w-20 flex-row items-center justify-center bg-slate-500">
-            <button
-              className="h-16 w-16  bg-slate-300"
-              onClick={() => {
-                //location.reload();
-                setResetCamera(!resetCamera);
-              }}
-            >
-              x
-            </button>
-            <div className="absolute left-24 top-0 h-12 w-24 bg-zinc-500 p-2">
-              <div>--</div>
-            </div>
-          </div>
+          <ButtonSideDetail
+            handleClick={() => setExplodeModel(!explodeModel)}
+            tooltipContent={"Exploded View"}
+            textContent={
+              <div>
+                <img
+                  className="h-1/2 w-1/2  translate-x-4  fill-zinc-100"
+                  src="../assets/img/math-plus-box-svgrepo-com.svg"
+                  alt=""
+                />
+              </div>
+            }
+          />
+          <ButtonSideDetail
+            handleClick={() => setResetCamera(!resetCamera)}
+            tooltipContent={"Reset camera position"}
+            textContent={<div>x</div>}
+          />
+          <ButtonSideDetail
+            handleClick={() => {
+              location.reload();
+            }}
+            tooltipContent={"Reload scene"}
+            textContent={<div>x</div>}
+          />
         </div>
 
         <Canvas

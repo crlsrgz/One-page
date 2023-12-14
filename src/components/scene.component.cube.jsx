@@ -1,14 +1,9 @@
-import {
-  GizmoViewport,
-  Html,
-  OrbitControls,
-  useSelect,
-} from "@react-three/drei";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { GizmoViewport, Html, OrbitControls } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";
 import LoadPercent from "./component.loadPercent";
 import { Icon } from "@iconify/react";
-import { Euler, MathUtils, Quaternion, Vector3 } from "three";
+import { Euler, Quaternion, Vector3 } from "three";
 import ButtonSideMenu from "./scene-detail/component.buttonSide";
 import LightSetup from "./scene-detail/component.lights";
 import {
@@ -21,7 +16,6 @@ import gsap from "gsap";
 
 function Cube(props) {
   const refCube = useRef();
-  const selected = useSelect();
 
   const targetPositionOne = new Vector3(0, 1.5, 0);
   const targetPositionTwo = new Vector3(0, 0, 0);

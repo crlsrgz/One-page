@@ -3,7 +3,6 @@ import ComponentMainNav from "./components/navigation.component";
 import SceneHomepage from "./components/scene.component.homepage";
 import SceneDetail from "./components/scene.component.detail";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useProgress } from "@react-three/drei";
 import SceneCube from "./components/scene.component.cube";
 import SceneLandscape from "./components/scene.component.landscape";
 import SceneBuilding from "./components/scene.component.building";
@@ -28,7 +27,6 @@ const App = () => {
             <div className="flex flex-grow ">
               <Routes>
                 <Route path={"/landscape"} element={<SceneLandscape />} />
-                {/* <Route path={"/landscape"} element={<SceneHomepage />} /> */}
                 <Route path={"/"} element={<SceneHomepage />} />
                 <Route path={"/detail"} element={<SceneDetail />} />
                 <Route path={"/cube"} element={<SceneCube />} />

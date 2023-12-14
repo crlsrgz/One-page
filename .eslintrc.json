@@ -14,7 +14,21 @@
     "react/react-in-jsx-scope": 0,
     "react/no-unknown-property": [
       "error",
-      { "ignore": ["/", "args", "position", "attach", "intensity"] }
+      {
+        "ignore": [
+          "/",
+          "args",
+          "position",
+          "attach",
+          "intensity",
+          "rotation-x",
+          "rotation-y",
+          "rotation-z",
+          "castShadow",
+          "receiveShadow",
+          "onPointerMissed"
+        ]
+      }
     ]
   },
   "plugins": ["react", "import", "jsx-a11y", "@react-three"],
