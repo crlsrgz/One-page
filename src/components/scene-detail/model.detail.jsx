@@ -3,6 +3,7 @@ import { useGLTF, Html, Edges } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
 import explodedModelPositions from "./lerpPositions";
 import gsap from "gsap";
+import { useThree } from "@react-three/fiber";
 
 function ModelParts(props) {
   const [hover, setHover] = useState(false);
@@ -10,11 +11,13 @@ function ModelParts(props) {
   const [alternatePosition, setAlternatePosition] = useState(props.position);
   const [objectName, setObjectName] = useState(["-", "..."]);
 
+  const { camera, pointer } = useThree();
   const refModelPart = useRef();
-
   const explodedModelPositionsKeys = Object.keys(explodedModelPositions);
-
   const explodedModelPositionsLength = explodedModelPositionsKeys.length;
+
+  const checkScreenWidth = window.innerWidth;
+  console.log(checkScreenWidth);
 
   useEffect(() => {
     for (let i = 0; i < explodedModelPositionsLength; i++) {
@@ -51,6 +54,7 @@ function ModelParts(props) {
 
   function displayName(e) {
     e.stopPropagation();
+    console.log(pointer.x, pointer.y, camera.position.z);
 
     for (let i = 0; i < explodedModelPositionsLength; i++) {
       if (nameVisible) {
@@ -109,8 +113,26 @@ function ModelParts(props) {
 
         {/* {hover ? props.material : props.materialAlternative} */}
       </mesh>
+      <Html position={[0.6, 4, 0.8]} distanceFactor={undefined}>
+        <div className=" flex flex-row items-baseline gap-2">
+          <div className="h-4 w-4 bg-gray-100"></div>
+          <h3 className=" text-lg text-zinc-50">0.6, 4, 0.8</h3>
+        </div>
+      </Html>
+      <Html position={[0.6, 3, 0.8]} distanceFactor={undefined}>
+        <div className=" flex flex-row items-baseline gap-2">
+          <div className="h-4 w-4 bg-gray-100"></div>
+          <h3 className=" text-lg text-zinc-50">0.6, 3, 0.8</h3>
+        </div>
+      </Html>
+      <Html position={[0.6, 2, 0.8]} distanceFactor={undefined}>
+        <div className=" flex flex-row items-baseline gap-2">
+          <div className="h-4 w-4 bg-gray-100"></div>
+          <h3 className=" text-lg text-zinc-50">0.6, 2, 0.8</h3>
+        </div>
+      </Html>
 
-      {nameVisible ? (
+      {nameVisible && checkScreenWidth >= 567 ? (
         <>
           <Html position={alternatePosition} distanceFactor={undefined}>
             <div className=" flex flex-row items-baseline gap-2">

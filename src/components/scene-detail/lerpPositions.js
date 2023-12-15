@@ -8,7 +8,7 @@ const explodedModelPositions = {
       z: 0,
     },
     alpha: 0.1,
-    titlePosition: [1.5, 4.5, 0],
+    titlePosition: [0.6, 4, 0.8],
   },
   konterlattung: {
     name: "Konterlattung",
@@ -19,7 +19,7 @@ const explodedModelPositions = {
       z: 0,
     },
     alpha: 0.01,
-    titlePosition: [1.2, 4, 0],
+    titlePosition: [1.2, 4, 0.8],
   },
   dachlattung: {
     name: "Dachlattung",
@@ -30,7 +30,7 @@ const explodedModelPositions = {
       z: 0,
     },
     alpha: 0.01,
-    titlePosition: [1.2, 4, 0],
+    titlePosition: [1.2, 4, 0.8],
   },
   unterdeckbahn: {
     name: "Unterdeckbahn",
@@ -41,7 +41,7 @@ const explodedModelPositions = {
       z: 0,
     },
     alpha: 0.01,
-    titlePosition: [1.2, 4, 0],
+    titlePosition: [1.2, 4, 0.8],
   },
   sparren: {
     name: "Sparren",
@@ -52,7 +52,7 @@ const explodedModelPositions = {
       z: 0,
     },
     alpha: 0.01,
-    titlePosition: [1.2, 4, 0],
+    titlePosition: [1.2, 4, 0.8],
   },
   verkleidungfassade: {
     name: "Verkleidungfassade",
@@ -63,7 +63,7 @@ const explodedModelPositions = {
       z: 0,
     },
     alpha: 0.01,
-    titlePosition: [1.2, 4, 0],
+    titlePosition: [1.2, 4, 0.8],
   },
 
   dämmung: {
@@ -75,7 +75,7 @@ const explodedModelPositions = {
       z: 0,
     },
     alpha: 0.01,
-    titlePosition: [1.2, 4, 0],
+    titlePosition: [1.2, 4, 0.8],
   },
   gipsverkleidung: {
     name: "Gipsverkleidung",
@@ -86,7 +86,7 @@ const explodedModelPositions = {
       z: 0,
     },
     alpha: 0.01,
-    titlePosition: [1.2, 4, 0],
+    titlePosition: [1.2, 4, 0.8],
   },
 };
 
