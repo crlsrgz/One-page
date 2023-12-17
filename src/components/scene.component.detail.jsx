@@ -12,21 +12,39 @@ export default function SceneDetail() {
   const [explodeModel, setExplodeModel] = useState(false);
   const [resetCamera, setResetCamera] = useState(false);
 
+  const [buttonExplodeClicked, setButtonExplodedClicked] = useState(false);
+
   return (
     <div className="relative h-full w-full">
       <Suspense fallback={<LoadPercent />}>
         <div
           id="sidebar-nav"
-          className={`absolute top-2 z-30 flex h-full w-24 select-none flex-col items-center justify-start gap-4 rounded-md bg-zinc-900 bg-opacity-0 outline-2`}
+          className={`absolute top-2 z-30 flex h-full w-24 select-none flex-col items-center justify-start gap-4 rounded-md bg-none outline-2`}
         >
           <ButtonSideDetail
-            handleClick={() => setExplodeModel(!explodeModel)}
+            handleClick={() => {
+              setExplodeModel(!explodeModel),
+                setButtonExplodedClicked(!buttonExplodeClicked);
+            }}
             tooltipContent={"Exploded View"}
             textContent={
-              <div>
+              <div className="relative w-full">
                 <img
-                  className="h-1/2 w-1/2  translate-x-4  fill-zinc-100"
-                  src="../assets/img/math-plus-box-svgrepo-com.svg"
+                  className="m-auto h-10 w-10"
+                  src={
+                    buttonExplodeClicked
+                      ? `../assets/img/control-platform.svg`
+                      : `../assets/img/control-platform-exploded.svg`
+                  }
+                  alt=""
+                />
+                <img
+                  className="absolute left-0 top-0 m-auto h-10 w-10 translate-x-1/3   animate-pulse-slow blur-sm"
+                  src={
+                    buttonExplodeClicked
+                      ? `../assets/img/control-platform.svg`
+                      : `../assets/img/control-platform-exploded.svg`
+                  }
                   alt=""
                 />
               </div>
@@ -35,14 +53,30 @@ export default function SceneDetail() {
           <ButtonSideDetail
             handleClick={() => setResetCamera(!resetCamera)}
             tooltipContent={"Reset camera position"}
-            textContent={<div>x</div>}
+            textContent={
+              <div>
+                <img
+                  className="h-1/2 w-1/2  translate-x-4 fill-zinc-100"
+                  src="../assets/img/video-camera-reload.svg"
+                  alt=""
+                />
+              </div>
+            }
           />
           <ButtonSideDetail
             handleClick={() => {
               location.reload();
             }}
             tooltipContent={"Reload scene"}
-            textContent={<div>x</div>}
+            textContent={
+              <div>
+                <img
+                  className="h-1/2 w-1/2  translate-x-4 fill-zinc-100"
+                  src="../assets/img/rotate.svg"
+                  alt=""
+                />
+              </div>
+            }
           />
         </div>
 
@@ -68,6 +102,12 @@ export default function SceneDetail() {
           <h2 className=" bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-900 bg-clip-text text-transparent">
             DETAIL
           </h2>
+        </div>
+        <div
+          id="detail"
+          className="fixed bottom-0 left-0 h-24 w-full bg-slate-800 md:hidden"
+        >
+          xx
         </div>
       </Suspense>
     </div>

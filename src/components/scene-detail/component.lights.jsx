@@ -5,19 +5,20 @@ import { DirectionalLightHelper } from "three";
 
 export default function LightSetup({ posX = -3, posY = 2, posZ = -2 }) {
   const refDirectLineOne = useRef();
-  useHelper(refDirectLineOne, DirectionalLightHelper, 1);
+  // useHelper(refDirectLineOne, DirectionalLightHelper, 1);
 
-  const { posx, posy, posz } = useControls("directionalLightOne", {
-    posx: { value: posX, min: -20, max: 20, step: 0.25 },
-    posy: { value: posY, min: -1, max: 20, step: 0.25 },
-    posz: { value: posZ, min: 0, max: 20, step: 0.25 },
-  });
+  // const { posx, posy, posz } = useControls("directionalLightOne", {
+  //   posx: { value: posX, min: -20, max: 20, step: 0.25 },
+  //   posy: { value: posY, min: -1, max: 20, step: 0.25 },
+  //   posz: { value: posZ, min: 0, max: 20, step: 0.25 },
+  // });
 
   return (
     <>
       <directionalLight
         ref={refDirectLineOne}
-        position={[posx, posy, posz]}
+        // position={[posx, posy, posz]}
+        position={[-3, 3, -2]}
         intensity={1.0}
         castShadow
         shadow-normalBias={0.12}

@@ -17,7 +17,7 @@ export function ButtonSideDetail({ handleClick, textContent, tooltipContent }) {
   return (
     <div className=" flex h-20 w-20 flex-row items-center justify-center">
       <button
-        className="h-16 w-16 rounded-lg bg-slate-300"
+        className="h-16 w-16 rounded-lg  bg-zinc-900 bg-opacity-80 shadow-xl shadow-zinc-950"
         onClick={handleClick}
         onPointerOver={() => setTooltip(true)}
         onPointerLeave={() => setTooltip(false)}
@@ -29,7 +29,7 @@ export function ButtonSideDetail({ handleClick, textContent, tooltipContent }) {
           tooltip ? " opacity-100" : ""
         }`}
       >
-        <div className="absolute -top-6 left-4 h-auto w-36 rounded-lg bg-zinc-500 px-4 py-2 ">
+        <div className="absolute -top-6 left-4 h-auto w-36 rounded-lg bg-zinc-500 px-4 pb-4 pt-2">
           {tooltipContent}
         </div>
       </div>

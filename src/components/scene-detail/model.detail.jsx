@@ -13,16 +13,18 @@ function ModelParts(props) {
 
   const { camera, pointer } = useThree();
   const refModelPart = useRef();
+
   const explodedModelPositionsKeys = Object.keys(explodedModelPositions);
   const explodedModelPositionsLength = explodedModelPositionsKeys.length;
 
   const checkScreenWidth = window.innerWidth;
-  console.log(checkScreenWidth);
 
   useEffect(() => {
     for (let i = 0; i < explodedModelPositionsLength; i++) {
       if (
-        props.name.toLowerCase().includes(explodedModelPositionsKeys[i]) &&
+        props.name
+          .toLowerCase()
+          .includes(explodedModelPositionsKeys[i].toLowerCase()) &&
         props.changePosition
       ) {
         gsap.to(refModelPart.current.position, {
@@ -35,8 +37,8 @@ function ModelParts(props) {
           z:
             explodedModelPositions[explodedModelPositionsKeys[i]].position.z +
             props.position.z,
-          duration: 1.5,
-          delay: 0.5,
+          duration: 1.25,
+          delay: 0.25,
           ease: "sine.inOut",
         });
       } else {
@@ -44,8 +46,8 @@ function ModelParts(props) {
           x: props.position.x,
           y: props.position.y,
           z: props.position.z,
-          duration: 0.5,
-          delay: 0.05,
+          duration: 0.6,
+          delay: 0.1,
           ease: "ease",
         });
       }
@@ -54,32 +56,29 @@ function ModelParts(props) {
 
   function displayName(e) {
     e.stopPropagation();
-    console.log(pointer.x, pointer.y, camera.position.z);
+    console.log(props.name);
+    setNameVisible(false);
 
     for (let i = 0; i < explodedModelPositionsLength; i++) {
-      if (nameVisible) {
-        setNameVisible(false);
-      } else {
-        if (
-          props.name.toLowerCase().includes(explodedModelPositionsKeys[i]) &&
-          explodedModelPositions[explodedModelPositionsKeys[i]].titlePosition
-        ) {
-          setAlternatePosition([
-            explodedModelPositions[explodedModelPositionsKeys[i]]
-              .titlePosition[0],
-            explodedModelPositions[explodedModelPositionsKeys[i]]
-              .titlePosition[1],
-            explodedModelPositions[explodedModelPositionsKeys[i]]
-              .titlePosition[2],
-          ]);
-          setObjectName([
-            explodedModelPositions[explodedModelPositionsKeys[i]].name,
-            explodedModelPositions[explodedModelPositionsKeys[i]].description,
-          ]);
-        }
-
-        setNameVisible(true);
+      if (
+        props.name.toLowerCase().includes(explodedModelPositionsKeys[i]) &&
+        explodedModelPositions[explodedModelPositionsKeys[i]].titlePosition
+      ) {
+        setAlternatePosition([
+          explodedModelPositions[explodedModelPositionsKeys[i]]
+            .titlePosition[0],
+          explodedModelPositions[explodedModelPositionsKeys[i]]
+            .titlePosition[1],
+          explodedModelPositions[explodedModelPositionsKeys[i]]
+            .titlePosition[2],
+        ]);
+        setObjectName([
+          explodedModelPositions[explodedModelPositionsKeys[i]].name,
+          explodedModelPositions[explodedModelPositionsKeys[i]].description,
+        ]);
       }
+
+      setNameVisible(true);
     }
   }
 
@@ -88,6 +87,8 @@ function ModelParts(props) {
     setNameVisible(false);
     setAlternatePosition(props.position);
   }
+
+  const detailInfo = document.getElementById("detail");
 
   return (
     <>
@@ -109,47 +110,44 @@ function ModelParts(props) {
         onClick={displayName}
         onPointerMissed={hideName}
       >
-        {/* <Edges color={"red"}></Edges> */}
+        <Edges color={"black"}></Edges>
 
         {/* {hover ? props.material : props.materialAlternative} */}
       </mesh>
-      <Html position={[0.6, 4, 0.8]} distanceFactor={undefined}>
-        <div className=" flex flex-row items-baseline gap-2">
-          <div className="h-4 w-4 bg-gray-100"></div>
-          <h3 className=" text-lg text-zinc-50">0.6, 4, 0.8</h3>
-        </div>
-      </Html>
-      <Html position={[0.6, 3, 0.8]} distanceFactor={undefined}>
-        <div className=" flex flex-row items-baseline gap-2">
-          <div className="h-4 w-4 bg-gray-100"></div>
-          <h3 className=" text-lg text-zinc-50">0.6, 3, 0.8</h3>
-        </div>
-      </Html>
-      <Html position={[0.6, 2, 0.8]} distanceFactor={undefined}>
-        <div className=" flex flex-row items-baseline gap-2">
-          <div className="h-4 w-4 bg-gray-100"></div>
-          <h3 className=" text-lg text-zinc-50">0.6, 2, 0.8</h3>
-        </div>
-      </Html>
 
       {nameVisible && checkScreenWidth >= 567 ? (
         <>
-          <Html position={alternatePosition} distanceFactor={undefined}>
-            <div className=" flex flex-row items-baseline gap-2">
+          <Html
+            position={alternatePosition}
+            distanceFactor={undefined}
+            className="flex w-64 flex-col items-start gap-4"
+          >
+            <div
+              className="flex h-auto w-full flex-row items-baseline gap-2 rounded-lg 
+            bg-zinc-900 bg-opacity-80 px-4 pb-4 pt-2 shadow-xl shadow-zinc-900"
+            >
               <div className="h-4 w-4 bg-gray-100"></div>
               <h3 className=" text-3xl text-zinc-50">{objectName[0]}</h3>
             </div>
-            <p className=" mx-6 text-xl text-zinc-50">{objectName[1]}</p>
+            {objectName[1] !== "" ? (
+              <p className="h-auto w-full rounded-lg bg-zinc-900 bg-opacity-80 px-4 pb-4 pt-2 text-xl text-zinc-50  shadow-lg shadow-zinc-800">
+                {objectName[1]}
+              </p>
+            ) : (
+              ""
+            )}
           </Html>
+          {(detailInfo.textContent = objectName[0])}
         </>
-      ) : null}
+      ) : (
+        ""
+      )}
     </>
   );
 }
 
 export function ModelDetail(props) {
   const model = useGLTF("/wall.glb");
-
   const materialHover = new MeshStandardMaterial({
     color: "#7a0e0e",
     roughness: 0.9,
@@ -160,6 +158,7 @@ export function ModelDetail(props) {
     if (node.isMesh) {
       node.castShadow = true;
       node.receiveShadow = true;
+      node.material.normalScale = { x: 1, y: -1 };
     }
   });
 
