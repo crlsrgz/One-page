@@ -3,7 +3,6 @@ import { useGLTF, Html, Edges } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
 import explodedModelPositions from "./lerpPositions";
 import gsap from "gsap";
-import { useThree } from "@react-three/fiber";
 
 function ModelParts(props) {
   const [hover, setHover] = useState(false);
@@ -11,7 +10,6 @@ function ModelParts(props) {
   const [alternatePosition, setAlternatePosition] = useState(props.position);
   const [objectName, setObjectName] = useState(["-", "..."]);
 
-  const { camera, pointer } = useThree();
   const refModelPart = useRef();
 
   const explodedModelPositionsKeys = Object.keys(explodedModelPositions);
@@ -54,9 +52,11 @@ function ModelParts(props) {
     }
   }, [props.changePosition]);
 
+  const detailInfoBoxMobile = document.getElementById("detail");
+
   function displayName(e) {
     e.stopPropagation();
-    console.log(props.name);
+    // console.log(props.name);
     setNameVisible(false);
 
     for (let i = 0; i < explodedModelPositionsLength; i++) {
@@ -77,18 +77,19 @@ function ModelParts(props) {
           explodedModelPositions[explodedModelPositionsKeys[i]].description,
         ]);
       }
-
       setNameVisible(true);
     }
+    detailInfoBoxMobile.classList.remove("hidden");
+
+    detailInfoBoxMobile.textContent = objectName[0];
   }
 
   function hideName(e) {
     e.stopPropagation();
     setNameVisible(false);
     setAlternatePosition(props.position);
+    detailInfoBoxMobile.classList.add("hidden");
   }
-
-  const detailInfo = document.getElementById("detail");
 
   return (
     <>
@@ -110,7 +111,7 @@ function ModelParts(props) {
         onClick={displayName}
         onPointerMissed={hideName}
       >
-        <Edges color={"black"}></Edges>
+        {/* <Edges color={"black"}></Edges> */}
 
         {/* {hover ? props.material : props.materialAlternative} */}
       </mesh>
@@ -137,7 +138,6 @@ function ModelParts(props) {
               ""
             )}
           </Html>
-          {(detailInfo.textContent = objectName[0])}
         </>
       ) : (
         ""
@@ -147,7 +147,7 @@ function ModelParts(props) {
 }
 
 export function ModelDetail(props) {
-  const model = useGLTF("/wall.glb");
+  const model = useGLTF("../../assets/models/wall.glb");
   const materialHover = new MeshStandardMaterial({
     color: "#7a0e0e",
     roughness: 0.9,
@@ -159,6 +159,8 @@ export function ModelDetail(props) {
       node.castShadow = true;
       node.receiveShadow = true;
       node.material.normalScale = { x: 1, y: -1 };
+
+      console.log(node);
     }
   });
 
@@ -186,4 +188,4 @@ export function ModelDetail(props) {
   );
 }
 
-useGLTF.preload("/wall.glb");
+useGLTF.preload("../../assets/models/wall.glb");

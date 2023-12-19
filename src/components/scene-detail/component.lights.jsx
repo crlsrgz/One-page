@@ -22,7 +22,7 @@ export default function LightSetup({ posX = -3, posY = 2, posZ = -2 }) {
         intensity={1.0}
         castShadow
         shadow-normalBias={0.12}
-        shadow-mapSize={[1024, 1024]}
+        shadow-mapSize={[512, 512]}
         shadow-camera-top={20}
         shadow-camera-right={20}
         shadow-camera-bottom={-20}
@@ -31,7 +31,7 @@ export default function LightSetup({ posX = -3, posY = 2, posZ = -2 }) {
         shadow-camera-far={20}
       />
 
-      <directionalLight
+      {/* <directionalLight
         position={[2, 5, -5]}
         intensity={1.0}
         castShadow
@@ -43,8 +43,8 @@ export default function LightSetup({ posX = -3, posY = 2, posZ = -2 }) {
         shadow-camera-left={-20}
         shadow-camera-near={0}
         shadow-camera-far={20}
-      />
-      <ambientLight intensity={0.1} />
+      /> */}
+      <ambientLight intensity={0.4} />
     </>
   );
 }

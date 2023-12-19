@@ -7,11 +7,13 @@ import Detail from "./scene-detail/component.detail";
 import { Perf } from "r3f-perf";
 import { ButtonSideDetail } from "./scene-detail/component.buttonSide";
 import image from "../assets/img/math-plus-box-svgrepo-com.svg";
-console.log(image);
+
+const checkScreenWidth = window.innerWidth;
+const cameraPosition = checkScreenWidth >= 567 ? [-3, 3, 4] : [-4, 3, 6];
+
 export default function SceneDetail() {
   const [explodeModel, setExplodeModel] = useState(false);
   const [resetCamera, setResetCamera] = useState(false);
-
   const [buttonExplodeClicked, setButtonExplodedClicked] = useState(false);
 
   return (
@@ -82,7 +84,7 @@ export default function SceneDetail() {
 
         <Canvas
           camera={{
-            position: [-3, 3, 4],
+            position: cameraPosition,
             near: 0.01,
             far: 100,
             fov: 35,
@@ -95,7 +97,7 @@ export default function SceneDetail() {
           }}
           shadows={true}
         >
-          <Perf position="bottom-right" />
+          <Perf position="top-right" />
           <Detail exploded={explodeModel} resetMe={resetCamera} />
         </Canvas>
         <div className="absolute right-0 top-0 -z-30 flex h-full w-full select-none items-center justify-center overflow-hidden bg-clip-text pb-10 text-[24rem] text-zinc-800">
@@ -104,10 +106,13 @@ export default function SceneDetail() {
           </h2>
         </div>
         <div
-          id="detail"
-          className="fixed bottom-0 left-0 h-24 w-full bg-slate-800 md:hidden"
+          id="detail-description-container"
+          className="fixed bottom-0 left-0 h-24 w-full px-6  transition-all md:hidden"
         >
-          xx
+          <div
+            id="detail"
+            className="h-36 w-full rounded-t-lg bg-zinc-900 bg-opacity-80 p-2 "
+          ></div>
         </div>
       </Suspense>
     </div>

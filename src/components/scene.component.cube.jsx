@@ -13,6 +13,7 @@ import {
   Select,
 } from "@react-three/postprocessing";
 import gsap from "gsap";
+import { Perf } from "r3f-perf";
 
 function Cube(props) {
   const refCube = useRef();
@@ -133,6 +134,7 @@ export default function SceneCube() {
           }}
           shadows={true}
         >
+          <Perf />
           <LightSetup />
           <GizmoViewport
             axisColors={["red", "green", "blue"]}

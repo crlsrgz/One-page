@@ -9,15 +9,18 @@ import gsap from "gsap";
 import { ModelDetail } from "./model.detail";
 import LightSetup from "./component.lights";
 
+const checkScreenWidth = window.innerWidth;
+const cameraPosition = checkScreenWidth >= 567 ? [-3, 3, 4] : [-4, 3, 6];
+
 export default function Detail(props) {
   const { camera } = useThree();
   const refCont = useRef();
 
   useEffect(() => {
     gsap.to(camera.position, {
-      x: -3,
-      y: 3,
-      z: 4,
+      x: cameraPosition[0],
+      y: cameraPosition[1],
+      z: cameraPosition[2],
       duration: 1.2,
       delay: 0.02,
       ease: "back.inOut",
