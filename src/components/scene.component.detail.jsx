@@ -6,7 +6,13 @@ import { ACESFilmicToneMapping } from "three";
 import Detail from "./scene-detail/component.detail";
 import { Perf } from "r3f-perf";
 import { ButtonSideDetail } from "./scene-detail/component.buttonSide";
-import image from "../assets/img/math-plus-box-svgrepo-com.svg";
+
+//: SVG Import
+
+import svgModelJoined from "/img/control-platform.svg";
+import svgModelExploded from "/img/control-platform-exploded.svg";
+import svgCameraReset from "/img/video-camera-reload.svg";
+import svgSceneReload from "/img/rotate.svg";
 
 const checkScreenWidth = window.innerWidth;
 const cameraPosition = checkScreenWidth >= 567 ? [-3, 3, 4] : [-4, 3, 6];
@@ -33,20 +39,12 @@ export default function SceneDetail() {
               <div className="relative w-full">
                 <img
                   className="m-auto h-10 w-10"
-                  src={
-                    buttonExplodeClicked
-                      ? `../assets/img/control-platform.svg`
-                      : `../assets/img/control-platform-exploded.svg`
-                  }
+                  src={buttonExplodeClicked ? svgModelJoined : svgModelExploded}
                   alt=""
                 />
                 <img
                   className="absolute left-0 top-0 m-auto h-10 w-10 translate-x-1/3   animate-pulse-slow blur-sm"
-                  src={
-                    buttonExplodeClicked
-                      ? `../assets/img/control-platform.svg`
-                      : `../assets/img/control-platform-exploded.svg`
-                  }
+                  src={buttonExplodeClicked ? svgModelJoined : svgModelExploded}
                   alt=""
                 />
               </div>
@@ -59,7 +57,7 @@ export default function SceneDetail() {
               <div>
                 <img
                   className="h-1/2 w-1/2  translate-x-4 fill-zinc-100"
-                  src="../assets/img/video-camera-reload.svg"
+                  src={svgCameraReset}
                   alt=""
                 />
               </div>
@@ -74,7 +72,7 @@ export default function SceneDetail() {
               <div>
                 <img
                   className="h-1/2 w-1/2  translate-x-4 fill-zinc-100"
-                  src="../assets/img/rotate.svg"
+                  src={svgSceneReload}
                   alt=""
                 />
               </div>

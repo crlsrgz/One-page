@@ -3,6 +3,7 @@ import { useGLTF, Html, Edges } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
 import explodedModelPositions from "./lerpPositions";
 import gsap from "gsap";
+import detailModel from "/wall.glb?url";
 
 function ModelParts(props) {
   const [hover, setHover] = useState(false);
@@ -147,7 +148,7 @@ function ModelParts(props) {
 }
 
 export function ModelDetail(props) {
-  const model = useGLTF("../../assets/models/wall.glb");
+  const model = useGLTF(detailModel);
   const materialHover = new MeshStandardMaterial({
     color: "#7a0e0e",
     roughness: 0.9,
@@ -188,4 +189,4 @@ export function ModelDetail(props) {
   );
 }
 
-useGLTF.preload("../../assets/models/wall.glb");
+useGLTF.preload(detailModel);
