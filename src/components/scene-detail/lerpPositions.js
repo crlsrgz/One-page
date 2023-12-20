@@ -1,7 +1,7 @@
 const explodedModelPositions = {
   ziegel: {
     name: `Roof Tiles`,
-    description: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, rem?`,
+    description: `Interlocking tiles, French profile`,
     position: {
       x: 0,
       y: Math.random() * 0.05 + 0.35,
@@ -12,7 +12,8 @@ const explodedModelPositions = {
   },
   konterlattung: {
     name: `Tile Battens`,
-    description: ``,
+    description: `Treated Sawn Batten, 
+    protected against decay and fungal attack, 50 x 25mm`,
     position: {
       x: 0,
       y: 0.25,
@@ -23,7 +24,8 @@ const explodedModelPositions = {
   },
   dachlattung: {
     name: `Battens`,
-    description: ``,
+    description: `Treated Sawn Batten,
+    protected against decay and fungal attack, 50 x 25mm`,
     position: {
       x: 0,
       y: 0.15,
@@ -34,7 +36,7 @@ const explodedModelPositions = {
   },
   unterdeckbahn: {
     name: `Underlay membrane`,
-    description: ``,
+    description: `Diffusion open underlay`,
     position: {
       x: 0.5,
       y: 0.4,
@@ -44,7 +46,7 @@ const explodedModelPositions = {
     titlePosition: [0.3, 3.45, 0.8],
   },
   schallung: {
-    name: `Sheating`,
+    name: `Roof Sheating`,
     description: ``,
     position: {
       x: 0,
@@ -56,7 +58,7 @@ const explodedModelPositions = {
   },
   sparren: {
     name: `Rafter`,
-    description: ``,
+    description: `Mineral wool`,
     position: {
       x: 0,
       y: 0,
@@ -67,7 +69,7 @@ const explodedModelPositions = {
   },
   dämmungdach: {
     name: `Roof cavity insulation`,
-    description: ``,
+    description: `Cellulose insulation`,
     position: {
       x: 0,
       y: 0,
@@ -78,7 +80,7 @@ const explodedModelPositions = {
   },
   dämmungwand: {
     name: `Cavity insulation`,
-    description: ``,
+    description: `Cellulose insulation`,
     position: {
       x: 0.25,
       y: 0,
@@ -100,7 +102,8 @@ const explodedModelPositions = {
   },
   beplankunginnen: {
     name: `OSB Board`,
-    description: ``,
+    description: `Structural board with load bearing properties
+    2440mm x 1220mm 11mm`,
     position: {
       x: 0,
       y: 0,
@@ -111,7 +114,8 @@ const explodedModelPositions = {
   },
   osbwand: {
     name: `OSB Board`,
-    description: ``,
+    description: `Structural board with load bearing properties
+    2440mm x 1220mm 11mm`,
     position: {
       x: 0.3,
       y: 0,
@@ -121,7 +125,7 @@ const explodedModelPositions = {
     titlePosition: [0.3, 2.7, 0.8],
   },
   rahmendecke: {
-    name: `Battens`,
+    name: `Ceiling Battens`,
     description: `Support for plasterboard paneling`,
     position: {
       x: 0,
@@ -133,7 +137,7 @@ const explodedModelPositions = {
   },
 
   rahmenwandinnen: {
-    name: `Battens`,
+    name: `Wall Battens`,
     description: `Support plasterboard paneling`,
     position: {
       x: 0.35,
@@ -145,7 +149,7 @@ const explodedModelPositions = {
   },
   weichfaserdämmung: {
     name: `Insulation layer`,
-    description: `Services Void`,
+    description: `Services Void, insulated`,
     position: {
       x: 0.45,
       y: 0.0,
@@ -200,7 +204,7 @@ const explodedModelPositions = {
   },
   mdfplatte: {
     name: `MDF Board`,
-    description: ``,
+    description: `Coated, moisture resistant MDF`,
     position: {
       x: -0.1,
       y: -0.6,
@@ -211,7 +215,7 @@ const explodedModelPositions = {
   },
   traglatte: {
     name: `Battens`,
-    description: ``,
+    description: `50 x 25mm`,
     position: {
       x: -0.2,
       y: -0.6,

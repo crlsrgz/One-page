@@ -21,7 +21,7 @@ const App = () => {
       <div className="canvas-element flex h-full w-full select-none flex-col">
         <Suspense>
           <BrowserRouter>
-            <header className="z-50 mt-4 flex h-24 flex-row items-baseline justify-start gap-4 px-12 pt-4 shadow-2xl shadow-zinc-900">
+            <header className="z-50 flex h-auto flex-row items-baseline justify-start gap-4 px-12 pb-4 pt-6 shadow-2xl shadow-zinc-900">
               <ComponentMainNav />
             </header>
             <div className="flex flex-grow ">

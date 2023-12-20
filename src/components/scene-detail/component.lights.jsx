@@ -1,7 +1,7 @@
-import { useHelper } from "@react-three/drei";
-import { useControls } from "leva";
 import { useRef } from "react";
-import { DirectionalLightHelper } from "three";
+// import { useHelper } from "@react-three/drei";
+// import { useControls } from "leva";
+// import { DirectionalLightHelper } from "three";
 
 export default function LightSetup({ posX = -3, posY = 2, posZ = -2 }) {
   const refDirectLineOne = useRef();

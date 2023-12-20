@@ -9,13 +9,18 @@ function ModelParts(props) {
   const [nameVisible, setNameVisible] = useState(false);
   const [alternatePosition, setAlternatePosition] = useState(props.position);
   const [objectName, setObjectName] = useState(["-", "..."]);
-
   const refModelPart = useRef();
 
   const explodedModelPositionsKeys = Object.keys(explodedModelPositions);
   const explodedModelPositionsLength = explodedModelPositionsKeys.length;
 
+  //: DOM
   const checkScreenWidth = window.innerWidth;
+  const detailInfoBoxMobileContainer = document.getElementById(
+    "detail-description-container",
+  );
+  const detailInfoBoxMobile = document.getElementById("detailTitle");
+  const detailInfoBoxMobileText = document.getElementById("detailText");
 
   useEffect(() => {
     for (let i = 0; i < explodedModelPositionsLength; i++) {
@@ -52,10 +57,8 @@ function ModelParts(props) {
     }
   }, [props.changePosition]);
 
-  const detailInfoBoxMobile = document.getElementById("detail");
-
   function displayName(e) {
-    e.stopPropagation();
+    // e.stopPropagation();
     // console.log(props.name);
     setNameVisible(false);
 
@@ -79,16 +82,23 @@ function ModelParts(props) {
       }
       setNameVisible(true);
     }
-    detailInfoBoxMobile.classList.remove("hidden");
 
+    detailInfoBoxMobileContainer.classList.remove("hidden");
     detailInfoBoxMobile.textContent = objectName[0];
+    detailInfoBoxMobileText.textContent = objectName[1];
   }
+
+  const [testFunc, setTestFunc] = useState(true);
+
+  useEffect(() => {
+    displayName();
+  }, [testFunc]);
 
   function hideName(e) {
     e.stopPropagation();
     setNameVisible(false);
     setAlternatePosition(props.position);
-    detailInfoBoxMobile.classList.add("hidden");
+    detailInfoBoxMobileContainer.classList.add("hidden");
   }
 
   return (
@@ -108,7 +118,9 @@ function ModelParts(props) {
         onPointerOut={(e) => {
           e.stopPropagation(), setHover(false);
         }}
-        onClick={displayName}
+        onClick={(e) => {
+          e.stopPropagation(), setTestFunc(!testFunc);
+        }}
         onPointerMissed={hideName}
       >
         {/* <Edges color={"black"}></Edges> */}
@@ -116,7 +128,7 @@ function ModelParts(props) {
         {/* {hover ? props.material : props.materialAlternative} */}
       </mesh>
 
-      {nameVisible && checkScreenWidth >= 567 ? (
+      {nameVisible && checkScreenWidth > 640 ? (
         <>
           <Html
             position={alternatePosition}
@@ -124,14 +136,14 @@ function ModelParts(props) {
             className="flex w-64 flex-col items-start gap-4"
           >
             <div
-              className="flex h-auto w-full flex-row items-baseline gap-2 rounded-lg 
+              className="flex h-auto w-full flex-row items-baseline gap-2 rounded-md
             bg-zinc-900 bg-opacity-80 px-4 pb-4 pt-2 shadow-xl shadow-zinc-900"
             >
               <div className="h-4 w-4 bg-gray-100"></div>
-              <h3 className=" text-3xl text-zinc-50">{objectName[0]}</h3>
+              <h3 className=" text-xl text-zinc-50">{objectName[0]}</h3>
             </div>
             {objectName[1] !== "" ? (
-              <p className="h-auto w-full rounded-lg bg-zinc-900 bg-opacity-80 px-4 pb-4 pt-2 text-xl text-zinc-50  shadow-lg shadow-zinc-800">
+              <p className="h-auto w-full  rounded-md bg-zinc-900 bg-opacity-80 px-4 pb-4 pt-2 text-sm text-zinc-50  shadow-lg shadow-zinc-800">
                 {objectName[1]}
               </p>
             ) : (
@@ -159,8 +171,6 @@ export function ModelDetail(props) {
       node.castShadow = true;
       node.receiveShadow = true;
       node.material.normalScale = { x: 1, y: -1 };
-
-      console.log(node);
     }
   });
 

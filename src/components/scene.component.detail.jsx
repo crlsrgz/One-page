@@ -6,7 +6,6 @@ import { ACESFilmicToneMapping } from "three";
 import Detail from "./scene-detail/component.detail";
 import { Perf } from "r3f-perf";
 import { ButtonSideDetail } from "./scene-detail/component.buttonSide";
-import image from "../assets/img/math-plus-box-svgrepo-com.svg";
 
 const checkScreenWidth = window.innerWidth;
 const cameraPosition = checkScreenWidth >= 567 ? [-3, 3, 4] : [-4, 3, 6];
@@ -90,7 +89,7 @@ export default function SceneDetail() {
             fov: 35,
           }}
           onCreated={() => {
-            console.log("canvas ready");
+            //console.log("canvas ready");
           }}
           gl={{
             toneMapping: ACESFilmicToneMapping,
@@ -101,18 +100,26 @@ export default function SceneDetail() {
           <Detail exploded={explodeModel} resetMe={resetCamera} />
         </Canvas>
         <div className="absolute right-0 top-0 -z-30 flex h-full w-full select-none items-center justify-center overflow-hidden bg-clip-text pb-10 text-[24rem] text-zinc-800">
-          <h2 className=" bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-900 bg-clip-text text-transparent">
+          <h2 className="bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-900 bg-clip-text text-transparent opacity-50">
             DETAIL
           </h2>
         </div>
         <div
           id="detail-description-container"
-          className="fixed bottom-0 left-0 h-24 w-full px-6  transition-all md:hidden"
+          className="hidde fixed bottom-0 left-0 h-36 w-full  px-6 transition-all sm:hidden"
         >
           <div
-            id="detail"
-            className="h-36 w-full rounded-t-lg bg-zinc-900 bg-opacity-80 p-2 "
-          ></div>
+            id="detailTitle"
+            className="h-auto w-full rounded-t-lg bg-zinc-900 bg-opacity-80 px-6 pt-2 text-xl sm:hidden "
+          >
+            {" "}
+          </div>
+          <div
+            id="detailText"
+            className="h-36 w-full bg-zinc-900 bg-opacity-80 px-6 pt-2 text-sm sm:hidden "
+          >
+            {" "}
+          </div>
         </div>
       </Suspense>
     </div>
