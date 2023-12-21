@@ -12,9 +12,6 @@ function ModelParts(props) {
   const [objectName, setObjectName] = useState(["-", "..."]);
   const refModelPart = useRef();
 
-  const explodedModelPositionsKeys = Object.keys(explodedModelPositions);
-  const explodedModelPositionsLength = explodedModelPositionsKeys.length;
-
   //: DOM
   const checkScreenWidth = window.innerWidth;
   const detailInfoBoxMobileContainer = document.getElementById(
@@ -23,13 +20,19 @@ function ModelParts(props) {
   const detailInfoBoxMobile = document.getElementById("detailTitle");
   const detailInfoBoxMobileText = document.getElementById("detailText");
 
+  //: Explode Model
+  //: props.explodedModel are affected by the button at the top level scene
+
+  const explodedModelPositionsKeys = Object.keys(explodedModelPositions);
+  const explodedModelPositionsLength = explodedModelPositionsKeys.length;
+
   useEffect(() => {
     for (let i = 0; i < explodedModelPositionsLength; i++) {
       if (
         props.name
           .toLowerCase()
           .includes(explodedModelPositionsKeys[i].toLowerCase()) &&
-        props.changePosition
+        props.explodedModel
       ) {
         gsap.to(refModelPart.current.position, {
           x:
@@ -41,9 +44,9 @@ function ModelParts(props) {
           z:
             explodedModelPositions[explodedModelPositionsKeys[i]].position.z +
             props.position.z,
-          duration: 1.25,
-          delay: 0.25,
-          ease: "sine.inOut",
+          duration: 1.5,
+          delay: 0.5,
+          ease: "bounce",
         });
       } else {
         gsap.to(refModelPart.current.position, {
@@ -56,13 +59,11 @@ function ModelParts(props) {
         });
       }
     }
-  }, [props.changePosition]);
+  }, [props.explodedModel]);
 
-  function displayName(e) {
-    // e.stopPropagation();
-    // console.log(props.name);
-    setNameVisible(false);
+  //: Display and Hide Info Boxes
 
+  function displayName() {
     for (let i = 0; i < explodedModelPositionsLength; i++) {
       if (
         props.name.toLowerCase().includes(explodedModelPositionsKeys[i]) &&
@@ -81,7 +82,6 @@ function ModelParts(props) {
           explodedModelPositions[explodedModelPositionsKeys[i]].description,
         ]);
       }
-      setNameVisible(true);
     }
 
     detailInfoBoxMobileContainer.classList.remove("hidden");
@@ -89,11 +89,15 @@ function ModelParts(props) {
     detailInfoBoxMobileText.textContent = objectName[1];
   }
 
-  const [testFunc, setTestFunc] = useState(true);
+  //: The switch is used to run the effect after clicking on the mesh,
+  //: mostly to run update the infoBox for mobile
+
+  const [switchToDisplayName, setSwitchToDisplayName] = useState(true);
 
   useEffect(() => {
     displayName();
-  }, [testFunc]);
+    console.log(nameVisible, switchToDisplayName);
+  }, [switchToDisplayName]);
 
   function hideName(e) {
     e.stopPropagation();
@@ -112,7 +116,7 @@ function ModelParts(props) {
         geometry={props.geometry}
         material={hover ? props.materialAlternative : props.material}
         position={props.position}
-        changePosition={props.changePosition}
+        explodedModel={props.explodedModel}
         onPointerOver={(e) => {
           e.stopPropagation(), setHover(true);
         }}
@@ -120,13 +124,13 @@ function ModelParts(props) {
           e.stopPropagation(), setHover(false);
         }}
         onClick={(e) => {
-          e.stopPropagation(), setTestFunc(!testFunc);
+          e.stopPropagation(),
+            setNameVisible(true),
+            setSwitchToDisplayName(!switchToDisplayName);
         }}
         onPointerMissed={hideName}
       >
         {/* <Edges color={"black"}></Edges> */}
-
-        {/* {hover ? props.material : props.materialAlternative} */}
       </mesh>
 
       {nameVisible && checkScreenWidth > 640 ? (
@@ -137,19 +141,14 @@ function ModelParts(props) {
             className="flex w-64 flex-col items-start gap-4"
           >
             <div
-              className="flex h-auto w-full flex-row items-baseline gap-2 rounded-md
-            bg-zinc-900 bg-opacity-80 px-4 pb-4 pt-2 shadow-xl shadow-zinc-900"
+              className="flex h-auto w-full flex-col items-baseline gap-4 rounded-md
+            bg-zinc-900 bg-opacity-80 px-4 pb-6 pt-4 shadow-xl shadow-zinc-900"
             >
-              <div className="h-4 w-4 bg-gray-100"></div>
-              <h3 className=" text-xl text-zinc-50">{objectName[0]}</h3>
-            </div>
-            {objectName[1] !== "" ? (
-              <p className="h-auto w-full  rounded-md bg-zinc-900 bg-opacity-80 px-4 pb-4 pt-2 text-sm text-zinc-50  shadow-lg shadow-zinc-800">
-                {objectName[1]}
+              <h3 className="text-xl">{objectName[0] ? objectName[0] : ""}</h3>
+              <p className="h-auto w-full text-sm ">
+                {objectName[1] ? objectName[1] : ""}
               </p>
-            ) : (
-              ""
-            )}
+            </div>
           </Html>
         </>
       ) : (
@@ -191,7 +190,6 @@ export function ModelDetail(props) {
             materialAlternative={materialHover}
             position={element.position}
             explodedModel={props.explodedModel}
-            changePosition={props.explodedModel}
           />
         );
       })}

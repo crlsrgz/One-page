@@ -96,7 +96,7 @@ export default function SceneDetail() {
           shadows={true}
         >
           <Perf position="top-right" />
-          <Detail exploded={explodeModel} resetMe={resetCamera} />
+          <Detail explodedModel={explodeModel} resetMe={resetCamera} />
         </Canvas>
         <div className="absolute right-0 top-0 -z-30 flex h-full w-full select-none items-center justify-center overflow-hidden bg-clip-text pb-10 text-[24rem] text-zinc-800">
           <h2 className="bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-900 bg-clip-text text-transparent opacity-50">

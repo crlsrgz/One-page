@@ -68,7 +68,7 @@ export default function Detail(props) {
       <Environment intensity={1} files={"env.hdr"} />
 
       {/* /* ═══ Models ═══ */}
-      <ModelDetail explodedModel={props.exploded} />
+      <ModelDetail explodedModel={props.explodedModel} />
     </>
   );
 }
