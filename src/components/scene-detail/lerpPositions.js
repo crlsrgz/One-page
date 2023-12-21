@@ -12,8 +12,7 @@ const explodedModelPositions = {
   },
   konterlattung: {
     name: `Tile Battens`,
-    description: `Treated Sawn Batten, 
-    protected against decay and fungal attack,
+    description: `Treated Sawn Batten; protected against decay and fungal attack,
     50 x 25mm`,
     position: {
       x: 0,
@@ -25,8 +24,7 @@ const explodedModelPositions = {
   },
   dachlattung: {
     name: `Battens`,
-    description: `Treated Sawn Batten,
-    protected against decay and fungal attack,
+    description: `Treated Sawn Batten; protected against decay and fungal attack,
     50 x 25mm`,
     position: {
       x: 0,

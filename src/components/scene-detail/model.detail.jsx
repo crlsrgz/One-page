@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useGLTF, Html, Edges } from "@react-three/drei";
+import { useGLTF, Html } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
 import explodedModelPositions from "./lerpPositions";
 import gsap from "gsap";
+// eslint-disable-next-line import/no-unresolved
 import detailModel from "/wall.glb?url";
 
 function ModelParts(props) {
@@ -125,6 +126,7 @@ function ModelParts(props) {
         }}
         onClick={(e) => {
           e.stopPropagation(),
+            setNameVisible(false),
             setNameVisible(true),
             setSwitchToDisplayName(!switchToDisplayName);
         }}
@@ -138,14 +140,19 @@ function ModelParts(props) {
           <Html
             position={alternatePosition}
             distanceFactor={undefined}
-            className="flex w-64 flex-col items-start gap-4"
+            className="flex  w-72 flex-col items-start gap-4"
           >
             <div
               className="flex h-auto w-full flex-col items-baseline gap-4 rounded-md
-            bg-zinc-900 bg-opacity-80 px-4 pb-6 pt-4 shadow-xl shadow-zinc-900"
+              bg-zinc-900 bg-opacity-80 px-4 pb-6 pt-4 shadow-xl shadow-zinc-900"
             >
-              <h3 className="text-xl">{objectName[0] ? objectName[0] : ""}</h3>
-              <p className="h-auto w-full text-sm ">
+              <div className="flex flex-row items-baseline gap-2">
+                <span className=" h-3 w-3 bg-zinc-100"></span>
+                <h3 className="text-xl">
+                  {objectName[0] ? objectName[0] : ""}
+                </h3>
+              </div>
+              <p className="h-auto w-full break-before-auto whitespace-pre-line text-sm ">
                 {objectName[1] ? objectName[1] : ""}
               </p>
             </div>
@@ -197,4 +204,5 @@ export function ModelDetail(props) {
   );
 }
 
-useGLTF.preload(detailModel);
+/* 💡  Preload and performance */
+// useGLTF.preload(detailModel);

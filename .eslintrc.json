@@ -26,7 +26,11 @@
           "rotation-z",
           "castShadow",
           "receiveShadow",
-          "onPointerMissed"
+          "onPointerMissed",
+          "geometry",
+          "material",
+          "position",
+          "explodedModel"
         ]
       }
     ]
