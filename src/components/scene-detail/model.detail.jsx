@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useGLTF, Html } from "@react-three/drei";
+import { useGLTF, Html, Edges } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
 import explodedModelPositions from "./lerpPositions";
 import gsap from "gsap";
@@ -93,11 +93,13 @@ function ModelParts(props) {
   //: The switch is used to run the effect after clicking on the mesh,
   //: mostly to run update the infoBox for mobile
 
-  const [switchToDisplayName, setSwitchToDisplayName] = useState(true);
+  const [switchToDisplayName, setSwitchToDisplayName] = useState(false);
 
   useEffect(() => {
     displayName();
-    console.log(nameVisible, switchToDisplayName);
+    if (!switchToDisplayName) {
+      detailInfoBoxMobileContainer.classList.add("hidden");
+    }
   }, [switchToDisplayName]);
 
   function hideName(e) {
@@ -126,13 +128,12 @@ function ModelParts(props) {
         }}
         onClick={(e) => {
           e.stopPropagation(),
-            setNameVisible(false),
             setNameVisible(true),
-            setSwitchToDisplayName(!switchToDisplayName);
+            setSwitchToDisplayName(true);
         }}
         onPointerMissed={hideName}
       >
-        {/* <Edges color={"black"}></Edges> */}
+        <Edges color={"black"}></Edges>
       </mesh>
 
       {nameVisible && checkScreenWidth > 640 ? (

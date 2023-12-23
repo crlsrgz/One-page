@@ -1,6 +1,8 @@
 import { Environment, GizmoViewport, OrbitControls } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
+// eslint-disable-next-line import/no-unresolved
+import hdrEnvironment from "/env.hdr?url";
 
 /* ═══ Extras ═══ */
 import gsap from "gsap";
@@ -56,16 +58,16 @@ export default function Detail(props) {
         minDistance={2}
         // enablePan={false}
       />
-      <GizmoViewport
+      {/* <GizmoViewport
         axisColors={["red", "green", "blue"]}
         labelColor="black"
         position={[-2, 0, 0]}
         scale={0.4}
         hideAxisHeads
-      />
+      /> */}
 
       <LightSetup posX={-3} posY={5} posZ={4} />
-      <Environment intensity={1} files={"env.hdr"} />
+      <Environment intensity={1} files={hdrEnvironment} />
 
       {/* /* ═══ Models ═══ */}
       <ModelDetail explodedModel={props.explodedModel} />

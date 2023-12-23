@@ -95,7 +95,7 @@ export default function SceneDetail() {
           }}
           shadows={true}
         >
-          <Perf position="top-right" />
+          {/* <Perf position="top-right" /> */}
           <Detail explodedModel={explodeModel} resetMe={resetCamera} />
         </Canvas>
         <div className="absolute right-0 top-0 -z-30 flex h-full w-full select-none items-center justify-center overflow-hidden bg-clip-text pb-10 text-[24rem] text-zinc-800">
@@ -105,11 +105,11 @@ export default function SceneDetail() {
         </div>
         <div
           id="detail-description-container"
-          className="hidde fixed bottom-0 left-0 h-36 w-full  px-6 transition-all sm:hidden"
+          className="fixed bottom-0 left-0 hidden h-36  w-full px-6 transition-all sm:hidden"
         >
           <div
             id="detailTitle"
-            className="h-auto w-full rounded-t-lg bg-zinc-900 bg-opacity-80 px-6 pt-2 text-xl sm:hidden "
+            className="h-auto w-full rounded-t-lg bg-zinc-900 bg-opacity-80 px-6 pt-2 text-xl sm:hidden"
           >
             {" "}
           </div>

@@ -1,7 +1,8 @@
 const explodedModelPositions = {
   ziegel: {
     name: `Roof Tiles`,
-    description: `Interlocking tiles, French profile`,
+    description: `Interlocking tiles, French profile.
+    Double waterproof, headlock`,
     position: {
       x: 0,
       y: Math.random() * 0.05 + 0.35,
@@ -36,7 +37,8 @@ const explodedModelPositions = {
   },
   unterdeckbahn: {
     name: `Underlay membrane`,
-    description: `Diffusion open underlay`,
+    description: `Diffusion open underlay.
+    Watertight, UV resistant`,
     position: {
       x: 0.5,
       y: 0.4,
@@ -47,7 +49,7 @@ const explodedModelPositions = {
   },
   schallung: {
     name: `Roof Sheating`,
-    description: ``,
+    description: `Fir boards, stagered joints over Rafters`,
     position: {
       x: 0,
       y: 0,
@@ -57,8 +59,8 @@ const explodedModelPositions = {
     titlePosition: [-0.7, 2.7, 0.8],
   },
   sparren: {
-    name: `Rafter`,
-    description: `Mineral wool`,
+    name: `Roof rafter`,
+    description: `Fir, coated`,
     position: {
       x: 0,
       y: 0,
@@ -71,8 +73,8 @@ const explodedModelPositions = {
     name: `Roof cavity insulation`,
     description: `Cellulose insulation`,
     position: {
-      x: 0,
-      y: 0,
+      x: 0.5,
+      y: 0.33,
       z: 0,
     },
     alpha: 0.01,
