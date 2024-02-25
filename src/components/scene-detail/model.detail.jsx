@@ -13,7 +13,7 @@ function ModelParts(props) {
   const [objectName, setObjectName] = useState(["-", "..."]);
   const refModelPart = useRef();
 
-  //: DOM
+  //: DOM Manipulation super not recommended
   const checkScreenWidth = window.innerWidth;
   const detailInfoBoxMobileContainer = document.getElementById(
     "detail-description-container",
@@ -21,8 +21,9 @@ function ModelParts(props) {
   const detailInfoBoxMobile = document.getElementById("detailTitle");
   const detailInfoBoxMobileText = document.getElementById("detailText");
 
-  //: Explode Model
-  //: props.explodedModel are affected by the button at the top level scene
+  //: Explode Model functionality functionality
+  //: props.explodedModel are affected by the button at the top level scene functionality
+  //: in the scene component explodeModel, setExplodeModel
 
   const explodedModelPositionsKeys = Object.keys(explodedModelPositions);
   const explodedModelPositionsLength = explodedModelPositionsKeys.length;
@@ -172,6 +173,7 @@ export function ModelDetail(props) {
     color: "#7a0e0e",
     roughness: 0.9,
   });
+
   /* ═══ Traverse model to changge parameters ═══ */
 
   model.scene.traverse(function (node) {
@@ -184,10 +186,6 @@ export function ModelDetail(props) {
 
   return (
     <>
-      {/* <mesh>
-        <primitive object={model.scene} castShadow />
-      </mesh> */}
-
       {model.scene.children.map((element, index) => {
         return (
           <ModelParts
