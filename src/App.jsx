@@ -1,8 +1,10 @@
 import React, { Suspense } from "react";
 import ComponentMainNav from "./components/navigation.component";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+/////////
 import SceneHomepage from "./components/scene.component.homepage";
 import SceneDetail from "./components/scene.component.detail";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SceneProduct from "./components/scene.component.product";
 import SceneCube from "./components/scene.component.cube";
 import SceneLandscape from "./components/scene.component.landscape";
 import SceneBuilding from "./components/scene.component.building";
@@ -26,11 +28,12 @@ const App = () => {
             </header>
             <div className="flex flex-grow ">
               <Routes>
-                <Route path={"/landscape"} element={<SceneLandscape />} />
                 <Route path={"/"} element={<SceneHomepage />} />
-                <Route path={"/detail"} element={<SceneDetail />} />
                 <Route path={"/cube"} element={<SceneCube />} />
+                <Route path={"/detail"} element={<SceneDetail />} />
+                <Route path={"/product"} element={<SceneProduct />} />
                 <Route path={"/building"} element={<SceneBuilding />} />
+                <Route path={"/landscape"} element={<SceneLandscape />} />
               </Routes>
             </div>
           </BrowserRouter>

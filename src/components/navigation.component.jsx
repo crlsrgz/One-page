@@ -27,7 +27,7 @@ export default function ComponentMainNav() {
         <Link to={"/detail"} className="underline-offset-8 hover:underline">
           Detail
         </Link>
-        <Link to={"/"} className="underline-offset-8 hover:underline">
+        <Link to={"/product"} className="underline-offset-8 hover:underline">
           Product
         </Link>
         <Link to={"/landscape"} className="underline-offset-8 hover:underline">
@@ -93,7 +93,11 @@ export default function ComponentMainNav() {
               </Link>
             </li>
             <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
-              <Link className="block h-24" to={"/"} onClick={hideNavigation}>
+              <Link
+                className="block h-24"
+                to={"/product"}
+                onClick={hideNavigation}
+              >
                 Product
               </Link>
             </li>
