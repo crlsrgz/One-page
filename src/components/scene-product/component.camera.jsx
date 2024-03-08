@@ -1,25 +1,18 @@
-import { GizmoViewport, Html, OrbitControls } from "@react-three/drei";
-import { Canvas, useThree } from "@react-three/fiber";
-import { Suspense, useEffect, useRef, useState } from "react";
-import { Euler, Quaternion, Vector3 } from "three";
-import {
-  EffectComposer,
-  Outline,
-  Selection,
-  Select,
-} from "@react-three/postprocessing";
+import checkScreen from "../../globals/screen";
+import { useThree } from "@react-three/fiber";
+import { useEffect } from "react";
 import gsap from "gsap";
-import { Perf } from "r3f-perf";
 
 export default function CameraControl(props) {
   const { camera } = useThree();
+  const cameraPosition = checkScreen.width >= 567 ? [0, 0.3, 3] : [0, 0.3, 3];
   useEffect(() => {
     if (props.firstLoad.current) {
       console.log("hello");
       gsap.to(camera.position, {
-        x: 10,
-        y: 10,
-        z: 10,
+        x: cameraPosition[0],
+        y: cameraPosition[1],
+        z: cameraPosition[2],
         duration: 2,
         delay: 0.1,
       });

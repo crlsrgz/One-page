@@ -10,9 +10,6 @@ import SceneLandscape from "./components/scene.component.landscape";
 import SceneBuilding from "./components/scene.component.building";
 
 const App = () => {
-  const screenHeight = window.screen.height;
-  console.log(screenHeight);
-
   //  document.querySelector("body").style["overflow"] = "hidden";
 
   return (

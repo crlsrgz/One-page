@@ -1,6 +1,7 @@
-import { GizmoViewport, Html, OrbitControls } from "@react-three/drei";
-import { Canvas, useThree } from "@react-three/fiber";
-import { Suspense, useEffect, useRef, useState } from "react";
+import checkScreen from "../globals/screen";
+import { GizmoViewport, OrbitControls, SpotLight } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { useRef, useState } from "react";
 import LoadPercent from "./component.loadPercent";
 import LightSetup from "./scene-detail/component.lights";
 import { Perf } from "r3f-perf";
@@ -15,8 +16,7 @@ export default function SceneProduct() {
   const initalRender = useRef(false);
 
   /* 💡 set the camera position depending on the screen size */
-  const checkScreenWidth = window.innerWidth;
-  const cameraPosition = checkScreenWidth >= 567 ? [-3, 3, 4] : [-4, 3, 6];
+  const cameraPosition = checkScreen.width >= 567 ? [0, 0.3, 3] : [0, 0.3, 3];
 
   function testFunction() {
     console.log("testing functionality");
@@ -38,7 +38,6 @@ export default function SceneProduct() {
           firstLoad={initalRender}
         />
         <Perf />
-        <LightSetup />
         <GizmoViewport
           axisColors={["red", "green", "blue"]}
           labelColor="black"
@@ -49,7 +48,7 @@ export default function SceneProduct() {
 
         <OrbitControls
           makeDefault
-          target={[0, 0.0, 0]}
+          target={[0, 0.4, 0]}
           maxPolarAngle={Math.PI * 0.65}
           minPolarAngle={Math.PI * -0.85}
           maxAzimuthAngle={Math.PI * 0.5}
@@ -58,16 +57,41 @@ export default function SceneProduct() {
           minDistance={2}
         />
 
+        {/* <LightSetup position={[0, 4, 3]} /> */}
+        <SpotLight
+          position={[1, 3, 0]}
+          target-position={[1, 0, 0]}
+          angle={Math.PI / 6}
+          power={6}
+          radiusBottom={1}
+          penumbra={0.21}
+          distance={3.5}
+          shadow-mapSize={[1024, 1024]}
+          attenuation={0}
+        />
+
+        <SpotLight
+          position={[-1, 3, 0]}
+          target-position={[-1, 0, 0]}
+          angle={Math.PI / 6}
+          radiusTop={0.1}
+          radiusBottom={1}
+          distance={3.5}
+          penumbra={0.21}
+          shadow-mapSize={[1024, 1024]}
+          attenuation={2}
+        />
         <mesh
           position={[0, 0.45, 0]}
           onClick={() => setResetCameraPosition(!resetCameraPosition)}
+          castShadow
         >
           <boxGeometry args={[0.6, 0.9, 0.5]} />
           <meshStandardMaterial color={"gray"} />
         </mesh>
         <mesh
           scale={4}
-          position={[0, -0.05, 0]}
+          position={[0, -0.005, 0]}
           receiveShadow
           castShadow
           onClick={testFunction}
@@ -75,10 +99,16 @@ export default function SceneProduct() {
           <boxGeometry args={[1, 0.01, 1]} />
           <meshStandardMaterial color={"slategrey"} />
         </mesh>
-        <InfoTags />
-        <Html className="cursor-pointer" position={[5, 0, 5]}>
-          <button onClick={() => console.log("html test")}>hhhhhh</button>
-        </Html>
+        <InfoTags
+          value="1"
+          handleClick={() => setResetCameraPosition(!resetCameraPosition)}
+          position={[0, 1, 0.3]}
+        />
+        <InfoTags
+          value="2"
+          handleClick={() => setResetCameraPosition(!resetCameraPosition)}
+          position={[0.3, 0.45, 0.3]}
+        />
       </Canvas>
     </>
   );
