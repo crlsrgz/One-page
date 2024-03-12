@@ -7,6 +7,7 @@ import LightSetup from "./scene-detail/component.lights";
 import { Perf } from "r3f-perf";
 import CameraControl from "./scene-product/component.camera";
 import InfoTags from "./scene-product/component.InfoTags";
+import { ModelProduct } from "./scene-product/model.product";
 
 export default function SceneProduct() {
   /* 💡 reset camera function controls the props of the camera control component
@@ -81,14 +82,15 @@ export default function SceneProduct() {
           shadow-mapSize={[1024, 1024]}
           attenuation={2}
         />
-        <mesh
+        <ModelProduct />
+        {/* <mesh
           position={[0, 0.45, 0]}
           onClick={() => setResetCameraPosition(!resetCameraPosition)}
           castShadow
         >
           <boxGeometry args={[0.6, 0.9, 0.5]} />
           <meshStandardMaterial color={"gray"} />
-        </mesh>
+        </mesh> */}
         <mesh
           scale={4}
           position={[0, -0.005, 0]}
