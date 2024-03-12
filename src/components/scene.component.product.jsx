@@ -14,6 +14,7 @@ export default function SceneProduct() {
       the inital render ref prevents the movement of the camera on load
       and it's updated inside the camera control component*/
   const [resetCameraPosition, setResetCameraPosition] = useState(false);
+  const [explode, setExplode] = useState(false);
   const initalRender = useRef(false);
 
   /* 💡 set the camera position depending on the screen size */
@@ -96,7 +97,7 @@ export default function SceneProduct() {
           shadow-mapSize={[1024, 1024]}
           attenuation={2}
         />
-        <ModelProduct />
+        <ModelProduct explode={explode} />
         {/* <mesh
           position={[0, 0.45, 0]}
           onClick={() => setResetCameraPosition(!resetCameraPosition)}
@@ -122,7 +123,7 @@ export default function SceneProduct() {
         />
         <InfoTags
           value="2"
-          handleClick={() => setResetCameraPosition(!resetCameraPosition)}
+          handleClick={() => setExplode(!explode)}
           position={[0.3, 0.45, 0.3]}
         />
       </Canvas>
