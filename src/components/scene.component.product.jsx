@@ -60,6 +60,7 @@ export default function SceneProduct() {
 
         {/* <LightSetup position={[0, 4, 3]} /> */}
         <SpotLight
+          intensity={3}
           position={[1, 3, 0]}
           target-position={[1, 0, 0]}
           angle={Math.PI / 6}
@@ -72,12 +73,25 @@ export default function SceneProduct() {
         />
 
         <SpotLight
+          intensity={3}
           position={[-1, 3, 0]}
           target-position={[-1, 0, 0]}
           angle={Math.PI / 6}
           radiusTop={0.1}
           radiusBottom={1}
           distance={3.5}
+          penumbra={0.21}
+          shadow-mapSize={[1024, 1024]}
+          attenuation={2}
+        />
+        <SpotLight
+          intensity={2}
+          position={[0, 3, 2]}
+          target-position={[0, 0, 0]}
+          angle={Math.PI / 6}
+          radiusTop={0.1}
+          radiusBottom={1}
+          distance={5}
           penumbra={0.21}
           shadow-mapSize={[1024, 1024]}
           attenuation={2}
