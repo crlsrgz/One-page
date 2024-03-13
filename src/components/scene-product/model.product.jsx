@@ -28,61 +28,42 @@ export function ModelProduct({ explode }) {
   // });
   const [isDoorOpen, setIsDoorOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const openDoor = animations.actions["openDoor"];
-  const closeDoor = animations.actions["closeDoor"];
-  const openDrawer = animations.actions["openDraw"];
-  const closeDrawer = animations.actions["closeDraw"];
-  console.log(animations);
-  useEffect(() => {
-    // the following checks if exploded is false prevents first rerender
-    if (explode && !isDoorOpen) {
-      openDoor.reset();
+
+  function playAnimation(
+    actions,
+    forwardAction,
+    backwardAction,
+    state = false,
+  ) {
+    if (explode && !state) {
+      actions[forwardAction].reset();
       //if clampWhenFinished is set to true
       //the animation will automatically be paused on its last frame.
-      openDoor.clampWhenFinished = true;
-      openDoor.timeScale = 1;
+      actions[forwardAction].clampWhenFinished = true;
+      actions[forwardAction].timeScale = 1;
       // Sets the loop mode and the number of repetitions. This method can be chained.
-      openDoor.setLoop(LoopOnce, 1);
-      openDoor.play();
+      actions[forwardAction].setLoop(LoopOnce, 1);
+      actions[forwardAction].play();
       setIsDoorOpen(true);
     }
-    if (isDoorOpen) {
-      closeDoor.reset();
-      closeDoor.clampWhenFinished = true;
-      closeDoor.timeScale = 1;
-      closeDoor.setLoop(LoopOnce, 1);
-      closeDoor.play();
+    if (state) {
+      actions[backwardAction].reset();
+      actions[backwardAction].clampWhenFinished = true;
+      actions[backwardAction].timeScale = 1;
+      actions[backwardAction].setLoop(LoopOnce, 1);
+      actions[backwardAction].play();
       setIsDoorOpen(false);
-    }
-    if (explode && !isDrawerOpen) {
-      openDrawer.reset();
-      //if clampWhenFinished is set to true
-      //the animation will automatically be paused on its last frame.
-      openDrawer.clampWhenFinished = true;
-      openDrawer.timeScale = 1;
-      // Sets the loop mode and the number of repetitions. This method can be chained.
-      openDrawer.setLoop(LoopOnce, 1);
-      openDrawer.play();
-      setIsDoorOpen(true);
-    }
-    if (isDrawerOpen) {
-      closeDrawer.reset();
-      closeDrawer.clampWhenFinished = true;
-      closeDrawer.timeScale = 1;
-      closeDrawer.setLoop(LoopOnce, 1);
-      closeDrawer.play();
-      setIsDrawerOpen(false);
     }
 
     return () => {
-      // Prevent mixing of animations by addding fadeout
-      openDoor.fadeOut(0.5);
-      closeDoor.fadeOut(0.5);
-      openDrawer.fadeOut(0.5);
-      closeDrawer.fadeOut(0.5);
-
-      console.log("dispose");
+      actions[forwardAction].fadeOut(0.5);
+      actions[backwardAction].fadeOut(0.5);
     };
+  }
+  useEffect(() => {
+    // the following checks if exploded is false prevents first rerender
+    playAnimation(animations.actions, "openDoor", "closeDoor", isDoorOpen);
+    playAnimation(animations.actions, "openDraw", "closeDraw", isDrawerOpen);
 
     // the following checks if exploded is false prevents first rerender
   }, [explode]);
