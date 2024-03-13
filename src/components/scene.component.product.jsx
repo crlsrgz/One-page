@@ -1,6 +1,6 @@
 import checkScreen from "../globals/screen";
 import { GizmoViewport, OrbitControls, SpotLight } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import LoadPercent from "./component.loadPercent";
 import LightSetup from "./scene-detail/component.lights";
@@ -39,6 +39,7 @@ export default function SceneProduct() {
           resetCamera={resetCameraPosition}
           firstLoad={initalRender}
         />
+        {/* Orbit controls inside the Camera control component, to limit pan */}
         <Perf />
         <GizmoViewport
           axisColors={["red", "green", "blue"]}
@@ -47,18 +48,6 @@ export default function SceneProduct() {
           scale={0.8}
           hideAxisHeads
         />
-
-        <OrbitControls
-          makeDefault
-          target={[0, 0.4, 0]}
-          maxPolarAngle={Math.PI * 0.65}
-          minPolarAngle={Math.PI * -0.85}
-          maxAzimuthAngle={Math.PI * 0.5}
-          minAzimuthAngle={Math.PI * -0.45}
-          maxDistance={10}
-          minDistance={2}
-        />
-
         {/* <LightSetup position={[0, 4, 3]} /> */}
         <SpotLight
           intensity={3}
@@ -69,8 +58,9 @@ export default function SceneProduct() {
           radiusBottom={1}
           penumbra={0.21}
           distance={3.5}
-          shadow-mapSize={[1024, 1024]}
           attenuation={0}
+          shadow-mapSize={[1024, 1024]}
+          shadow-normalBias={0.12}
         />
 
         <SpotLight
@@ -82,8 +72,9 @@ export default function SceneProduct() {
           radiusBottom={1}
           distance={3.5}
           penumbra={0.21}
-          shadow-mapSize={[1024, 1024]}
           attenuation={2}
+          shadow-mapSize={[1024, 1024]}
+          shadow-normalBias={0.12}
         />
         <SpotLight
           intensity={2}
@@ -94,8 +85,9 @@ export default function SceneProduct() {
           radiusBottom={1}
           distance={5}
           penumbra={0.21}
-          shadow-mapSize={[1024, 1024]}
           attenuation={2}
+          shadow-mapSize={[1024, 1024]}
+          shadow-normalBias={0.12}
         />
         <ModelProduct explode={explode} />
         {/* <mesh
