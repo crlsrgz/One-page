@@ -2,8 +2,9 @@ import { useAnimations, useGLTF } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import importProductModel from "/product.glb?url";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { LoopOnce } from "three";
 // import importProductModel from "/wall.glb?url";
 const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
@@ -21,34 +22,41 @@ const yourFunction = async (model) => {
 export function ModelProduct({ explode }) {
   const productModel = useGLTF(importProductModel);
   const animations = useAnimations(productModel.animations, productModel.scene);
-  const refModelPart = useRef();
-  console.log(productModel);
 
-  // productModel.scene.castShadow = true;
-  yourFunction(productModel);
-  // productModel.scene.traverse((node) => {
-  //   if (node.isMesh) {
-  //     node.castShadow = true;
-  //     node.receiveShadow = true;
-  //   }
+  // yourFunction(productModel);
+
   // });
-
+  const [isDoorOpen, setIsDoorOpen] = useState(false);
+  const openDoor = animations.actions["doorOpen"];
+  const closeDoor = animations.actions["doorClose"];
   useEffect(() => {
-    const openDoor = animations.actions["bb"];
     // the following checks if exploded is false prevents first rerender
-    if (explode) {
+    if (explode && !isDoorOpen) {
+      openDoor.reset();
+      //if clampWhenFinished is set to true
+      //the animation will automatically be paused on its last frame.
+      openDoor.clampWhenFinished = true;
+      openDoor.timeScale = 1;
+      // Sets the loop mode and the number of repetitions. This method can be chained.
+      openDoor.setLoop(LoopOnce, 1);
       openDoor.play();
-
-      const duration = openDoor.getClip().duration;
-      console.log(duration);
-      setTimeout(() => {
-        openDoor.halt();
-      }, duration * 500);
-      return () => {
-        openDoor.reset().play();
-        console.log("dispose");
-      };
+      setIsDoorOpen(true);
     }
+    if (isDoorOpen) {
+      closeDoor.reset();
+      closeDoor.clampWhenFinished = true;
+      closeDoor.timeScale = 1;
+      closeDoor.setLoop(LoopOnce, 1);
+      closeDoor.play();
+      setIsDoorOpen(false);
+    }
+    return () => {
+      // Prevent mixing of animations by addding fadeout
+      openDoor.fadeOut(0.5);
+      closeDoor.fadeOut(0.5);
+      console.log("dispose");
+    };
+    // the following checks if exploded is false prevents first rerender
   }, [explode]);
 
   return <primitive object={productModel.scene} />;
