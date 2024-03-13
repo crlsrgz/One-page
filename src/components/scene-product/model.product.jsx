@@ -27,8 +27,12 @@ export function ModelProduct({ explode }) {
 
   // });
   const [isDoorOpen, setIsDoorOpen] = useState(false);
-  const openDoor = animations.actions["doorOpen"];
-  const closeDoor = animations.actions["doorClose"];
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const openDoor = animations.actions["openDoor"];
+  const closeDoor = animations.actions["closeDoor"];
+  const openDrawer = animations.actions["openDraw"];
+  const closeDrawer = animations.actions["closeDraw"];
+  console.log(animations);
   useEffect(() => {
     // the following checks if exploded is false prevents first rerender
     if (explode && !isDoorOpen) {
@@ -50,12 +54,36 @@ export function ModelProduct({ explode }) {
       closeDoor.play();
       setIsDoorOpen(false);
     }
+    if (explode && !isDrawerOpen) {
+      openDrawer.reset();
+      //if clampWhenFinished is set to true
+      //the animation will automatically be paused on its last frame.
+      openDrawer.clampWhenFinished = true;
+      openDrawer.timeScale = 1;
+      // Sets the loop mode and the number of repetitions. This method can be chained.
+      openDrawer.setLoop(LoopOnce, 1);
+      openDrawer.play();
+      setIsDoorOpen(true);
+    }
+    if (isDrawerOpen) {
+      closeDrawer.reset();
+      closeDrawer.clampWhenFinished = true;
+      closeDrawer.timeScale = 1;
+      closeDrawer.setLoop(LoopOnce, 1);
+      closeDrawer.play();
+      setIsDrawerOpen(false);
+    }
+
     return () => {
       // Prevent mixing of animations by addding fadeout
       openDoor.fadeOut(0.5);
       closeDoor.fadeOut(0.5);
+      openDrawer.fadeOut(0.5);
+      closeDrawer.fadeOut(0.5);
+
       console.log("dispose");
     };
+
     // the following checks if exploded is false prevents first rerender
   }, [explode]);
 
