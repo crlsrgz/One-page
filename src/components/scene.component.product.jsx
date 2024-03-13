@@ -8,6 +8,7 @@ import { Perf } from "r3f-perf";
 import CameraControl from "./scene-product/component.camera";
 import InfoTags from "./scene-product/component.InfoTags";
 import { ModelProduct } from "./scene-product/model.product";
+import gsap from "gsap";
 
 export default function SceneProduct() {
   /* 💡 reset camera function controls the props of the camera control component
@@ -20,10 +21,27 @@ export default function SceneProduct() {
   /* 💡 set the camera position depending on the screen size */
   const cameraPosition = checkScreen.width >= 567 ? [0, 0.3, 3] : [0, 0.3, 3];
 
-  function testFunction() {
-    console.log("testing functionality");
-  }
+  const refSpotLights = useRef();
+  const [spotLightsOn, setSpotLightsOn] = useState(true);
 
+  function switchLights(refSpotLights) {
+    console.log(refSpotLights);
+    if (spotLightsOn) {
+      gsap.to(refSpotLights.current, {
+        intensity: 0,
+        delay: 0.5,
+        duration: 1.5,
+      });
+      setSpotLightsOn(false);
+    } else if (!spotLightsOn) {
+      gsap.to(refSpotLights.current, {
+        intensity: 2,
+        delay: 0.5,
+        duration: 1.5,
+      });
+      setSpotLightsOn(true);
+    }
+  }
   return (
     <>
       <Canvas
@@ -77,6 +95,7 @@ export default function SceneProduct() {
           shadow-normalBias={0.12}
         />
         <SpotLight
+          ref={refSpotLights}
           intensity={2}
           position={[0, 3, 2]}
           target-position={[0, 0, 0]}
@@ -98,7 +117,7 @@ export default function SceneProduct() {
           <boxGeometry args={[0.6, 0.9, 0.5]} />
           <meshStandardMaterial color={"gray"} />
         </mesh> */}
-        <mesh
+        {/* <mesh
           scale={4}
           position={[0, -0.005, 0]}
           receiveShadow
@@ -107,7 +126,7 @@ export default function SceneProduct() {
         >
           <boxGeometry args={[1, 0.01, 1]} />
           <meshStandardMaterial color={"slategrey"} />
-        </mesh>
+        </mesh> */}
         <InfoTags
           value="1"
           handleClick={() => setResetCameraPosition(!resetCameraPosition)}
@@ -117,6 +136,13 @@ export default function SceneProduct() {
           value="2"
           handleClick={() => setExplode(!explode)}
           position={[0.3, 0.45, 0.3]}
+        />
+        <InfoTags
+          value="3"
+          handleClick={() => {
+            switchLights(refSpotLights);
+          }}
+          position={[-0.8, 0.45, 0.3]}
         />
       </Canvas>
     </>
