@@ -133,12 +133,13 @@ export default function SceneProduct() {
           position={[0, 1, 0.3]}
         />
         <InfoTags
-          value="2"
+          value="x"
           handleClick={() => setExplode(!explode)}
-          position={[0.3, 0.45, 0.3]}
+          position={[0.8, 0.45, 0.3]}
         />
+
         <InfoTags
-          value="3"
+          value="4"
           handleClick={() => {
             switchLights(refSpotLights);
           }}
@@ -148,3 +149,4 @@ export default function SceneProduct() {
     </>
   );
 }
+0;
