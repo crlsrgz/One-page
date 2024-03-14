@@ -66,7 +66,7 @@ export default function SceneProduct() {
           scale={0.8}
           hideAxisHeads
         />
-        {/* <LightSetup position={[0, 4, 3]} /> */}
+        <ambientLight intensity={0.05} />
         <SpotLight
           intensity={3}
           position={[1, 3, 0]}
