@@ -31,32 +31,35 @@ export default function CameraControl(props) {
     <OrbitControls
       makeDefault
       target={[0, 0.4, 0]}
-      maxPolarAngle={Math.PI * 0.5}
-      minPolarAngle={Math.PI * 0.2}
-      maxAzimuthAngle={Math.PI * 0.5}
-      minAzimuthAngle={Math.PI * -0.45}
-      maxDistance={2.5}
-      minDistance={1}
       enablePan={true}
-      onChange={(e) => {
-        const maxX = 0.5;
-        const minX = -0.5;
-        const maxY = 0.5;
-        const minY = 0.2;
-        const x = e?.target.target.x;
-        const y = e?.target.target.y;
 
-        if (x < minX || x > maxX) {
-          e?.target.target.setX(x < minX ? minX : maxX);
-          camera.position.setX(cameraLastPosition.current.x);
-        }
-        if (y < minY || y > maxY) {
-          e?.target.target.setY(y < minY ? minY : maxY);
-          camera.position.setY(cameraLastPosition.current.y);
-        }
-        cameraLastPosition.current.x = camera.position.x;
-        cameraLastPosition.current.y = camera.position.y;
-      }}
+      /* ═══ disabled dor dev ═══ */
+
+      // maxPolarAngle={Math.PI * 0.5}
+      // minPolarAngle={Math.PI * 0.2}
+      // maxAzimuthAngle={Math.PI * 0.5}
+      // minAzimuthAngle={Math.PI * -0.45}
+      // maxDistance={2.5}
+      // minDistance={1}
+      // onChange={(e) => {
+      //   const maxX = 0.5;
+      //   const minX = -0.5;
+      //   const maxY = 0.5;
+      //   const minY = 0.2;
+      //   const x = e?.target.target.x;
+      //   const y = e?.target.target.y;
+
+      //   if (x < minX || x > maxX) {
+      //     e?.target.target.setX(x < minX ? minX : maxX);
+      //     camera.position.setX(cameraLastPosition.current.x);
+      //   }
+      //   if (y < minY || y > maxY) {
+      //     e?.target.target.setY(y < minY ? minY : maxY);
+      //     camera.position.setY(cameraLastPosition.current.y);
+      //   }
+      //   cameraLastPosition.current.x = camera.position.x;
+      //   cameraLastPosition.current.y = camera.position.y;
+      // }}
     />
   );
 }

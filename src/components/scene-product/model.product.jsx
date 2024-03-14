@@ -24,7 +24,7 @@ export function ModelProduct({ explode }) {
   const productModel = useGLTF(importProductModel);
   const animations = useAnimations(productModel.animations, productModel.scene);
 
-  // yourFunction(productModel);
+  yourFunction(productModel);
 
   /* ::::::::: check the states to activate actions ::::::::: */
   const [openDoorAction, setOpenDoorAction] = useState(false);
@@ -115,22 +115,5 @@ export function ModelProduct({ explode }) {
       />
     </>
   );
-  // return (
-  //   <>
-  //     {productModel.scene.children.map((element, index) => {
-  //       console.log(element);
-  //       // element.castShadow = true;
-  //       return (
-  //         <mesh
-  //           key={index}
-  //           ref={refModelPart}
-  //           geometry={element.geometry}
-  //           material={element.material}
-  //           position={element.position}
-  //         ></mesh>
-  //       );
-  //     })}
-  //   </>
-  // );
 }
 useGLTF.preload(importProductModel);

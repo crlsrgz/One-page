@@ -1,14 +1,14 @@
 import checkScreen from "../globals/screen";
-import { GizmoViewport, OrbitControls, SpotLight } from "@react-three/drei";
-import { Canvas, useThree } from "@react-three/fiber";
+import { GizmoViewport, SpotLight } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import LoadPercent from "./component.loadPercent";
-import LightSetup from "./scene-detail/component.lights";
 import { Perf } from "r3f-perf";
 import CameraControl from "./scene-product/component.camera";
 import InfoTags from "./scene-product/component.InfoTags";
 import { ModelProduct } from "./scene-product/model.product";
 import gsap from "gsap";
+import LightDirectional from "./scene-product/component.LightDirectional";
 
 export default function SceneProduct() {
   /* 💡 reset camera function controls the props of the camera control component
@@ -58,7 +58,7 @@ export default function SceneProduct() {
           firstLoad={initalRender}
         />
         {/* Orbit controls inside the Camera control component, to limit pan */}
-        <Perf />
+        <Perf position="bottom-left" />
         <GizmoViewport
           axisColors={["red", "green", "blue"]}
           labelColor="black"
@@ -66,10 +66,12 @@ export default function SceneProduct() {
           scale={0.8}
           hideAxisHeads
         />
+
         <ambientLight intensity={0.05} />
+        <LightDirectional />
         <SpotLight
           intensity={3}
-          position={[1, 3, 0]}
+          position={[1, 2.38, 0]}
           target-position={[1, 0, 0]}
           angle={Math.PI / 6}
           power={6}
@@ -83,7 +85,7 @@ export default function SceneProduct() {
 
         <SpotLight
           intensity={3}
-          position={[-1, 3, 0]}
+          position={[-1, 2.38, 0]}
           target-position={[-1, 0, 0]}
           angle={Math.PI / 6}
           radiusTop={0.1}
@@ -97,7 +99,7 @@ export default function SceneProduct() {
         <SpotLight
           ref={refSpotLights}
           intensity={2}
-          position={[0, 3, 2]}
+          position={[0, 2.38, 2]}
           target-position={[0, 0, 0]}
           angle={Math.PI / 6}
           radiusTop={0.1}
@@ -109,24 +111,7 @@ export default function SceneProduct() {
           shadow-normalBias={0.12}
         />
         <ModelProduct explode={explode} />
-        {/* <mesh
-          position={[0, 0.45, 0]}
-          onClick={() => setResetCameraPosition(!resetCameraPosition)}
-          castShadow
-        >
-          <boxGeometry args={[0.6, 0.9, 0.5]} />
-          <meshStandardMaterial color={"gray"} />
-        </mesh> */}
-        {/* <mesh
-          scale={4}
-          position={[0, -0.005, 0]}
-          receiveShadow
-          castShadow
-          onClick={testFunction}
-        >
-          <boxGeometry args={[1, 0.01, 1]} />
-          <meshStandardMaterial color={"slategrey"} />
-        </mesh> */}
+
         <InfoTags
           value="1"
           handleClick={() => setResetCameraPosition(!resetCameraPosition)}
