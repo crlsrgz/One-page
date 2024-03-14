@@ -32,16 +32,16 @@ export default function CameraControl(props) {
       makeDefault
       target={[0, 0.4, 0]}
       maxPolarAngle={Math.PI * 0.5}
-      minPolarAngle={Math.PI * -0.85}
+      minPolarAngle={Math.PI * 0.2}
       maxAzimuthAngle={Math.PI * 0.5}
       minAzimuthAngle={Math.PI * -0.45}
-      maxDistance={8}
-      minDistance={2}
+      maxDistance={2.5}
+      minDistance={1}
       enablePan={true}
       onChange={(e) => {
-        const maxX = 1;
-        const minX = -1;
-        const maxY = 1;
+        const maxX = 0.5;
+        const minX = -0.5;
+        const maxY = 0.5;
         const minY = 0.2;
         const x = e?.target.target.x;
         const y = e?.target.target.y;
