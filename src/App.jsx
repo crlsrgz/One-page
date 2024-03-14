@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useReducer, useRef, useState } from "react";
 import ComponentMainNav from "./components/navigation.component";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 /////////
@@ -8,22 +8,20 @@ import SceneProduct from "./components/scene.component.product";
 import SceneCube from "./components/scene.component.cube";
 import SceneLandscape from "./components/scene.component.landscape";
 import SceneBuilding from "./components/scene.component.building";
-
 const App = () => {
   //  document.querySelector("body").style["overflow"] = "hidden";
-
   return (
     <main
       className="box-border flex h-screen  w-screen flex-col"
       style={{ zIndex: "-1" }}
     >
-      <div className="canvas-element flex h-full w-full select-none flex-col">
+      <div className="canvas-element h-full w-full select-none ">
         <Suspense>
           <BrowserRouter>
-            <header className="z-50 flex h-auto flex-row items-baseline justify-start gap-4 px-12 pb-4 pt-6 shadow-2xl  shadow-zinc-900">
+            <header className="h-18 fixed z-50 flex w-full  flex-row content-start justify-start gap-4 px-12 pb-2  pt-2 ">
               <ComponentMainNav />
             </header>
-            <div className="flex flex-grow ">
+            <div className="flex h-full w-full flex-grow ">
               <Routes>
                 <Route path={"/"} element={<SceneHomepage />} />
                 <Route path={"/cube"} element={<SceneCube />} />

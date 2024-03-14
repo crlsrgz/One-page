@@ -7,8 +7,7 @@ import gsap from "gsap";
 import { LoopOnce } from "three";
 import InfoTags from "./component.InfoTags";
 // import importProductModel from "/wall.glb?url";
-const delay = (ms) => new Promise((res) => setTimeout(res, ms));
-
+import { delay } from "../../globals/screen";
 const yourFunction = async (model) => {
   await delay(2000);
   console.log("Waited 2s");

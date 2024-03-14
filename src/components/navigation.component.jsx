@@ -1,9 +1,10 @@
 import { Icon } from "@iconify/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function ComponentMainNav() {
   const [mobileNav, setMobileNav] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(true);
   function hideNavigation() {
     if (mobileNav) {
       setMobileNav(false);
@@ -17,23 +18,28 @@ export default function ComponentMainNav() {
       <h1 className="cursor-pointer select-none font-yeseva text-6xl">
         <Link to={"/"}>Cubos</Link>
       </h1>{" "}
-      <nav className="mx-12 hidden w-full flex-row items-center justify-start gap-8 text-xl sm:flex">
-        <Link to={"/"} className="underline-offset-8 hover:underline">
-          Home
-        </Link>
-        <Link to={"/cube"} className="underline-offset-8 hover:underline">
-          Cube
-        </Link>
-        <Link to={"/detail"} className="underline-offset-8 hover:underline">
-          Detail
-        </Link>
-        <Link to={"/product"} className="underline-offset-8 hover:underline">
-          Product
-        </Link>
-        <Link to={"/landscape"} className="underline-offset-8 hover:underline">
-          Landscape
-        </Link>
-      </nav>
+      <button className={`w-full px-12`}>
+        <nav className="mx-12 hidden h-full w-full flex-row justify-end gap-8 text-xl sm:flex">
+          <Link to={"/"} className="underline-offset-8 hover:underline">
+            Home
+          </Link>
+          <Link to={"/cube"} className="underline-offset-8 hover:underline">
+            Cube
+          </Link>
+          <Link to={"/detail"} className="underline-offset-8 hover:underline">
+            Detail
+          </Link>
+          <Link to={"/product"} className="underline-offset-8 hover:underline">
+            Product
+          </Link>
+          <Link
+            to={"/landscape"}
+            className="underline-offset-8 hover:underline"
+          >
+            Landscape
+          </Link>
+        </nav>
+      </button>
       <nav className={`mx-4 w-full select-none sm:hidden`}>
         <div className={`flex w-full cursor-pointer `}>
           <button onClick={hideNavigation}>

@@ -27,7 +27,7 @@ export default function SceneDetail() {
       <Suspense fallback={<LoadPercent />}>
         <div
           id="sidebar-nav"
-          className={`absolute top-2 z-30 flex h-full w-24 select-none flex-col items-center justify-start gap-4 rounded-md bg-none outline-2`}
+          className={`absolute top-24 z-30 flex h-full w-24 select-none flex-col items-center justify-start gap-4 rounded-md bg-none outline-2`}
         >
           <ButtonSideDetail
             handleClick={() => {

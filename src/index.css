@@ -28,14 +28,17 @@ body {
   transition: left 0.5s;
 }
 .animate-mobile-menu-in {
-  animation: mobile-menu 1s cubic-bezier(0.41, -0.67, 0.66, 1.73) 0s 1 forwards;
+  animation: animation-opacity-in 1s cubic-bezier(0.41, -0.67, 0.66, 1.73) 0s 1 forwards;
 }
 .animate-mobile-menu-out {
-  animation: mobile-menu 2s reverse cubic-bezier(0.41, -0.67, 0.66, 1.73) 0s 1
+  animation: animation-opacity-in 2s reverse cubic-bezier(0.41, -0.67, 0.66, 1.73) 0s 1
     forwards;
 }
+.hidden{
+  display: none;
+}
 
-@keyframes mobile-menu {
+@keyframes animation-opacity-in {
   0% {
     opacity: 0;
   }
