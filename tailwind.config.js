@@ -18,6 +18,9 @@ module.exports = {
       cursor: {
         hand: "url('./src/assets/cursor/hand-svgrepo-com.cur'), pointer",
       },
+      fontSize: {
+        "12xl": ["12rem", { lineHeight: "10rem" }],
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],

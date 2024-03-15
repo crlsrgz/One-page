@@ -1,7 +1,7 @@
-import checkScreen from "../globals/screen";
+import checkScreen, { delay } from "../globals/screen";
 import { GizmoViewport, SpotLight } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import LoadPercent from "./component.loadPercent";
 import { Perf } from "r3f-perf";
 import CameraControl from "./scene-product/component.camera";
@@ -42,95 +42,120 @@ export default function SceneProduct() {
       setSpotLightsOn(true);
     }
   }
+
+  /* ═══ Page Title ═══ */
+  const [displayPageTitle, setDisplayPageTitle] = useState(true);
+  const hidePageTitle = async () => {
+    await delay(500);
+    setDisplayPageTitle(true);
+    await delay(5000);
+    setDisplayPageTitle(false);
+    console.log("bye", displayPageTitle);
+  };
+  useEffect(() => {
+    hidePageTitle();
+  }, []);
+
   return (
     <>
-      <Canvas
-        camera={{
-          position: cameraPosition,
-          near: 0.01,
-          far: 100,
-          fov: 45,
-        }}
-        shadows={true}
-      >
-        <CameraControl
-          resetCamera={resetCameraPosition}
-          firstLoad={initalRender}
-        />
-        {/* Orbit controls inside the Camera control component, to limit pan */}
-        <Perf position="bottom-left" />
-        <GizmoViewport
-          axisColors={["red", "green", "blue"]}
-          labelColor="black"
-          position={[-1, 0, 0]}
-          scale={0.8}
-          hideAxisHeads
-        />
-
-        <ambientLight intensity={0.05} />
-        <LightDirectional />
-        <SpotLight
-          intensity={3}
-          position={[1, 2.38, 0]}
-          target-position={[1, 0, 0]}
-          angle={Math.PI / 6}
-          power={6}
-          radiusBottom={1}
-          penumbra={0.21}
-          distance={3.5}
-          attenuation={0}
-          shadow-mapSize={[1024, 1024]}
-          shadow-normalBias={0.12}
-        />
-
-        <SpotLight
-          intensity={3}
-          position={[-1, 2.38, 0]}
-          target-position={[-1, 0, 0]}
-          angle={Math.PI / 6}
-          radiusTop={0.1}
-          radiusBottom={1}
-          distance={3.5}
-          penumbra={0.21}
-          attenuation={2}
-          shadow-mapSize={[1024, 1024]}
-          shadow-normalBias={0.12}
-        />
-        <SpotLight
-          ref={refSpotLights}
-          intensity={2}
-          position={[0, 2.38, 2]}
-          target-position={[0, 0, 0]}
-          angle={Math.PI / 6}
-          radiusTop={0.1}
-          radiusBottom={1}
-          distance={5}
-          penumbra={0.21}
-          attenuation={2}
-          shadow-mapSize={[1024, 1024]}
-          shadow-normalBias={0.12}
-        />
-        <ModelProduct explode={explode} />
-
-        <InfoTags
-          value="1"
-          handleClick={() => setResetCameraPosition(!resetCameraPosition)}
-          position={[0, 1, 0.3]}
-        />
-        <InfoTags
-          value="x"
-          handleClick={() => setExplode(!explode)}
-          position={[0.8, 0.45, 0.3]}
-        />
-
-        <InfoTags
-          value="4"
-          handleClick={() => {
-            switchLights(refSpotLights);
+      <Suspense fallback={<LoadPercent />}>
+        <div
+          id="page-title"
+          className={`fixed bottom-0 right-0 z-40 p-6 font-urbanistMedium text-12xl ${
+            displayPageTitle ? "" : "animate-mobile-menu-out"
+          }`}
+        >
+          <p>Wood</p>
+          <p>Stove</p>
+        </div>
+        <Canvas
+          camera={{
+            position: cameraPosition,
+            near: 0.01,
+            far: 100,
+            fov: 45,
           }}
-          position={[-0.8, 0.45, 0.3]}
-        />
-      </Canvas>
+          shadows={true}
+        >
+          <CameraControl
+            resetCamera={resetCameraPosition}
+            firstLoad={initalRender}
+          />
+          {/* Orbit controls inside the Camera control component, to limit pan */}
+          <Perf position="bottom-left" />
+          <GizmoViewport
+            axisColors={["red", "green", "blue"]}
+            labelColor="black"
+            position={[-1, 0, 0]}
+            scale={0.8}
+            hideAxisHeads
+          />
+
+          <ambientLight intensity={0.05} />
+          <LightDirectional />
+          <SpotLight
+            intensity={3}
+            position={[1, 2.38, 0]}
+            target-position={[1, 0, 0]}
+            angle={Math.PI / 6}
+            power={6}
+            radiusBottom={1}
+            penumbra={0.21}
+            distance={3.5}
+            attenuation={0}
+            shadow-mapSize={[1024, 1024]}
+            shadow-normalBias={0.12}
+          />
+
+          <SpotLight
+            intensity={3}
+            position={[-1, 2.38, 0]}
+            target-position={[-1, 0, 0]}
+            angle={Math.PI / 6}
+            radiusTop={0.1}
+            radiusBottom={1}
+            distance={3.5}
+            penumbra={0.21}
+            attenuation={2}
+            shadow-mapSize={[1024, 1024]}
+            shadow-normalBias={0.12}
+          />
+          <SpotLight
+            ref={refSpotLights}
+            intensity={2}
+            position={[0, 2.38, 2]}
+            target-position={[0, 0, 0]}
+            angle={Math.PI / 6}
+            radiusTop={0.1}
+            radiusBottom={1}
+            distance={5}
+            penumbra={0.21}
+            attenuation={2}
+            shadow-mapSize={[1024, 1024]}
+            shadow-normalBias={0.12}
+          />
+          <ModelProduct explode={explode} />
+
+          <InfoTags
+            value="1"
+            handleClick={() => setResetCameraPosition(!resetCameraPosition)}
+            position={[0, 1, 0.3]}
+          />
+          <InfoTags
+            value="x"
+            handleClick={() => setExplode(!explode)}
+            position={[0.8, 0.45, 0.3]}
+          />
+
+          <InfoTags
+            value="4"
+            handleClick={() => {
+              switchLights(refSpotLights);
+            }}
+            position={[-0.8, 0.45, 0.3]}
+          />
+        </Canvas>
+      </Suspense>
     </>
   );
 }
