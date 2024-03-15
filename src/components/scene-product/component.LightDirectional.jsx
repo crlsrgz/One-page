@@ -1,5 +1,6 @@
 import { useHelper } from "@react-three/drei";
 import { useControls } from "leva";
+import { check } from "prettier";
 import { useRef } from "react";
 import { DirectionalLightHelper } from "three";
 

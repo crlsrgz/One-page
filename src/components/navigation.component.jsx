@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { delay } from "../globals/screen";
 
 export default function ComponentMainNav() {
   const [mobileNav, setMobileNav] = useState(false);
@@ -12,13 +13,29 @@ export default function ComponentMainNav() {
       setMobileNav(true);
     }
   }
+  const hideNavigationDesktop = () => {
+    setMenuVisible(true);
 
+    setTimeout(() => {
+      setMenuVisible(false);
+      console.log("bye", menuVisible);
+    }, 2000);
+  };
   return (
     <>
       <h1 className="cursor-pointer select-none font-yeseva text-6xl">
         <Link to={"/"}>Cubos</Link>
       </h1>{" "}
-      <button className={`w-full px-12`}>
+      <button
+        onMouseEnter={() => {
+          setMenuVisible(true);
+        }}
+        onMouseOut={hideNavigationDesktop}
+        onBlur={hideNavigationDesktop}
+        className={`w-full px-12 ${
+          menuVisible ? "" : "animate-mobile-menu-out"
+        }`}
+      >
         <nav className="mx-12 hidden h-full w-full flex-row justify-end gap-8 text-xl sm:flex">
           <Link to={"/"} className="underline-offset-8 hover:underline">
             Home
