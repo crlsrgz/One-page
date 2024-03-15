@@ -1,4 +1,4 @@
-import { Html, useProgress } from "@react-three/drei";
+import { useProgress } from "@react-three/drei";
 
 export default function LoadPercent() {
   const { progress } = useProgress();
@@ -20,7 +20,7 @@ export default function LoadPercent() {
           />
         </svg>
 
-        <div>Loading ... {progress} % </div>
+        <div className="text-8xl">{Math.floor(progress)} % </div>
       </div>
     </div>
     // <Html center> {progress} % </Html>

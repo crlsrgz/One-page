@@ -1,6 +1,5 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useState } from "react";
-import LoadPercent from "./component.loadPercent";
 import { ACESFilmicToneMapping } from "three";
 
 import Detail from "./scene-detail/component.detail";

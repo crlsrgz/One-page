@@ -16,8 +16,8 @@ const App = () => {
       className="box-border flex h-screen  w-screen flex-col"
       style={{ zIndex: "-1" }}
     >
-      <div className="canvas-element h-full w-full select-none ">
-        <Suspense fallback={<LoadPercent />}>
+      <Suspense fallback={<LoadPercent />}>
+        <div className="canvas-element h-full w-full select-none ">
           <BrowserRouter>
             <header className="h-18 fixed z-50 flex w-full  flex-row content-start justify-start gap-4 px-12 pb-2  pt-2 ">
               <ComponentMainNav />
@@ -33,8 +33,8 @@ const App = () => {
               </Routes>
             </div>
           </BrowserRouter>
-        </Suspense>
-      </div>
+        </div>
+      </Suspense>
     </main>
   );
 };

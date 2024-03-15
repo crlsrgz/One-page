@@ -5,7 +5,6 @@ import { delay } from "../globals/screen";
 
 export default function ComponentMainNav() {
   const [mobileNav, setMobileNav] = useState(false);
-  const [menuVisible, setMenuVisible] = useState(true);
   function hideNavigation() {
     if (mobileNav) {
       setMobileNav(false);
@@ -13,28 +12,23 @@ export default function ComponentMainNav() {
       setMobileNav(true);
     }
   }
-  const hideNavigationDesktop = () => {
-    setMenuVisible(true);
-
-    setTimeout(() => {
-      setMenuVisible(false);
-      console.log("bye", menuVisible);
-    }, 2000);
+  const [menuVisible, setMenuVisible] = useState("");
+  const hideNavigationDesktop = async () => {
+    setMenuVisible("animate-desktop-menu-in");
+    delay(5000);
+    setMenuVisible("animate-desktop-menu-out");
   };
+  useEffect(() => {
+    hideNavigationDesktop();
+  }, []);
   return (
     <>
       <h1 className="cursor-pointer select-none font-yeseva text-6xl">
         <Link to={"/"}>Cubos</Link>
       </h1>{" "}
       <button
-        onMouseEnter={() => {
-          setMenuVisible(true);
-        }}
-        onMouseOut={hideNavigationDesktop}
-        onBlur={hideNavigationDesktop}
-        className={`w-full px-12 ${
-          menuVisible ? "" : "animate-mobile-menu-out"
-        }`}
+        onMouseEnter={hideNavigationDesktop}
+        className={`w-full px-12 ${menuVisible}`}
       >
         <nav className="mx-12 hidden h-full w-full flex-row justify-end gap-8 text-xl sm:flex">
           <Link to={"/"} className="underline-offset-8 hover:underline">
