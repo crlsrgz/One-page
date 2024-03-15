@@ -14,7 +14,6 @@ export default function SceneStarter(props) {
   });
 
   const { width } = useThree((state) => state.viewport);
-  console.log(`---> ${width}`);
   return (
     <group
       position={[props.offset * props.posX * width, props.posY, props.posZ]}

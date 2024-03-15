@@ -8,6 +8,7 @@ import SceneProduct from "./components/scene.component.product";
 import SceneCube from "./components/scene.component.cube";
 import SceneLandscape from "./components/scene.component.landscape";
 import SceneBuilding from "./components/scene.component.building";
+import LoadPercent from "./components/component.loadPercent";
 const App = () => {
   //  document.querySelector("body").style["overflow"] = "hidden";
   return (
@@ -16,7 +17,7 @@ const App = () => {
       style={{ zIndex: "-1" }}
     >
       <div className="canvas-element h-full w-full select-none ">
-        <Suspense>
+        <Suspense fallback={<LoadPercent />}>
           <BrowserRouter>
             <header className="h-18 fixed z-50 flex w-full  flex-row content-start justify-start gap-4 px-12 pb-2  pt-2 ">
               <ComponentMainNav />
