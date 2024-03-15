@@ -2,7 +2,6 @@ import checkScreen, { delay } from "../globals/screen";
 import { GizmoViewport, SpotLight } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";
-import LoadPercent from "./component.loadPercent";
 import { Perf } from "r3f-perf";
 import CameraControl from "./scene-product/component.camera";
 import InfoTags from "./scene-product/component.InfoTags";
@@ -50,7 +49,6 @@ export default function SceneProduct() {
     setDisplayPageTitle("animate-mobile-menu-out");
     await delay(2000);
     setDisplayPageTitle("animate-mobile-menu-out hidden");
-    console.log("bye", displayPageTitle);
   };
   useEffect(() => {
     hidePageTitle();

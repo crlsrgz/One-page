@@ -4,11 +4,11 @@ export default function LoadPercent() {
   const { progress } = useProgress();
   const hidePeercentage = progress > 50 ? "text-red-500" : "";
   return (
-    <div className="flex h-full w-full items-center justify-center">
+    <div className="z-50 flex h-full w-full items-center justify-center">
       <div className=" flex items-center justify-center space-x-1 text-sm text-zinc-50">
         <svg
           fill="none"
-          className="h-6 w-6 animate-spin"
+          className="h-32 w-32 animate-spin"
           viewBox="0 0 32 32"
           xmlns="http://www.w3.org/2000/svg"
         >

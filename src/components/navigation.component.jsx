@@ -14,9 +14,14 @@ export default function ComponentMainNav() {
   }
   const [menuVisible, setMenuVisible] = useState("");
   const hideNavigationDesktop = async () => {
-    setMenuVisible("animate-desktop-menu-in");
-    delay(5000);
+    setMenuVisible("");
+    await delay(5000);
     setMenuVisible("animate-desktop-menu-out");
+  };
+  const showNavigationDesktop = async () => {
+    setMenuVisible("");
+    await delay(50);
+    setMenuVisible("animate-desktop-menu-in");
   };
   useEffect(() => {
     hideNavigationDesktop();
@@ -27,7 +32,8 @@ export default function ComponentMainNav() {
         <Link to={"/"}>Cubos</Link>
       </h1>{" "}
       <button
-        onMouseEnter={hideNavigationDesktop}
+        onMouseLeave={hideNavigationDesktop}
+        onMouseEnter={showNavigationDesktop}
         className={`w-full px-12 ${menuVisible}`}
       >
         <nav className="mx-12 hidden h-full w-full flex-row justify-end gap-8 text-xl sm:flex">

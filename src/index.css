@@ -34,13 +34,25 @@ body {
   animation: animation-opacity-in 2s reverse cubic-bezier(0.41, -0.67, 0.66, 1.73) 0s 1
     forwards;
 }
-.hidden{
-  display: none;
+.animate-desktop-menu-in {
+  animation: animation-opacity-in-10p 1s ease 0s 1 forwards;
+}
+.animate-desktop-menu-out {
+  animation: animation-opacity-in-10p 2s reverse ease 0s 1
+    forwards;
 }
 
 @keyframes animation-opacity-in {
   0% {
     opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes animation-opacity-in-10p {
+  0% {
+    opacity: 0.2;
   }
   100% {
     opacity: 1;
