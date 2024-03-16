@@ -19,7 +19,7 @@ const App = () => {
       <Suspense fallback={<LoadPercent />}>
         <div className="canvas-element h-full w-full select-none ">
           <BrowserRouter>
-            <header className="h-18 fixed z-50 flex w-full  flex-row content-start justify-start gap-4 px-12 pb-2  pt-2 ">
+            <header className="h-18 fixed z-50 flex w-full  flex-row  items-center justify-center gap-4 px-12 pb-2  pt-2 ">
               <ComponentMainNav />
             </header>
             <div className="flex h-full w-full flex-grow ">

@@ -1,5 +1,5 @@
 import checkScreen, { delay } from "../globals/screen";
-import { GizmoViewport, SpotLight } from "@react-three/drei";
+import { Clone, GizmoViewport, SpotLight } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Perf } from "r3f-perf";
@@ -18,7 +18,7 @@ export default function SceneProduct() {
   const initalRender = useRef(false);
 
   /* 💡 set the camera position depending on the screen size */
-  const cameraPosition = checkScreen.width >= 567 ? [0, 0.3, 3] : [0, 0.3, 3];
+  const cameraPosition = checkScreen.width >= 567 ? [2, 0.3, 3] : [2, 0.3, 3.5];
 
   const refSpotLights = useRef();
   const [spotLightsOn, setSpotLightsOn] = useState(true);
@@ -58,7 +58,7 @@ export default function SceneProduct() {
     <>
       <div
         id="page-title"
-        className={`fixed bottom-0 right-0 z-40 p-6 font-urbanistMedium text-12xl drop-shadow-lg ${displayPageTitle} `}
+        className={`fixed bottom-0 right-0 z-40 p-6 font-urbanistMedium  text-8xl sm:text-12xl ${displayPageTitle}`}
       >
         <p>Wood</p>
         <p>Stove</p>
@@ -77,7 +77,7 @@ export default function SceneProduct() {
           firstLoad={initalRender}
         />
         {/* Orbit controls inside the Camera control component, to limit pan */}
-        <Perf position="bottom-left" />
+        {/* <Perf position="bottom-left" /> */}
         <GizmoViewport
           axisColors={["red", "green", "blue"]}
           labelColor="black"
@@ -89,35 +89,37 @@ export default function SceneProduct() {
         <ambientLight intensity={0.05} />
         <LightDirectional />
         <SpotLight
-          intensity={3}
-          position={[1, 2.38, 0]}
-          target-position={[1, 0, 0]}
+          intensity={1}
+          position={[-2.5, 2.38, 0]}
+          target-position={[-2.8, 0, 0]}
           angle={Math.PI / 6}
           power={6}
           radiusBottom={1}
+          radiusTop={0.05}
           penumbra={0.21}
           distance={3.5}
-          attenuation={0}
+          attenuation={0.9}
           shadow-mapSize={[1024, 1024]}
           shadow-normalBias={0.12}
         />
 
         <SpotLight
-          intensity={3}
-          position={[-1, 2.38, 0]}
-          target-position={[-1, 0, 0]}
+          intensity={1}
+          position={[-2.5, 2.38, 2]}
+          target-position={[-2.8, 0, 2]}
           angle={Math.PI / 6}
-          radiusTop={0.1}
+          power={5}
           radiusBottom={1}
-          distance={3.5}
+          radiusTop={0.05}
           penumbra={0.21}
-          attenuation={2}
+          distance={3.5}
+          attenuation={1}
           shadow-mapSize={[1024, 1024]}
           shadow-normalBias={0.12}
         />
         <SpotLight
           ref={refSpotLights}
-          intensity={2}
+          intensity={1}
           position={[0, 2.38, 2]}
           target-position={[0, 0, 0]}
           angle={Math.PI / 6}

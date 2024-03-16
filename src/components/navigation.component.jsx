@@ -4,24 +4,24 @@ import { Link } from "react-router-dom";
 import { delay } from "../globals/screen";
 
 export default function ComponentMainNav() {
-  const [mobileNav, setMobileNav] = useState(false);
+  const [menuVisibleMobile, setMenuVisibleMobile] = useState(false);
   function hideNavigation() {
-    if (mobileNav) {
-      setMobileNav(false);
+    if (menuVisibleMobile) {
+      setMenuVisibleMobile(false);
     } else {
-      setMobileNav(true);
+      setMenuVisibleMobile(true);
     }
   }
-  const [menuVisible, setMenuVisible] = useState("");
+  const [menuVisibleDesktop, setMenuVisibleDesktop] = useState("");
   const hideNavigationDesktop = async () => {
-    setMenuVisible("");
+    setMenuVisibleDesktop("");
     await delay(5000);
-    setMenuVisible("animate-desktop-menu-out");
+    setMenuVisibleDesktop("animate-desktop-menu-out");
   };
   const showNavigationDesktop = async () => {
-    setMenuVisible("");
+    setMenuVisibleDesktop("");
     await delay(50);
-    setMenuVisible("animate-desktop-menu-in");
+    setMenuVisibleDesktop("animate-desktop-menu-in");
   };
   useEffect(() => {
     hideNavigationDesktop();
@@ -34,7 +34,7 @@ export default function ComponentMainNav() {
       <button
         onMouseLeave={hideNavigationDesktop}
         onMouseEnter={showNavigationDesktop}
-        className={`w-full px-12 ${menuVisible}`}
+        className={`w-full px-12 ${menuVisibleDesktop}`}
       >
         <nav className="mx-12 hidden h-full w-full flex-row justify-end gap-8 text-xl sm:flex">
           <Link to={"/"} className="underline-offset-8 hover:underline">
@@ -62,8 +62,8 @@ export default function ComponentMainNav() {
           <button onClick={hideNavigation}>
             <Icon
               icon="tdesign:menu-application"
-              className={` absolute right-8 top-8 z-20 fill-current text-zinc-100 ${
-                mobileNav ? "hidden" : ""
+              className={` absolute right-8 top-6 z-20 fill-current text-zinc-100 ${
+                menuVisibleMobile ? "hidden" : ""
               }`}
               width={36}
               height={36}
@@ -72,8 +72,8 @@ export default function ComponentMainNav() {
           <button onClick={hideNavigation}>
             <Icon
               icon="tdesign:close"
-              className={` absolute right-8 top-8 z-20 fill-current text-zinc-100 ${
-                mobileNav ? "" : "hidden"
+              className={` absolute right-8 top-6 z-20 fill-current text-zinc-100 ${
+                menuVisibleMobile ? "" : "hidden"
               }`}
               width={36}
               height={36}
@@ -86,7 +86,7 @@ export default function ComponentMainNav() {
           
           fixed left-0 top-0 z-10 h-screen w-screen cursor-pointer bg-neutral-800 p-4 pt-20 text-xl  transition-all
           ${
-            mobileNav
+            menuVisibleMobile
               ? "animate-mobile-menu-in"
               : "animate-mobile-menu-out hidden"
           }`}

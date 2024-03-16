@@ -7,7 +7,7 @@ import { OrbitControls } from "@react-three/drei";
 export default function CameraControl(props) {
   const { camera } = useThree();
 
-  const cameraPosition = checkScreen.width >= 567 ? [0, 0.3, 3] : [0, 0.3, 3];
+  const cameraPosition = checkScreen.width >= 567 ? [2, 0.3, 3] : [2, 0.3, 3.5];
 
   const cameraLastPosition = useRef({
     x: camera.position.x,
@@ -30,7 +30,7 @@ export default function CameraControl(props) {
   return (
     <OrbitControls
       makeDefault
-      target={[0, 0.4, 0]}
+      target={checkScreen.width >= 567 ? [0, 0.5, 0] : [0, 0.8, 0]}
       enablePan={true}
 
       /* ═══ disabled dor dev ═══ */
