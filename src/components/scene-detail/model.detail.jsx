@@ -5,6 +5,7 @@ import explodedModelPositions from "./lerpPositions";
 import gsap from "gsap";
 // eslint-disable-next-line import/no-unresolved
 import detailModel from "/wall.glb?url";
+import { checkScreen } from "../../globals/screen";
 
 function ModelParts(props) {
   const [hover, setHover] = useState(false);
@@ -14,7 +15,6 @@ function ModelParts(props) {
   const refModelPart = useRef();
 
   //: DOM Manipulation super not recommended
-  const checkScreenWidth = window.innerWidth;
   const detailInfoBoxMobileContainer = document.getElementById(
     "detail-description-container",
   );
@@ -137,7 +137,7 @@ function ModelParts(props) {
         <Edges color={"black"}></Edges>
       </mesh>
 
-      {nameVisible && checkScreenWidth > 640 ? (
+      {nameVisible && checkScreen.width > 640 ? (
         <>
           <Html
             position={alternatePosition}

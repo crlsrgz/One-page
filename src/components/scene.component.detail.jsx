@@ -5,6 +5,7 @@ import { ACESFilmicToneMapping } from "three";
 import Detail from "./scene-detail/component.detail";
 import { Perf } from "r3f-perf";
 import { ButtonSideDetail } from "./scene-detail/component.buttonSide";
+import { checkScreen } from "../globals/screen";
 
 //: SVG Import
 
@@ -13,8 +14,7 @@ import svgModelExploded from "/img/control-platform-exploded.svg";
 import svgCameraReset from "/img/video-camera-reload.svg";
 import svgSceneReload from "/img/rotate.svg";
 
-const checkScreenWidth = window.innerWidth;
-const cameraPosition = checkScreenWidth >= 567 ? [-3, 3, 4] : [-4, 3, 6];
+const cameraPosition = checkScreen.width >= 567 ? [-3, 3, 4] : [-4, 3, 6];
 
 export default function SceneDetail() {
   const [explodeModel, setExplodeModel] = useState(false);

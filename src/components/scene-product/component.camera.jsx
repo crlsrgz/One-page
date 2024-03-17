@@ -1,4 +1,4 @@
-import checkScreen from "../../globals/screen";
+import { checkScreen } from "../../globals/screen";
 import { useThree } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
@@ -6,6 +6,7 @@ import { OrbitControls } from "@react-three/drei";
 
 export default function CameraControl(props) {
   const { camera } = useThree();
+  const refControls = useRef();
 
   const cameraPosition = checkScreen.width >= 567 ? [2, 0.3, 3] : [2, 0.3, 3.5];
 
@@ -27,20 +28,33 @@ export default function CameraControl(props) {
     props.firstLoad.current = true;
   }, [props.resetCamera]);
 
+  const limitPosition = 1;
+  useEffect(() => {
+    refControls.current.addEventListener("change", function () {
+      if (this.target.y < limitPosition * -1) {
+        this.target.y = limitPosition * -1;
+        camera.position.y = limitPosition * -1;
+      } else if (this.target.y > limitPosition) {
+        this.target.y = limitPosition;
+        camera.position.y = limitPosition;
+      }
+    });
+  }, []);
+
   return (
     <OrbitControls
       makeDefault
+      ref={refControls}
       target={checkScreen.width >= 567 ? [0, 0.5, 0] : [0, 0.8, 0]}
-      enablePan={true}
-
+      enablePan={false}
       /* ═══ disabled dor dev ═══ */
 
-      // maxPolarAngle={Math.PI * 0.5}
-      // minPolarAngle={Math.PI * 0.2}
-      // maxAzimuthAngle={Math.PI * 0.5}
-      // minAzimuthAngle={Math.PI * -0.45}
-      // maxDistance={2.5}
-      // minDistance={1}
+      maxPolarAngle={Math.PI * 0.5}
+      minPolarAngle={Math.PI * 0.2}
+      maxAzimuthAngle={Math.PI * 0.5}
+      minAzimuthAngle={Math.PI * -0.45}
+      maxDistance={2.8}
+      minDistance={1}
       // onChange={(e) => {
       //   const maxX = 0.5;
       //   const minX = -0.5;
@@ -62,4 +76,4 @@ export default function CameraControl(props) {
       // }}
     />
   );
-}
+} //

@@ -1,4 +1,4 @@
-import checkScreen, { delay } from "../globals/screen";
+import { checkScreen, delay } from "../globals/screen";
 import { Clone, GizmoViewport, SpotLight } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";
@@ -8,6 +8,7 @@ import InfoTags from "./scene-product/component.InfoTags";
 import { ModelProduct } from "./scene-product/model.product";
 import gsap from "gsap";
 import LightDirectional from "./scene-product/component.LightDirectional";
+import FakeFire from "./scene-product/component.fakeFire";
 
 export default function SceneProduct() {
   /* 💡 reset camera function controls the props of the camera control component
@@ -41,7 +42,6 @@ export default function SceneProduct() {
       setSpotLightsOn(true);
     }
   }
-
   /* ::::::::: Page title  ::::::::: */
   const [displayPageTitle, setDisplayPageTitle] = useState("");
   const hidePageTitle = async () => {
@@ -86,7 +86,7 @@ export default function SceneProduct() {
           hideAxisHeads
         />
 
-        <ambientLight intensity={0.05} />
+        <ambientLight intensity={0.1} />
         <LightDirectional />
         <SpotLight
           intensity={1}
@@ -131,6 +131,7 @@ export default function SceneProduct() {
           shadow-mapSize={[1024, 1024]}
           shadow-normalBias={0.12}
         />
+        <FakeFire />
         <ModelProduct explode={explode} />
 
         <InfoTags
@@ -155,4 +156,3 @@ export default function SceneProduct() {
     </>
   );
 }
-0;

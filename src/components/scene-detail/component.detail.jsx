@@ -10,9 +10,9 @@ import gsap from "gsap";
 /* ═══ Components ═══ */
 import { ModelDetail } from "./model.detail";
 import LightSetup from "./component.lights";
+import { checkScreen } from "../../globals/screen";
 
-const checkScreenWidth = window.innerWidth;
-const cameraPosition = checkScreenWidth >= 567 ? [-3, 3, 4] : [-4, 3, 6];
+const cameraPosition = checkScreen.width >= 567 ? [-3, 3, 4] : [-4, 3, 6];
 
 export default function Detail(props) {
   const { camera } = useThree();
