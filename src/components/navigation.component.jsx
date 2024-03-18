@@ -19,7 +19,7 @@ export default function ComponentMainNav() {
     setMenuVisibleDesktop("animate-desktop-menu-out");
   };
   const showNavigationDesktop = async () => {
-    setMenuVisibleDesktop("");
+    setMenuVisibleDesktop("animate-desktop-menu-out");
     await delay(50);
     setMenuVisibleDesktop("animate-desktop-menu-in");
   };

@@ -1,7 +1,7 @@
 import { checkScreen, delay } from "../globals/screen";
-import { Clone, GizmoViewport, SpotLight } from "@react-three/drei";
+import { GizmoViewport, SpotLight } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Perf } from "r3f-perf";
 import CameraControl from "./scene-product/component.camera";
 import InfoTags from "./scene-product/component.InfoTags";
@@ -9,6 +9,7 @@ import { ModelProduct } from "./scene-product/model.product";
 import gsap from "gsap";
 import LightDirectional from "./scene-product/component.LightDirectional";
 import FakeFire from "./scene-product/component.fakeFire";
+import { SceneTitle } from "./general/component.SceneTitle";
 
 export default function SceneProduct() {
   /* 💡 reset camera function controls the props of the camera control component
@@ -42,27 +43,10 @@ export default function SceneProduct() {
       setSpotLightsOn(true);
     }
   }
-  /* ::::::::: Page title  ::::::::: */
-  const [displayPageTitle, setDisplayPageTitle] = useState("");
-  const hidePageTitle = async () => {
-    await delay(3000);
-    setDisplayPageTitle("animate-mobile-menu-out");
-    await delay(2000);
-    setDisplayPageTitle("animate-mobile-menu-out hidden");
-  };
-  useEffect(() => {
-    hidePageTitle();
-  }, []);
-  /* ::::::::: Page title END ::::::::: */
+
   return (
     <>
-      <div
-        id="page-title"
-        className={`fixed bottom-0 right-0 z-40 p-6 font-urbanistMedium  text-8xl sm:text-12xl ${displayPageTitle}`}
-      >
-        <p>Wood</p>
-        <p>Stove</p>
-      </div>
+      <SceneTitle linesArray={["Wood", "Stove"]} />
       <Canvas
         camera={{
           position: cameraPosition,
@@ -152,6 +136,14 @@ export default function SceneProduct() {
           }}
           position={[-0.8, 0.45, 0.3]}
         />
+
+        {/* <Html
+          id="page-title"
+          className={`fixed bottom-0 right-0 z-40 p-6 font-urbanistMedium  text-8xl sm:text-12xl ${displayPageTitle}`}
+        >
+          <p>Wood</p>
+          <p>Stove</p>
+        </Html> */}
       </Canvas>
     </>
   );

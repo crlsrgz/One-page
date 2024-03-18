@@ -13,6 +13,7 @@ import svgModelJoined from "/img/control-platform.svg";
 import svgModelExploded from "/img/control-platform-exploded.svg";
 import svgCameraReset from "/img/video-camera-reload.svg";
 import svgSceneReload from "/img/rotate.svg";
+import { SceneTitle } from "./general/component.SceneTitle";
 
 const cameraPosition = checkScreen.width >= 567 ? [-3, 3, 4] : [-4, 3, 6];
 
@@ -78,6 +79,8 @@ export default function SceneDetail() {
         />
       </div>
 
+      {/* <SceneTitle /> */}
+      <SceneTitle linesArray={["Roof", "Eave", "Detail"]} />
       <Canvas
         camera={{
           position: cameraPosition,
@@ -94,6 +97,7 @@ export default function SceneDetail() {
         shadows={true}
       >
         {/* <Perf position="top-right" /> */}
+
         <Detail explodedModel={explodeModel} resetMe={resetCamera} />
       </Canvas>
       <div className="absolute right-0 top-0 -z-30 flex h-full w-full select-none items-center justify-center overflow-hidden bg-clip-text pb-10 text-[24rem] text-zinc-800">
