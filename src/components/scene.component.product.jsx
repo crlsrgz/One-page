@@ -115,7 +115,7 @@ export default function SceneProduct() {
           shadow-mapSize={[1024, 1024]}
           shadow-normalBias={0.12}
         />
-        <FakeFire />
+        {spotLightsOn ? "" : <FakeFire />}
         <ModelProduct explode={explode} />
 
         <InfoTags
