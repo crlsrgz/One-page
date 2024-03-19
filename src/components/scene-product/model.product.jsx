@@ -103,14 +103,16 @@ export function ModelProduct({ explode }) {
     <>
       <primitive object={productModel.scene} />
       <InfoTags
-        value="2"
+        idString="OpenDoor"
+        value="O"
         handleClick={() => setOpenDoorAction(!openDoorAction)}
-        position={[0.3, 0.45, 0.3]}
+        position={[0.45, 0.45, 0.3]}
       />
       <InfoTags
-        value="3"
+        idString="OpenDrawer"
+        value="O"
         handleClick={() => setOpenDrawerAction(!openDrawerAction)}
-        position={[0.0, 0.2, 0.3]}
+        position={[0.45, 0.1, 0.3]}
       />
     </>
   );

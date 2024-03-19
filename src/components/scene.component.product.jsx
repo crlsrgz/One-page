@@ -119,22 +119,28 @@ export default function SceneProduct() {
         <ModelProduct explode={explode} />
 
         <InfoTags
+          idString="reset-camera"
           value="1"
           handleClick={() => setResetCameraPosition(!resetCameraPosition)}
           position={[0, 1, 0.3]}
+          iconValue="ph:camera-rotate-light"
         />
         <InfoTags
+          idString="empty"
           value="x"
           handleClick={() => setExplode(!explode)}
           position={[0.8, 0.45, 0.3]}
         />
 
         <InfoTags
+          idString="lights-off"
           value="4"
           handleClick={() => {
             switchLights(refSpotLights);
           }}
-          position={[-0.8, 0.45, 0.3]}
+          position={[1.5, 0.85, -0.5]}
+          iconValue="ph:lightbulb-filament-light"
+          iconSize={3}
         />
 
         {/* <Html
