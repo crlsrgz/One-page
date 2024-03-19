@@ -70,17 +70,18 @@ export default function SceneProduct() {
           hideAxisHeads
         />
 
-        <ambientLight intensity={0.1} />
+        <ambientLight intensity={0.03} />
         <LightDirectional
           position={[0, 1, 3]}
           targetPosition={[0, 1, 0]}
-          intensity={0.15}
+          intensity={0.05}
+          castShadow={true}
         />
         <LightDirectional
           position={[2, 1, 3]}
           targetPosition={[2, 1, 0]}
-          intensity={0.15}
-          castShadow
+          intensity={0.05}
+          castShadow={true}
         />
         <SpotLight
           intensity={1}
@@ -148,7 +149,7 @@ export default function SceneProduct() {
           handleClick={() => {
             switchLights(refSpotLights);
           }}
-          position={[1.5, 0.85, -0.5]}
+          position={[1.4, 1, -0.5]}
           iconValue="ph:lightbulb-filament-light"
           iconSize={3}
         />
