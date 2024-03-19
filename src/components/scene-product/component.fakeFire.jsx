@@ -19,7 +19,6 @@ export default function FakeFire() {
   const random = generateRandomFloat(2, 4);
   useFrame((state, delta) => {
     // fireRef.current.rotation.y += delta * 0.3;
-    console.log(state);
     const elapsedTime = state.clock.elapsedTime;
     fireRef.current.intensity = Math.abs(0.1 * Math.sin(elapsedTime * random));
     fireRef2.current.intensity = Math.abs(0.5 * Math.sin(elapsedTime * random));

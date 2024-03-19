@@ -10,7 +10,6 @@ export const SceneTitle = ({
   /* ::::::::: Page title  ::::::::: */
   const titleSizeVertical =
     checkScreen.height >= 500 ? "text-12xl" : "text-8xl";
-  console.log(checkScreen, titleSizeVertical);
   const [displayPageTitle, setDisplayPageTitle] = useState("");
   const hidePageTitle = async () => {
     await delay(opacityDelay);

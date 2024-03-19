@@ -71,7 +71,17 @@ export default function SceneProduct() {
         />
 
         <ambientLight intensity={0.1} />
-        <LightDirectional />
+        <LightDirectional
+          position={[0, 1, 3]}
+          targetPosition={[0, 1, 0]}
+          intensity={0.15}
+        />
+        <LightDirectional
+          position={[2, 1, 3]}
+          targetPosition={[2, 1, 0]}
+          intensity={0.15}
+          castShadow
+        />
         <SpotLight
           intensity={1}
           position={[-2.5, 2.38, 0]}
@@ -103,7 +113,7 @@ export default function SceneProduct() {
         />
         <SpotLight
           ref={refSpotLights}
-          intensity={1}
+          intensity={0.8}
           position={[0, 2.38, 2]}
           target-position={[0, 0, 0]}
           angle={Math.PI / 6}

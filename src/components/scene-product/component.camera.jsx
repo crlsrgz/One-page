@@ -62,33 +62,33 @@ export default function CameraControl(props) {
       minAzimuthAngle={Math.PI * -0.25}
       maxDistance={3.2}
       minDistance={1}
-      onChange={(e) => {
-        const maxX = 0.5;
-        const minX = -0.5;
-        const maxY = 0.8;
-        const minY = 0.2;
-        const maxZ = 1;
-        const minZ = -0.5;
-        const x = e?.target.target.x;
-        const y = e?.target.target.y;
-        const z = e?.target.target.z;
+      // onChange={(e) => {
+      //   const maxX = 0.5;
+      //   const minX = -0.5;
+      //   const maxY = 0.8;
+      //   const minY = 0.2;
+      //   const maxZ = 1;
+      //   const minZ = -0.5;
+      //   const x = e?.target.target.x;
+      //   const y = e?.target.target.y;
+      //   const z = e?.target.target.z;
 
-        if (x < minX || x > maxX) {
-          e?.target.target.setX(x < minX ? minX : maxX);
-          camera.position.setX(cameraLastPosition.current.x);
-        }
-        if (y < minY || y > maxY) {
-          e?.target.target.setY(y < minY ? minY : maxY);
-          camera.position.setY(cameraLastPosition.current.y);
-        }
-        if (z < minZ || z > maxZ) {
-          e?.target.target.setZ(z < minZ ? minZ : maxZ);
-          camera.position.setZ(cameraLastPosition.current.z);
-        }
-        cameraLastPosition.current.x = camera.position.x;
-        cameraLastPosition.current.y = camera.position.y;
-        cameraLastPosition.current.z = camera.position.z;
-      }}
+      //   if (x < minX || x > maxX) {
+      //     e?.target.target.setX(x < minX ? minX : maxX);
+      //     camera.position.setX(cameraLastPosition.current.x);
+      //   }
+      //   if (y < minY || y > maxY) {
+      //     e?.target.target.setY(y < minY ? minY : maxY);
+      //     camera.position.setY(cameraLastPosition.current.y);
+      //   }
+      //   if (z < minZ || z > maxZ) {
+      //     e?.target.target.setZ(z < minZ ? minZ : maxZ);
+      //     camera.position.setZ(cameraLastPosition.current.z);
+      //   }
+      //   cameraLastPosition.current.x = camera.position.x;
+      //   cameraLastPosition.current.y = camera.position.y;
+      //   cameraLastPosition.current.z = camera.position.z;
+      // }}
     />
   );
 } //
