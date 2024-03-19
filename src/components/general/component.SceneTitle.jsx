@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { delay } from "../../globals/screen";
+import { checkScreen, delay } from "../../globals/screen";
 
 export const SceneTitle = ({
   linesArray = ["AA"],
@@ -8,6 +8,9 @@ export const SceneTitle = ({
   hideDelay = 2000,
 }) => {
   /* ::::::::: Page title  ::::::::: */
+  const titleSizeVertical =
+    checkScreen.height >= 500 ? "text-12xl" : "text-8xl";
+  console.log(checkScreen, titleSizeVertical);
   const [displayPageTitle, setDisplayPageTitle] = useState("");
   const hidePageTitle = async () => {
     await delay(opacityDelay);
@@ -24,7 +27,7 @@ export const SceneTitle = ({
     <>
       <div
         id="page-title"
-        className={`fixed bottom-0 right-0 z-40 p-12  font-urbanistMedium text-8xl sm:text-12xl ${displayPageTitle}`}
+        className={`fixed bottom-0 right-0 z-40 p-12  font-urbanistMedium text-8xl sm:${titleSizeVertical} ${displayPageTitle}`}
       >
         {linesArray.map((line, index) => {
           return <p key={index}>{line}</p>;
