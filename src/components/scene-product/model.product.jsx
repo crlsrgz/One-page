@@ -1,9 +1,6 @@
 import { useAnimations, useGLTF } from "@react-three/drei";
-import { useLoader } from "@react-three/fiber";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import importProductModel from "/product.glb?url";
 import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
 import { LoopOnce } from "three";
 import InfoTags from "./component.InfoTags";
 // import importProductModel from "/wall.glb?url";
@@ -19,7 +16,7 @@ const yourFunction = async (model) => {
   });
 };
 
-export function ModelProduct({ explode }) {
+export function ModelProduct() {
   const productModel = useGLTF(importProductModel);
   const animations = useAnimations(productModel.animations, productModel.scene);
 

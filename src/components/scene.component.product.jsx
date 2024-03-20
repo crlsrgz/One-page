@@ -1,5 +1,10 @@
 import { checkScreen, delay } from "../globals/screen";
-import { GizmoViewport, SpotLight } from "@react-three/drei";
+import {
+  ContactShadows,
+  Environment,
+  GizmoViewport,
+  SpotLight,
+} from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import { Perf } from "r3f-perf";
@@ -16,7 +21,6 @@ export default function SceneProduct() {
       the inital render ref prevents the movement of the camera on load
       and it's updated inside the camera control component*/
   const [resetCameraPosition, setResetCameraPosition] = useState(false);
-  const [explode, setExplode] = useState(false);
   const initalRender = useRef(false);
 
   /* 💡 set the camera position depending on the screen size */
@@ -60,30 +64,42 @@ export default function SceneProduct() {
           resetCamera={resetCameraPosition}
           firstLoad={initalRender}
         />
+        <Perf position="bottom-left" />
         {/* Orbit controls inside the Camera control component, to limit pan */}
-        {/* <Perf position="bottom-left" /> */}
-        <GizmoViewport
+        {/* <GizmoViewport
           axisColors={["red", "green", "blue"]}
           labelColor="black"
           position={[-1, 0, 0]}
           scale={0.8}
           hideAxisHeads
-        />
-
+        /> */}
         <ambientLight intensity={0.03} />
         <LightDirectional
+          color="#e3effa"
           position={[0, 1, 3]}
           targetPosition={[0, 1, 0]}
           intensity={0.05}
           castShadow={true}
+          helper={false}
         />
         <LightDirectional
+          color="#e3effa"
           position={[2, 1, 3]}
           targetPosition={[2, 1, 0]}
           intensity={0.05}
           castShadow={true}
+          helper={false}
+        />
+        <LightDirectional
+          color="#cfe2f3"
+          position={[0, 1, -3]}
+          targetPosition={[-3, 1, -2.3]}
+          intensity={0.1}
+          castShadow={true}
+          helper={false}
         />
         <SpotLight
+          color={"#f9cb9c"}
           intensity={1}
           position={[-2.5, 2.38, 0]}
           target-position={[-2.8, 0, 0]}
@@ -97,8 +113,8 @@ export default function SceneProduct() {
           shadow-mapSize={[1024, 1024]}
           shadow-normalBias={0.12}
         />
-
         <SpotLight
+          color={"#f9cb9c"}
           intensity={1}
           position={[-2.5, 2.38, 2]}
           target-position={[-2.8, 0, 2]}
@@ -126,9 +142,8 @@ export default function SceneProduct() {
           shadow-mapSize={[1024, 1024]}
           shadow-normalBias={0.12}
         />
-        {spotLightsOn ? "" : <FakeFire />}
-        <ModelProduct explode={explode} />
-
+        <FakeFire turnedOn={!spotLightsOn} />
+        <ModelProduct />
         <InfoTags
           idString="reset-camera"
           value="1"
@@ -136,13 +151,6 @@ export default function SceneProduct() {
           position={[0, 1, 0.3]}
           iconValue="ph:camera-rotate-light"
         />
-        <InfoTags
-          idString="empty"
-          value="x"
-          handleClick={() => setExplode(!explode)}
-          position={[0.8, 0.45, 0.3]}
-        />
-
         <InfoTags
           idString="lights-off"
           value="4"
@@ -153,14 +161,6 @@ export default function SceneProduct() {
           iconValue="ph:lightbulb-filament-light"
           iconSize={3}
         />
-
-        {/* <Html
-          id="page-title"
-          className={`fixed bottom-0 right-0 z-40 p-6 font-urbanistMedium  text-8xl sm:text-12xl ${displayPageTitle}`}
-        >
-          <p>Wood</p>
-          <p>Stove</p>
-        </Html> */}
       </Canvas>
     </>
   );

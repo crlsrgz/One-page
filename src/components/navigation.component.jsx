@@ -49,6 +49,9 @@ export default function ComponentMainNav() {
           <Link to={"/product"} className="underline-offset-8 hover:underline">
             Product
           </Link>
+          <Link to={"/building"} className="underline-offset-8 hover:underline">
+            Building
+          </Link>
           <Link
             to={"/landscape"}
             className="underline-offset-8 hover:underline"
@@ -122,6 +125,15 @@ export default function ComponentMainNav() {
                 onClick={hideNavigation}
               >
                 Product
+              </Link>
+            </li>
+            <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
+              <Link
+                className="block h-24"
+                to={"/building"}
+                onClick={hideNavigation}
+              >
+                Building
               </Link>
             </li>
             <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">

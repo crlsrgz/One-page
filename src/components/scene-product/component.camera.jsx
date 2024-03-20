@@ -53,7 +53,7 @@ export default function CameraControl(props) {
       makeDefault
       ref={refControls}
       target={checkScreen.width >= 567 ? [0, 0.5, 0] : [0, 0.8, 0]}
-      enablePan={true}
+      enablePan={false}
       /* ═══ disabled dor dev ═══ */
 
       maxPolarAngle={Math.PI * 0.5}

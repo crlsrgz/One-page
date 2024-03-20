@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { delay, generateRandomFloat } from "../../globals/screen";
 import { useFrame } from "@react-three/fiber";
 
-export default function FakeFire() {
+export default function FakeFire({ turnedOn = false }) {
   const [randomIntensity, setRandomIntensity] = useState(0.3);
   async function randomValues() {
     await delay(1000);
@@ -20,9 +20,19 @@ export default function FakeFire() {
   useFrame((state, delta) => {
     // fireRef.current.rotation.y += delta * 0.3;
     const elapsedTime = state.clock.elapsedTime;
-    fireRef.current.intensity = Math.abs(0.1 * Math.sin(elapsedTime * random));
-    fireRef2.current.intensity = Math.abs(0.5 * Math.sin(elapsedTime * random));
-    fireRef3.current.intensity = Math.abs(1 * Math.sin(elapsedTime / 3));
+    if (turnedOn) {
+      fireRef.current.intensity = Math.abs(
+        0.1 * Math.sin(elapsedTime * random),
+      );
+      fireRef2.current.intensity = Math.abs(
+        0.5 * Math.sin(elapsedTime * random),
+      );
+      fireRef3.current.intensity = Math.abs(1 * Math.sin(elapsedTime / 3));
+    } else {
+      fireRef.current.intensity = 0;
+      fireRef2.current.intensity = 0;
+      fireRef3.current.intensity = 0;
+    }
   });
 
   return (

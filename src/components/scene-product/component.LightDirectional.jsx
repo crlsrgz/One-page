@@ -10,8 +10,11 @@ export default function LightDirectional({
   targetPosition,
   intensity,
   castShadow = false,
+  color = "blue",
+  helper = true,
 }) {
   const refDirectLineOne = useRef();
+  const refEmpty = useRef();
   useHelper(refDirectLineOne, DirectionalLightHelper, 1);
   // const pos = { X: 0, Y: 1, Z: -1 };
   // const { posx, posy, posz, intensity } = useControls("directionalLightOne", {
@@ -25,9 +28,10 @@ export default function LightDirectional({
   return (
     <>
       <directionalLight
-        ref={refDirectLineOne}
+        ref={helper ? refDirectLineOne : refEmpty}
         // position={[posx, posy, posz]}
         // intensity={intesity}
+        color={color}
         position={position}
         intensity={intensity}
         target={o}
