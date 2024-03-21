@@ -5,9 +5,9 @@ import { LoopOnce } from "three";
 import InfoTags from "./component.InfoTags";
 // import importProductModel from "/wall.glb?url";
 import { delay } from "../../globals/screen";
-const yourFunction = async (model) => {
+
+const traverseProperties = async (model) => {
   await delay(2000);
-  console.log("Waited 2s");
   model.scene.traverse((node) => {
     if (node.isMesh) {
       node.castShadow = true;
@@ -20,7 +20,7 @@ export function ModelProduct() {
   const productModel = useGLTF(importProductModel);
   const animations = useAnimations(productModel.animations, productModel.scene);
 
-  yourFunction(productModel);
+  traverseProperties(productModel);
 
   /* ::::::::: check the states to activate actions ::::::::: */
   const [openDoorAction, setOpenDoorAction] = useState(false);
