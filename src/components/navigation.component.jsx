@@ -75,7 +75,7 @@ export default function ComponentMainNav() {
           <button onClick={hideNavigation}>
             <Icon
               icon="tdesign:close"
-              className={` absolute right-8 top-6 z-20 fill-current text-zinc-100 ${
+              className={` absolute right-8 top-6 z-40 fill-current text-zinc-100 ${
                 menuVisibleMobile ? "" : "hidden"
               }`}
               width={36}
@@ -87,7 +87,7 @@ export default function ComponentMainNav() {
         <div
           className={`
           
-          fixed left-0 top-0 z-10 h-screen w-screen cursor-pointer bg-neutral-800 p-4 pt-20 text-xl  transition-all
+          fixed left-0 top-0 z-30  h-screen w-screen cursor-pointer bg-neutral-800 p-4 pt-20 text-xl  transition-all
           ${
             menuVisibleMobile
               ? "animate-mobile-menu-in"

@@ -21,18 +21,23 @@ import {
 } from "three";
 import ButtonSideMenu from "./scene-detail/component.buttonSide";
 import LightSetup from "./scene-detail/component.lights";
+import { SceneTitle } from "./general/component.SceneTitle";
+import { checkScreen } from "../globals/screen";
 
 export default function SceneBuilding() {
   /* ═══ Model ═══ */
   const modelBuilding = useGLTF("anz.glb");
   const modelTrees = useGLTF("trees.glb");
 
+  const cameraPosition =
+    checkScreen.width >= 567 ? [-80, 90, -80] : [-80, 90, -80];
   /* ═══ Sidebar navigation States END ═══ */
   return (
     <div className="relative h-full w-full">
+      <SceneTitle linesArray={["Bavarian", "Church"]} />
       <Canvas
         camera={{
-          position: [-5, 0.5, 3],
+          position: cameraPosition,
           near: 0.01,
           far: 300,
           fov: 45,
@@ -96,11 +101,6 @@ export default function SceneBuilding() {
           </mesh>
         </>
       </Canvas>
-      <div className="absolute right-0 top-0 -z-30 flex h-full w-full select-none items-center justify-center overflow-hidden bg-clip-text pb-10 text-[24rem] text-zinc-800">
-        <h2 className=" bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-900 bg-clip-text text-transparent">
-          CHURCH
-        </h2>
-      </div>
     </div>
   );
 }

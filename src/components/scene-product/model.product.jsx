@@ -30,11 +30,10 @@ export function ModelProduct() {
   const [isDrawerOpen] = useState(false);
   const actionsList = Object.keys(animations.actions);
   function playAnimation(
-    effectValue,
+    effectValue, // the following checks if state is false prevents first rerender
     actions,
     forwardAction,
     backwardAction,
-    // the following checks if state is false prevents first rerender
     state = false,
   ) {
     if (effectValue && !state) {
