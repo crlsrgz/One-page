@@ -34,7 +34,7 @@ export default function SceneBuilding() {
   /* ═══ Sidebar navigation States END ═══ */
   return (
     <div className="relative h-full w-full">
-      <SceneTitle linesArray={["Bavarian", "Church"]} />
+      <SceneTitle linesArray={["Bavarian", "Church"]} color={"#007DE5 "} />
       <Canvas
         camera={{
           position: cameraPosition,
@@ -73,7 +73,7 @@ export default function SceneBuilding() {
 
         <OrbitControls
           makeDefault
-          target={[0, 0.0, 0]}
+          target={[0, 10, 0]}
           maxPolarAngle={Math.PI * 0.48}
           // minPolarAngle={Math.PI * 2}
           // maxAzimuthAngle={Math.PI * 0.5}

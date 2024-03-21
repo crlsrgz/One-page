@@ -1,33 +1,20 @@
 import { useEffect, useState } from "react";
 import { checkScreen, delay } from "../../globals/screen";
+import { searchLongestWord } from "../../globals/generalFunctions.module";
 
 export const SceneTitle = ({
   linesArray = ["AA"],
-  opacityDelay = 3000,
+  opacityDelay = 5000,
   //animate-desktop-menu-out
   hideDelay = 2000,
+
+  color,
 }) => {
   /* ::::::::: Page title  ::::::::: */
-
-  const searchLongestWord = (array) => {
-    const arrayLength = linesArray.length;
-    let indexOfLongestWord = -1;
-    let wordLength = -1;
-    for (let i = 0; i < arrayLength; i++) {
-      if (array[i].length > wordLength) {
-        wordLength = array[i].length;
-        indexOfLongestWord = i;
-      }
-    }
-    return array[indexOfLongestWord];
-  };
-
   const longestWord = searchLongestWord(linesArray).length;
-  console.log(longestWord);
   const titleSizeVertical =
     checkScreen.height >= 500 ? "text-12xl" : "text-8xl";
-  const titleSizeLongWords =
-    checkScreen.width > 400 && longestWord < 8 ? "text-8xl" : "text-6xl";
+  const titleSizeLongWords = longestWord >= 8 ? "text-6xl" : "text-8xl";
 
   const [displayPageTitle, setDisplayPageTitle] = useState("");
   const hidePageTitle = async () => {
@@ -45,7 +32,9 @@ export const SceneTitle = ({
     <>
       <div
         id="page-title"
-        className={`fixed bottom-0 right-0 z-40 p-8  font-urbanistMedium ${titleSizeLongWords} sm:${titleSizeVertical} ${displayPageTitle}`}
+        className={`fixed bottom-0 right-0 z-10 p-8 font-urbanistMedium ${titleSizeLongWords} sm:${titleSizeVertical} ${displayPageTitle} `}
+        // className={`fixed bottom-0 right-0 z-40 p-8 font-urbanistMedium text-5xl sm:text-12xl ${displayPageTitle}`}
+        style={{ color: color ? color : "" }}
       >
         {linesArray.map((line, index) => {
           return <p key={index}>{line}</p>;
