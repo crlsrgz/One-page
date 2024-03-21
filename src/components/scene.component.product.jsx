@@ -15,6 +15,8 @@ import gsap from "gsap";
 import LightDirectional from "./scene-product/component.LightDirectional";
 import FakeFire from "./scene-product/component.fakeFire";
 import { SceneTitle } from "./general/component.SceneTitle";
+import StandardModel from "./general/component.standardModel";
+import MultipleClones from "./general/componet.multipleClones";
 
 export default function SceneProduct() {
   /* 💡 reset camera function controls the props of the camera control component
@@ -143,7 +145,12 @@ export default function SceneProduct() {
           shadow-normalBias={0.12}
         />
         <FakeFire turnedOn={!spotLightsOn} />
+
+        <StandardModel url={"/empty.glb?url"} castShadow receiveShadow />
+        <MultipleClones url={"/woodLogs.glb?url"} />
+
         <ModelProduct />
+
         <InfoTags
           idString="reset-camera"
           value="1"
