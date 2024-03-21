@@ -11,7 +11,7 @@ export default function InfoTags({
 }) {
   return (
     <>
-      <Html center position={position}>
+      <Html center zIndexRange={10} position={position}>
         <button
           id={idString}
           className={`relative box-border h-12 w-12 cursor-pointer rounded-md border-2 border-slate-50 bg-slate-50 bg-opacity-10 font-urbanistMedium text-xl hover:animate-pulse-slow hover:bg-opacity-70 hover:text-zinc-900`}
