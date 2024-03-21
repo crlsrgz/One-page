@@ -34,12 +34,9 @@ export default function ComponentMainNav() {
       <button
         onMouseLeave={hideNavigationDesktop}
         onMouseEnter={showNavigationDesktop}
-        className={`w-full px-12 ${menuVisibleDesktop}`}
+        className={`w-full px-0 md:px-2 ${menuVisibleDesktop}`}
       >
-        <nav className="mx-12 hidden h-full w-full flex-row justify-end gap-8 text-xl sm:flex">
-          <Link to={"/"} className="underline-offset-8 hover:underline">
-            Home
-          </Link>
+        <nav className="mx-2 hidden h-full w-full flex-row justify-end gap-3 text-xl sm:flex md:mx-6 md:gap-6">
           <Link to={"/cube"} className="underline-offset-8 hover:underline">
             Cube
           </Link>
@@ -95,11 +92,6 @@ export default function ComponentMainNav() {
           }`}
         >
           <ul className="flex w-full flex-col items-center justify-start gap-2 ">
-            <li className="h-24 w-full py-8  text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
-              <Link className="block h-24" to={"/"} onClick={hideNavigation}>
-                Home
-              </Link>
-            </li>
             <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
               <Link
                 className="block h-24"

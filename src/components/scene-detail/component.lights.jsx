@@ -18,7 +18,7 @@ export default function LightSetup({
   return (
     <>
       <directionalLight
-        ref={refDirectLineOne}
+        // ref={refDirectLineOne}
         position={position}
         intensity={1.0}
         castShadow

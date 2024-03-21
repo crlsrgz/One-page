@@ -71,7 +71,8 @@ const explodedModelPositions = {
   },
   dämmungdach: {
     name: `Roof cavity insulation`,
-    description: `Cellulose insulation`,
+    description: `Cellulose insulation,
+    Resistant to biological effects`,
     position: {
       x: 0.5,
       y: 0.33,
@@ -82,7 +83,8 @@ const explodedModelPositions = {
   },
   dämmungwand: {
     name: `Cavity insulation`,
-    description: `Cellulose insulation`,
+    description: `Cellulose insulation,
+    Resistant to biological effects`,
     position: {
       x: 0.25,
       y: 0,
@@ -162,7 +164,7 @@ const explodedModelPositions = {
   },
   gipsverkleidung: {
     name: `Drywall panel`,
-    description: ``,
+    description: `Gypsum-core board, Abrasion resistant `,
     position: {
       x: 0.55,
       y: 0.1,
@@ -173,7 +175,7 @@ const explodedModelPositions = {
   },
   stegträger: {
     name: `Timber stud`,
-    description: ``,
+    description: `Fir Framing Stud, Kiln Dried`,
     position: {
       x: 0,
       y: 0,
@@ -217,7 +219,7 @@ const explodedModelPositions = {
   },
   traglatte: {
     name: `Battens`,
-    description: `50 x 25mm`,
+    description: `50 x 25mm as structure for the cladding:wandrähm`,
     position: {
       x: -0.2,
       y: -0.6,
@@ -228,7 +230,7 @@ const explodedModelPositions = {
   },
   verkleidungfassade: {
     name: `Cladding`,
-    description: ``,
+    description: `Horizontal Timber Cladding profile 15mm, 20 cm height`,
     position: {
       x: -0.4,
       y: -0.7,
