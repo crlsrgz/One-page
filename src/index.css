@@ -11,6 +11,10 @@
   src: url("./assets/fonts/Urbanist/Urbanist-Medium.ttf");
 }
 
+:root {
+  color-scheme: light only;
+}
+
 body {
   background-color: rgb(73, 68, 60);
   color: #f4f4f4;
