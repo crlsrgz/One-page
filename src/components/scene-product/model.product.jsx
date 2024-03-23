@@ -21,7 +21,6 @@ export function ModelProduct() {
   const animations = useAnimations(productModel.animations, productModel.scene);
 
   traverseProperties(productModel);
-  console.log(productModel.materials);
   /* ::::::::: check the states to activate actions ::::::::: */
   const [openDoorAction, setOpenDoorAction] = useState(false);
   const [openDrawerAction, setOpenDrawerAction] = useState(false);

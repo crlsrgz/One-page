@@ -17,6 +17,9 @@ import FakeFire from "./scene-product/component.fakeFire";
 import { SceneTitle } from "./general/component.SceneTitle";
 import StandardModel from "./general/component.standardModel";
 import MultipleClones from "./general/componet.multipleClones";
+import { ACESFilmicToneMapping, LinearToneMapping } from "three";
+import { EffectComposer, HueSaturation } from "@react-three/postprocessing";
+import { BlendFunction } from "postprocessing";
 
 export default function SceneProduct() {
   /* 💡 reset camera function controls the props of the camera control component
@@ -32,7 +35,6 @@ export default function SceneProduct() {
   const [spotLightsOn, setSpotLightsOn] = useState(true);
 
   function switchLights(refSpotLights) {
-    console.log(refSpotLights);
     if (spotLightsOn) {
       gsap.to(refSpotLights.current, {
         intensity: 0,
@@ -61,6 +63,12 @@ export default function SceneProduct() {
           fov: 45,
         }}
         shadows={true}
+        // gl={{
+        //   toneMapping: ACESFilmicToneMapping,
+        //   outputColorSpace: ACESFilmicToneMapping,
+        // }}
+        linear
+        flat
       >
         <CameraControl
           resetCamera={resetCameraPosition}
@@ -150,25 +158,33 @@ export default function SceneProduct() {
 
         <StandardModel
           url={"/productRoom.glb?url"}
-          textureUrl={"./productTexture.jpg"}
+          diffuseTextureUrl={"./productTexture.jpg"}
+          normalTexureUrl={"./productTexture_normal.jpg"}
+          roughTextureUrl={"./productTexture_rough.jpg"}
           castShadow
           receiveShadow
         />
         <StandardModel
           url={"/productBookShelf.glb?url"}
-          textureUrl={"./productTexture.jpg"}
+          diffuseTextureUrl={"./productTexture.jpg"}
+          normalTexureUrl={"./productTexture_normal.jpg"}
+          roughTextureUrl={"./productTexture_rough.jpg"}
           castShadow
           receiveShadow
         />
         <StandardModel
           url={"/productAccess.glb?url"}
-          textureUrl={"./productTexture.jpg"}
+          diffuseTextureUrl={"./productTexture.jpg"}
+          normalTexureUrl={"./productTexture_normal.jpg"}
+          roughTextureUrl={"./productTexture_rough.jpg"}
           castShadow
           receiveShadow
         />
         <StandardModel
           url={"/productSofa.glb?url"}
-          textureUrl={"./productTexture.jpg"}
+          diffuseTextureUrl={"./productTexture.jpg"}
+          normalTexureUrl={"./productTexture_normal.jpg"}
+          roughTextureUrl={"./productTexture_rough.jpg"}
           castShadow
           receiveShadow
         />
