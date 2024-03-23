@@ -160,7 +160,23 @@ export default function SceneProduct() {
           castShadow
           receiveShadow
         />
-        <MultipleClones url={"/woodLogs.glb?url"} />
+        <StandardModel
+          url={"/productAccess.glb?url"}
+          textureUrl={"./productTexture.jpg"}
+          castShadow
+          receiveShadow
+        />
+        <StandardModel
+          url={"/productSofa.glb?url"}
+          textureUrl={"./productTexture.jpg"}
+          castShadow
+          receiveShadow
+        />
+
+        <MultipleClones
+          url={"/woodLogs.glb?url"}
+          textureUrl={"./productTexture.jpg"}
+        />
 
         <InfoTags
           idString="reset-camera"

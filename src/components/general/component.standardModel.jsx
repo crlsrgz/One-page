@@ -19,7 +19,7 @@ export default function StandardModel({
       receiveShadow ? (node.receiveShadow = true) : (node.castShadow = false);
     }
   });
-  console.log(materials);
+  // console.log(materials);
   useEffect(() => {
     if (materials && materials["GeneralTexture.000"]) {
       materials["GeneralTexture.000"].map = texture;
