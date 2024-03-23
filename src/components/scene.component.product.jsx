@@ -146,10 +146,21 @@ export default function SceneProduct() {
         />
         <FakeFire turnedOn={!spotLightsOn} />
 
-        <StandardModel url={"/empty.glb?url"} castShadow receiveShadow />
-        <MultipleClones url={"/woodLogs.glb?url"} />
-
         <ModelProduct />
+
+        <StandardModel
+          url={"/productRoom.glb?url"}
+          textureUrl={"./productTexture.jpg"}
+          castShadow
+          receiveShadow
+        />
+        <StandardModel
+          url={"/productBookShelf.glb?url"}
+          textureUrl={"./productTexture.jpg"}
+          castShadow
+          receiveShadow
+        />
+        <MultipleClones url={"/woodLogs.glb?url"} />
 
         <InfoTags
           idString="reset-camera"
