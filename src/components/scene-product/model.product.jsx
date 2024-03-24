@@ -1,4 +1,5 @@
 import { useAnimations, useGLTF } from "@react-three/drei";
+// eslint-disable-next-line import/no-unresolved
 import importProductModel from "/product.glb?url";
 import { useEffect, useRef, useState } from "react";
 import { LoopOnce } from "three";
@@ -112,4 +113,4 @@ export function ModelProduct() {
     </>
   );
 }
-useGLTF.preload(importProductModel);
+// useGLTF.preload(importProductModel);

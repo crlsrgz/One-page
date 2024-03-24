@@ -1,7 +1,7 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 import { useEffect } from "react";
 
-let modelUrl = "";
+// let modelUrl = "";
 export default function StandardModel({
   url,
   diffuseTextureUrl = null,
@@ -11,7 +11,7 @@ export default function StandardModel({
   castShadow = false,
   receiveShadow = false,
 }) {
-  modelUrl = url;
+  // modelUrl = url;
   // const model = useGLTF(url) is destructure to get the material
   const { scene, materials } = useGLTF(url);
   const texture = useTexture({
@@ -43,4 +43,4 @@ export default function StandardModel({
   );
 }
 
-useGLTF.preload(modelUrl);
+// useGLTF.preload(modelUrl);

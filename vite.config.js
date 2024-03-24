@@ -4,7 +4,7 @@ const blue = "car";
 export default defineConfig({
   plugins: [react()],
   root: "src",
-  base : "./",
+  base: "/dev/",
   publicDir: "../public",
   build: {
     outDir: "../dist",

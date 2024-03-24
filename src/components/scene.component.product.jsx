@@ -67,8 +67,8 @@ export default function SceneProduct() {
         //   toneMapping: ACESFilmicToneMapping,
         //   outputColorSpace: ACESFilmicToneMapping,
         // }}
-        linear
-        flat
+        // linear
+        // flat
       >
         <CameraControl
           resetCamera={resetCameraPosition}
@@ -157,7 +157,7 @@ export default function SceneProduct() {
         <ModelProduct />
 
         <StandardModel
-          url={"/productRoom.glb?url"}
+          url={"./productRoom.glb?url"}
           diffuseTextureUrl={"./productTexture.jpg"}
           normalTexureUrl={"./productTexture_normal.jpg"}
           roughTextureUrl={"./productTexture_rough.jpg"}
@@ -165,7 +165,7 @@ export default function SceneProduct() {
           receiveShadow
         />
         <StandardModel
-          url={"/productBookShelf.glb?url"}
+          url={"./productBookShelf.glb?url"}
           diffuseTextureUrl={"./productTexture.jpg"}
           normalTexureUrl={"./productTexture_normal.jpg"}
           roughTextureUrl={"./productTexture_rough.jpg"}
@@ -173,7 +173,7 @@ export default function SceneProduct() {
           receiveShadow
         />
         <StandardModel
-          url={"/productAccess.glb?url"}
+          url={"./productAccess.glb?url"}
           diffuseTextureUrl={"./productTexture.jpg"}
           normalTexureUrl={"./productTexture_normal.jpg"}
           roughTextureUrl={"./productTexture_rough.jpg"}
@@ -181,7 +181,7 @@ export default function SceneProduct() {
           receiveShadow
         />
         <StandardModel
-          url={"/productSofa.glb?url"}
+          url={"./productSofa.glb?url"}
           diffuseTextureUrl={"./productTexture.jpg"}
           normalTexureUrl={"./productTexture_normal.jpg"}
           roughTextureUrl={"./productTexture_rough.jpg"}
@@ -190,7 +190,7 @@ export default function SceneProduct() {
         />
 
         <MultipleClones
-          url={"/woodLogs.glb?url"}
+          url={"./woodLogs.glb?url"}
           textureUrl={"./productTexture.jpg"}
         />
 
