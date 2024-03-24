@@ -29,7 +29,7 @@ export default function SceneProduct() {
   const initalRender = useRef(false);
 
   /* 💡 set the camera position depending on the screen size */
-  const cameraPosition = checkScreen.width >= 567 ? [2, 0.3, 3] : [2, 0.3, 3.5];
+  const cameraPosition = checkScreen.width >= 567 ? [2, 0.3, 3] : [2, 0.3, 5.5];
 
   const refSpotLights = useRef();
   const [spotLightsOn, setSpotLightsOn] = useState(true);
@@ -62,7 +62,7 @@ export default function SceneProduct() {
           far: 100,
           fov: 45,
         }}
-        shadows={true}
+        // shadows={true}
         // gl={{
         //   toneMapping: ACESFilmicToneMapping,
         //   outputColorSpace: ACESFilmicToneMapping,
@@ -83,7 +83,7 @@ export default function SceneProduct() {
           scale={0.8}
           hideAxisHeads
         /> */}
-        <ambientLight intensity={0.03} />
+        <ambientLight intensity={0.1} />
         <LightDirectional
           color="#e3effa"
           position={[0, 1, 3]}
@@ -108,7 +108,7 @@ export default function SceneProduct() {
           castShadow={true}
           helper={false}
         />
-        <SpotLight
+        {/* <SpotLight
           color={"#f9cb9c"}
           intensity={1}
           position={[-2.5, 2.38, 0]}
@@ -122,8 +122,8 @@ export default function SceneProduct() {
           attenuation={0.9}
           shadow-mapSize={[1024, 1024]}
           shadow-normalBias={0.12}
-        />
-        <SpotLight
+        /> */}
+        {/* <SpotLight
           color={"#f9cb9c"}
           intensity={1}
           position={[-2.5, 2.38, 2]}
@@ -137,26 +137,29 @@ export default function SceneProduct() {
           attenuation={1}
           shadow-mapSize={[1024, 1024]}
           shadow-normalBias={0.12}
-        />
+        /> */}
+        <FakeFire turnedOn={!spotLightsOn} />
+
         <SpotLight
+          castShadow={false}
           ref={refSpotLights}
-          intensity={0.8}
+          intensity={3.8}
           position={[0, 2.38, 2]}
           target-position={[0, 0, 0]}
           angle={Math.PI / 6}
           radiusTop={0.1}
           radiusBottom={1}
-          distance={5}
+          distance={3}
           penumbra={0.21}
-          attenuation={2}
-          shadow-mapSize={[1024, 1024]}
+          attenuation={0.1}
+          shadow-mapSize={[128, 128]}
           shadow-normalBias={0.12}
         />
-        <FakeFire turnedOn={!spotLightsOn} />
 
         <ModelProduct />
+        {/* <pointLight position={[0, 1, 1]} intensity={0.5} /> */}
 
-        <StandardModel
+        {/* <StandardModel
           url={"./productRoom.glb?url"}
           diffuseTextureUrl={"./productTexture.jpg"}
           normalTexureUrl={"./productTexture_normal.jpg"}
@@ -192,7 +195,7 @@ export default function SceneProduct() {
         <MultipleClones
           url={"./woodLogs.glb?url"}
           textureUrl={"./productTexture.jpg"}
-        />
+        /> */}
 
         <InfoTags
           idString="reset-camera"

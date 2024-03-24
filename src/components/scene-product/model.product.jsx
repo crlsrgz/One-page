@@ -80,6 +80,7 @@ export function ModelProduct() {
     };
     // the following checks if exploded is false prevents first rerender
   }, [openDoorAction]);
+
   useEffect(() => {
     playAnimation(
       openDrawerAction,

@@ -15,6 +15,7 @@ import { ButtonSideDetail } from "./scene-detail/component.buttonSide";
 import { checkScreen } from "../globals/screen";
 /*:: Models ::*/
 import Detail from "./scene-detail/component.detail";
+import { Perf } from "r3f-perf";
 
 const cameraPosition = checkScreen.width >= 567 ? [-3, 3, 4] : [-4, 3, 6];
 
@@ -100,6 +101,7 @@ export default function SceneDetail() {
         {/* <Perf position="top-right" /> */}
 
         <Detail explodedModel={explodeModel} resetMe={resetCamera} />
+        <Perf position="bottom-left" />
       </Canvas>
       <div className="absolute right-0 top-0 -z-30 flex h-full w-full select-none items-center justify-center overflow-hidden bg-clip-text pb-10 text-[24rem] text-zinc-800">
         <h2 className="bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-900 bg-clip-text text-transparent opacity-50">

@@ -60,7 +60,7 @@ export default function CameraControl(props) {
       minPolarAngle={Math.PI * 0.35}
       maxAzimuthAngle={Math.PI * 0.45}
       minAzimuthAngle={Math.PI * -0.25}
-      maxDistance={3.2}
+      maxDistance={3.5}
       minDistance={1}
       // onChange={(e) => {
       //   const maxX = 0.5;
