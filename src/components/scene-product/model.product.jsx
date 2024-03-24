@@ -1,11 +1,16 @@
 import { useAnimations, useGLTF } from "@react-three/drei";
-// eslint-disable-next-line import/no-unresolved
-import importProductModel from "/product.glb?url";
 import { useEffect, useRef, useState } from "react";
 import { LoopOnce } from "three";
+
+/*:: Components ::*/
 import InfoTags from "./component.InfoTags";
-// import importProductModel from "/wall.glb?url";
+
+/*:: General functions ::*/
 import { delay } from "../../globals/screen";
+
+/*:: Models ::*/
+// eslint-disable-next-line import/no-unresolved
+import importProductModel from "/product.glb?url";
 
 const traverseProperties = async (model) => {
   await delay(2000);

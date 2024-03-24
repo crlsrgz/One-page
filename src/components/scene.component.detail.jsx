@@ -1,19 +1,20 @@
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import { ACESFilmicToneMapping } from "three";
 
-import Detail from "./scene-detail/component.detail";
-import { Perf } from "r3f-perf";
-import { ButtonSideDetail } from "./scene-detail/component.buttonSide";
-import { checkScreen } from "../globals/screen";
-
 //: SVG Import
-
 import svgModelJoined from "/img/control-platform.svg";
 import svgModelExploded from "/img/control-platform-exploded.svg";
 import svgCameraReset from "/img/video-camera-reload.svg";
 import svgSceneReload from "/img/rotate.svg";
+
+/*:: Components ::*/
 import { SceneTitle } from "./general/component.SceneTitle";
+import { ButtonSideDetail } from "./scene-detail/component.buttonSide";
+/*:: General functions ::*/
+import { checkScreen } from "../globals/screen";
+/*:: Models ::*/
+import Detail from "./scene-detail/component.detail";
 
 const cameraPosition = checkScreen.width >= 567 ? [-3, 3, 4] : [-4, 3, 6];
 

@@ -1,7 +1,6 @@
-import { Html, OrbitControls } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useEffect } from "react";
-import { MathUtils } from "three";
 
 const CameraFunctionality = (props) => {
   const { camera } = useThree();

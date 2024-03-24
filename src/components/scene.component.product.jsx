@@ -1,25 +1,25 @@
-import { checkScreen, delay } from "../globals/screen";
-import {
-  ContactShadows,
-  Environment,
-  GizmoViewport,
-  SpotLight,
-} from "@react-three/drei";
+import { SpotLight } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Perf } from "r3f-perf";
-import CameraControl from "./scene-product/component.camera";
-import InfoTags from "./scene-product/component.InfoTags";
-import { ModelProduct } from "./scene-product/model.product";
 import gsap from "gsap";
-import LightDirectional from "./scene-product/component.LightDirectional";
-import FakeFire from "./scene-product/component.fakeFire";
+
+/*:: Components ::*/
+import InfoTags from "./scene-product/component.InfoTags";
 import { SceneTitle } from "./general/component.SceneTitle";
+import FakeFire from "./scene-product/component.fakeFire";
 import StandardModel from "./general/component.standardModel";
 import MultipleClones from "./general/componet.multipleClones";
-import { ACESFilmicToneMapping, LinearToneMapping } from "three";
-import { EffectComposer, HueSaturation } from "@react-three/postprocessing";
-import { BlendFunction } from "postprocessing";
+import LightDirectional from "./scene-product/component.LightDirectional";
+import CameraControl from "./scene-product/component.camera";
+import { ModelProduct } from "./scene-product/model.product";
+
+/*:: General functions ::*/
+import { checkScreen } from "../globals/screen";
+
+/*:: Components ::*/
+/*:: General functions ::*/
+/*:: Models ::*/
 
 export default function SceneProduct() {
   /* 💡 reset camera function controls the props of the camera control component

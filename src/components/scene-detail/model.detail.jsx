@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useGLTF, Html, Edges } from "@react-three/drei";
 import { MeshStandardMaterial } from "three";
-import explodedModelPositions from "./lerpPositions";
 import gsap from "gsap";
 // eslint-disable-next-line import/no-unresolved
-import detailModel from "/wall.glb?url";
+/*:: Components ::*/
+/*:: General functions ::*/
 import { checkScreen } from "../../globals/screen";
+import explodedModelPositions from "./lerpPositions";
+/*:: Models ::*/
+import detailModel from "/wall.glb?url";
 
 function ModelParts(props) {
   const [hover, setHover] = useState(false);
