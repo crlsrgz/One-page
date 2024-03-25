@@ -1,6 +1,6 @@
-import { GizmoViewport, Html, OrbitControls } from "@react-three/drei";
+import { Html, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import { Euler, Quaternion, Vector3 } from "three";
 import ButtonSideMenu from "./scene-detail/component.buttonSide";
@@ -12,7 +12,6 @@ import {
   Select,
 } from "@react-three/postprocessing";
 import gsap from "gsap";
-import { Perf } from "r3f-perf";
 
 function Cube(props) {
   const refCube = useRef();
@@ -79,7 +78,7 @@ export default function SceneCube() {
         id="sidebar-nav"
         className={` absolute ${
           sideMenu ? "left-[0px]" : "-left-72"
-        } top-2 z-30 flex h-[95%] w-auto select-none flex-row-reverse  gap-4 rounded-md bg-zinc-900 bg-opacity-80  ps-6 outline-2 transition-all`}
+        } top-24 z-30 flex h-[60%] w-auto select-none flex-row-reverse  gap-4 rounded-md bg-zinc-900 bg-opacity-80  ps-6 outline-2 transition-all`}
       >
         <div
           className={`h-full w-14 rounded-br-md rounded-tr-md bg-zinc-600 bg-opacity-50 hover:animate-pulse `}
@@ -132,15 +131,7 @@ export default function SceneCube() {
         }}
         shadows={true}
       >
-        <Perf />
         <LightSetup />
-        <GizmoViewport
-          axisColors={["red", "green", "blue"]}
-          labelColor="black"
-          position={[-1, 0, 0]}
-          scale={0.4}
-          hideAxisHeads
-        />
 
         <OrbitControls
           makeDefault
@@ -175,19 +166,15 @@ export default function SceneCube() {
           <Html center position={[-1, 0.5, 0]}>
             {" "}
             <button
-              className=" p-2 outline outline-zinc-100"
+              className=" w-24 p-2 outline outline-zinc-100"
               onClick={() => {
                 setMove(!move);
               }}
             >
-              Click!
+              Click me!
             </button>
           </Html>
-          <mesh scale={4} position={[0, -0.25, 0]} receiveShadow castShadow>
-            <boxGeometry args={[1, 0.01, 1]} />
-            <meshStandardMaterial color={"slategrey"} />
-          </mesh>
-          <mesh scale={4} position={[2, -0.55, 0]} receiveShadow castShadow>
+          <mesh scale={4} position={[0, -0.25, 0]} receiveShadow>
             <boxGeometry args={[1, 0.01, 1]} />
             <meshStandardMaterial color={"slategrey"} />
           </mesh>
