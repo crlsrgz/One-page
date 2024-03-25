@@ -11,12 +11,12 @@ export default function MultipleClones({
   const texture = useTexture(textureUrl);
   texture.flipY = false;
 
-  scene.traverse((node) => {
-    if (node.isMesh) {
-      castShadow ? (node.castShadow = true) : (node.castShadow = false);
-      receiveShadow ? (node.receiveShadow = true) : (node.castShadow = false);
-    }
-  });
+  // scene.traverse((node) => {
+  //   if (node.isMesh) {
+  //     castShadow ? (node.castShadow = true) : (node.castShadow = false);
+  //     receiveShadow ? (node.receiveShadow = true) : (node.castShadow = false);
+  //   }
+  // });
 
   useEffect(() => {
     if (materials && materials["GeneralTexture.000"]) {

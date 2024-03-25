@@ -24,12 +24,12 @@ export default function StandardModel({
   texture.normal.flipY = false;
   texture.roughness.flipY = false;
 
-  scene.traverse((node) => {
-    if (node.isMesh) {
-      castShadow ? (node.castShadow = true) : (node.castShadow = false);
-      receiveShadow ? (node.receiveShadow = true) : (node.castShadow = false);
-    }
-  });
+  // scene.traverse((node) => {
+  //   if (node.isMesh) {
+  //     castShadow ? (node.castShadow = true) : (node.castShadow = false);
+  //     receiveShadow ? (node.receiveShadow = true) : (node.castShadow = false);
+  //   }
+  // });
   useEffect(() => {
     if (materials && materials["GeneralTexture.000"]) {
       materials["GeneralTexture.000"].map = texture.diffuse;
