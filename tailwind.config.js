@@ -19,6 +19,7 @@ module.exports = {
         hand: "url('./src/assets/cursor/hand-svgrepo-com.cur'), pointer",
       },
       fontSize: {
+        "10xl": ["10rem", { lineHeight: "9rem" }],
         "12xl": ["12rem", { lineHeight: "10rem" }],
       },
     },

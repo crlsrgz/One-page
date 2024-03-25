@@ -7,14 +7,11 @@ export const SceneTitle = ({
   opacityDelay = 5000,
   //animate-desktop-menu-out
   hideDelay = 2000,
-
+  scenDescription = [" ", " "],
   color,
 }) => {
   /* ::::::::: Page title  ::::::::: */
   const longestWord = searchLongestWord(linesArray).length;
-  const titleSizeVertical =
-    checkScreen.height >= 500 ? "text-12xl" : "text-8xl";
-  const titleSizeLongWords = longestWord >= 8 ? "text-6xl" : "text-8xl";
 
   const [displayPageTitle, setDisplayPageTitle] = useState("");
   const hidePageTitle = async () => {
@@ -32,13 +29,24 @@ export const SceneTitle = ({
     <>
       <div
         id="page-title"
-        className={`fixed bottom-0 right-0 z-10 p-8 font-urbanistMedium ${titleSizeLongWords} sm:${titleSizeVertical} ${displayPageTitle} `}
+        className={`fixed bottom-0 right-0 z-10 p-8  `}
         // className={`fixed bottom-0 right-0 z-40 p-8 font-urbanistMedium text-5xl sm:text-12xl ${displayPageTitle}`}
         style={{ color: color ? color : "" }}
       >
-        {linesArray.map((line, index) => {
-          return <p key={index}>{line}</p>;
-        })}
+        <h1
+          className={`font-urbanistMedium text-6xl sm:text-7xl  md:text-8xl lg:text-10xl ${displayPageTitle} drop-shadow-[0_5px_5px_rgba(0,0,0,1)]`}
+        >
+          {linesArray.map((line, index) => {
+            return <p key={index}>{line}</p>;
+          })}
+        </h1>
+        <h2
+          className={` text-4xl ${displayPageTitle} drop-shadow-[0_2px_2px_rgba(0,0,0,1)]`}
+        >
+          {scenDescription.map((line, index) => {
+            return <p key={index}>{line}</p>;
+          })}
+        </h2>
       </div>
     </>
   );

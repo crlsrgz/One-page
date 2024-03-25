@@ -1,26 +1,7 @@
-import {
-  Backdrop,
-  ContactShadows,
-  Environment,
-  GizmoViewport,
-  Html,
-  OrbitControls,
-  Stage,
-  useGLTF,
-  useHelper,
-} from "@react-three/drei";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Suspense, useRef, useState } from "react";
-import { Icon } from "@iconify/react";
-import {
-  ACESFilmicToneMapping,
-  Euler,
-  MathUtils,
-  Quaternion,
-  Vector3,
-} from "three";
-import ButtonSideMenu from "./scene-detail/component.buttonSide";
-import LightSetup from "./scene-detail/component.lights";
+import { GizmoViewport, OrbitControls, useGLTF } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+
+import { ACESFilmicToneMapping } from "three";
 import { SceneTitle } from "./general/component.SceneTitle";
 import { checkScreen } from "../globals/screen";
 
@@ -34,7 +15,11 @@ export default function SceneBuilding() {
   /* ═══ Sidebar navigation States END ═══ */
   return (
     <div className="relative h-full w-full">
-      <SceneTitle linesArray={["Bavarian", "Church"]} color={"#007DE5 "} />
+      <SceneTitle
+        linesArray={["Bavarian", "Church"]}
+        scenDescription={["Gothic revival", "from around 1850"]}
+        color={"#007DE5 "}
+      />
       <Canvas
         camera={{
           position: cameraPosition,

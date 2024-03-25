@@ -80,8 +80,10 @@ export default function SceneDetail() {
         />
       </div>
 
-      {/* <SceneTitle /> */}
-      <SceneTitle linesArray={["Roof", "Eave", "Detail"]} />
+      <SceneTitle
+        linesArray={["Roof", "Eave", "Detail"]}
+        scenDescription={["Pitched Roof", "wide overhang"]}
+      />
       <Canvas
         camera={{
           position: cameraPosition,
@@ -101,11 +103,6 @@ export default function SceneDetail() {
 
         <Detail explodedModel={explodeModel} resetMe={resetCamera} />
       </Canvas>
-      <div className="absolute right-0 top-0 -z-30 flex h-full w-full select-none items-center justify-center overflow-hidden bg-clip-text pb-10 text-[24rem] text-zinc-800">
-        <h2 className="bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-900 bg-clip-text text-transparent opacity-50">
-          DETAIL
-        </h2>
-      </div>
       <div
         id="detail-description-container"
         className="fixed bottom-0 left-0 hidden h-36  w-full px-6 transition-all sm:hidden"
