@@ -2,7 +2,6 @@ import { useProgress } from "@react-three/drei";
 
 export default function LoadPercent() {
   const { progress } = useProgress();
-  const hidePeercentage = progress > 50 ? "text-red-500" : "";
   return (
     <div className="z-50 flex h-full w-full items-center justify-center">
       <div className=" flex items-center justify-center space-x-1 text-sm text-zinc-50">
@@ -20,7 +19,7 @@ export default function LoadPercent() {
           />
         </svg>
 
-        <div className="text-8xl">{Math.floor(progress)} % </div>
+        <div className="text-6xl">{Math.floor(progress)} % </div>
       </div>
     </div>
     // <Html center> {progress} % </Html>

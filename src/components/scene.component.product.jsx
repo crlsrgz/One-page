@@ -54,7 +54,10 @@ export default function SceneProduct() {
 
   return (
     <>
-      <SceneTitle linesArray={["Wood", "Stove"]} />
+      <SceneTitle
+        linesArray={["Wood", "Stove"]}
+        scenDescription={["with Lateral", "Heat Storage"]}
+      />
       <Canvas
         camera={{
           position: cameraPosition,
@@ -79,7 +82,7 @@ export default function SceneProduct() {
 
         <ambientLight ref={refSpotLights} intensity={0.3} />
 
-        <LightDirectional
+        {/* <LightDirectional
           color="#e3effa"
           position={[0, 1, 3]}
           targetPosition={[0, 1, 0]}
@@ -99,7 +102,8 @@ export default function SceneProduct() {
           targetPosition={[-3, 1, -2.3]}
           intensity={0.1}
           helper={false}
-        />
+        /> */}
+        <pointLight intensity={0.2} position={[1, 2, -2]} />
         <FakeFire turnedOn={!spotLightsOn} />
 
         <ModelProduct />
@@ -109,6 +113,7 @@ export default function SceneProduct() {
           diffuseTextureUrl={"./productTexture.jpg"}
           normalTexureUrl={"./productTexture_normal.jpg"}
           roughTextureUrl={"./productTexture_rough.jpg"}
+          wireframe
         />
         <StandardModel
           url={"./productBookShelf.glb?url"}
