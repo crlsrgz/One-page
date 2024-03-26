@@ -19,15 +19,6 @@ export default function SceneStarter(props) {
       position={[props.offset * props.posX * width, props.posY, props.posZ]}
       scale={0.5}
     >
-      {/* <OrbitControls
-        enabled={false}
-        autoRotate={true}
-        maxPolarAngle={Math.PI * 0.48}
-        minAzimuthAngle={Math.PI * -0.75}
-        maxAzimuthAngle={Math.PI * 0.5}
-        minDistance={1}
-        maxDistance={8}
-      /> */}
       <PresentationControls
         enabled={true}
         global={false}
