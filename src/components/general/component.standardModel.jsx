@@ -16,15 +16,17 @@ export default function StandardModel({
   // modelUrl = url;
   // const model = useGLTF(url) is destructure to get the material
   const { scene, materials } = useGLTF(url);
-  const texture = useTexture({
-    diffuse: diffuseTextureUrl,
-    normal: normalTexureUrl,
-    roughness: roughTextureUrl,
-  });
 
-  texture.diffuse.flipY = false;
-  texture.normal.flipY = false;
-  texture.roughness.flipY = false;
+  const texture = useTexture({
+    diffuse: diffuseTextureUrl ? diffuseTextureUrl : "./emptyTexture.jpg",
+    normal: normalTexureUrl ? normalTexureUrl : "./emptyTexture.jpg",
+    roughness: roughTextureUrl ? roughTextureUrl : "./emptyTexture.jpg",
+  });
+  if (texture.diffuse) {
+    texture.diffuse.flipY = false;
+    texture.normal.flipY = false;
+    texture.roughness.flipY = false;
+  }
 
   // scene.traverse((node) => {
   //   if (node.isMesh) {
@@ -83,7 +85,7 @@ export default function StandardModel({
     }
   });
   useEffect(() => {
-    if (materials && materials["GeneralTexture.000"]) {
+    if (materials && materials["GeneralTexture.000"] && texture) {
       materials["GeneralTexture.000"].map = texture.diffuse;
       materials["GeneralTexture.000"].normalMap = texture.normal;
       materials["GeneralTexture.000"].roughness = texture.roughness;
