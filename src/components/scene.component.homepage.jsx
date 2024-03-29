@@ -20,7 +20,7 @@ export default function SceneHomepage(props) {
   const [isMobile, _] = useState(checkScreen.width < 567 ? true : false);
 
   function EnvControls() {
-    const hdrMap = useLoader(RGBELoader, "/noga.hdr?url");
+    const hdrMap = useLoader(RGBELoader, "./noga.hdr?url");
 
     const skyColor = new Color(0.8, 0.83, 0.92);
     const intensity = 1.2;
