@@ -82,7 +82,7 @@ export default function SceneProduct() {
           resetCamera={resetCameraPosition}
           firstLoad={initalRender}
         />
-        <Perf position="bottom-left" />
+        {/* <Perf position="bottom-left" /> */}
         {/* Orbit controls inside the Camera control component, to limit pan */}
 
         <ambientLight ref={refSpotLights} intensity={0.3} />
