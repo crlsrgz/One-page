@@ -28,7 +28,7 @@ export default function ComponentMainNav() {
   }, []);
   return (
     <>
-      <h1 className="cursor-pointer select-none font-urbanistMedium">
+      <h1 className="-ml-8 cursor-pointer select-none font-urbanistMedium">
         <Link to={"/"}>
           <div className="flex flex-row items-center gap-5">
             <Icon icon="ph:cube-duotone" className="text-6xl" />

@@ -120,7 +120,7 @@ export default function SceneHomepage(props) {
           </Scroll>
 
           <Scroll html style={{ width: "100%" }}>
-            <div className="m-0 flex h-screen w-full flex-col items-start p-12  pt-48">
+            <div className="m-0 flex h-screen w-full flex-col items-start p-12  pt-32 sm:pt-48">
               <h1 className="font-yeseva text-4xl sm:text-6xl">
                 Construction Detail
               </h1>
