@@ -58,7 +58,7 @@ export default function ComponentMainNav() {
             to={"/wood-stove-product"}
             className="underline-offset-8 hover:underline"
           >
-            Wood Stove
+            Stove
           </Link>
           <Link
             to={"/3d-bavarian-church"}
@@ -133,7 +133,7 @@ export default function ComponentMainNav() {
                 to={"/wood-stove-product"}
                 onClick={hideNavigation}
               >
-                Wood Stove
+                Stove
               </Link>
             </li>
             <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">

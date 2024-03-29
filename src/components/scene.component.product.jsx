@@ -115,9 +115,9 @@ export default function SceneProduct() {
 
         <StandardModel
           url={"./productRoom.glb?url"}
-          diffuseTextureUrl={"./productTexture.jpg"}
-          normalTexureUrl={"./productTexture_normal.jpg"}
-          roughTextureUrl={"./productTexture_rough.jpg"}
+          diffuseTextureUrl={"./emptyTexture.jpg"}
+          normalTexureUrl={"./emptyTexture.jpg"}
+          roughTextureUrl={"./emptyTexture.jpg"}
           wireframe
         />
         <StandardModel

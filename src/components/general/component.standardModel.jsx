@@ -76,8 +76,8 @@ export default function StandardModel({
   scene.traverse((node) => {
     if (node.isMesh && wireframe) {
       const newMaterial = new MeshStandardMaterial({
-        color: "#4a8bad",
-        roughness: 0.7,
+        color: "#61574b",
+        roughness: 0.81,
         transparent: false,
         opacity: 0.5,
       });
