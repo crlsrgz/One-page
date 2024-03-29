@@ -21,6 +21,7 @@ function ModelParts(props) {
   const detailInfoBoxMobileContainer = document.getElementById(
     "detail-description-container",
   );
+
   const detailInfoBoxMobile = document.getElementById("detailTitle");
   const detailInfoBoxMobileText = document.getElementById("detailText");
 
@@ -153,11 +154,14 @@ function ModelParts(props) {
             >
               <div className="flex flex-row items-baseline gap-2">
                 <span className=" h-3 w-3 bg-zinc-100"></span>
-                <h3 className="text-xl">
+                <h3 id="title-description" className="text-xl">
                   {objectName[0] ? objectName[0] : ""}
                 </h3>
               </div>
-              <p className="h-auto w-full break-before-auto whitespace-pre-line text-sm ">
+              <p
+                id="detail-description"
+                className="h-auto w-full break-before-auto whitespace-pre-line text-sm "
+              >
                 {objectName[1] ? objectName[1] : ""}
               </p>
             </div>

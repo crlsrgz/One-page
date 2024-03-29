@@ -29,7 +29,7 @@ export function ButtonSideDetail({ handleClick, textContent, tooltipContent }) {
           tooltip ? " opacity-100" : ""
         }`}
       >
-        <div className="absolute -top-6 left-4 h-auto w-36 rounded-lg bg-zinc-500 px-4 pb-4 pt-2">
+        <div className="absolute -left-20 top-0  hidden h-auto w-36 rounded-lg bg-zinc-500 px-4 pb-4 pt-2 sm:-top-6 sm:left-4">
           {tooltipContent}
         </div>
       </div>

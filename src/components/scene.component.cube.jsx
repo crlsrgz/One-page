@@ -173,7 +173,7 @@ export default function SceneCube() {
             </Select>
           </Selection>
 
-          <Html center position={[-1, 0.5, 0]}>
+          <Html center position={[-1, 0.5, 0]} zIndexRange={2}>
             {" "}
             <button
               className=" w-24 p-2 outline outline-zinc-100"

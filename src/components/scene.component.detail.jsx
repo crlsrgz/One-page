@@ -34,7 +34,7 @@ export default function SceneDetail() {
     <div className="relative h-full w-full">
       <div
         id="sidebar-nav"
-        className={`absolute top-24 z-30 flex h-full w-24 select-none flex-col items-center justify-start gap-4 rounded-md bg-none outline-2`}
+        className={`absolute bottom-6 left-6 z-30 flex h-full w-24 select-none flex-row items-end justify-start gap-4 rounded-md bg-none outline-2 sm:left-0 sm:top-32 sm:flex-col sm:items-center`}
       >
         <ButtonSideDetail
           handleClick={() => {
@@ -112,19 +112,21 @@ export default function SceneDetail() {
       </Canvas>
       <div
         id="detail-description-container"
-        className="fixed bottom-0 left-0 hidden h-36  w-full px-6 transition-all sm:hidden"
+        className="fixed bottom-36 left-0 hidden h-36  w-full px-6 transition-all sm:hidden "
       >
-        <div
-          id="detailTitle"
-          className="h-auto w-full rounded-t-lg bg-zinc-900 bg-opacity-80 px-6 pt-2 text-xl sm:hidden"
-        >
-          {" "}
-        </div>
-        <div
-          id="detailText"
-          className="h-36 w-full bg-zinc-900 bg-opacity-80 px-6 pt-2 text-sm sm:hidden "
-        >
-          {" "}
+        <div className=" shadow-lg shadow-zinc-800">
+          <div
+            id="detailTitle"
+            className="h-auto w-full rounded-t-lg bg-zinc-900 bg-opacity-80 px-6 pt-2 text-xl shadow-xl "
+          >
+            {" "}
+          </div>
+          <div
+            id="detailText"
+            className="h-36 w-full rounded-b-lg bg-zinc-900 bg-opacity-80 px-6 pt-2 text-sm shadow-xl "
+          >
+            {" "}
+          </div>
         </div>
       </div>
     </div>
