@@ -44,7 +44,7 @@ export default function ComponentMainNav() {
         onMouseEnter={showNavigationDesktop}
         className={`w-full px-0 md:px-2 ${menuVisibleDesktop}`}
       >
-        <nav className="mx-2 hidden h-full w-full flex-row justify-end gap-3 text-xl sm:flex md:mx-6 md:gap-6">
+        <nav className="mx-2 hidden h-full w-full flex-row items-center justify-end gap-3 text-xl sm:flex md:mx-6 md:gap-3 ">
           <Link to={"/"} className="underline-offset-8 hover:underline">
             Home
           </Link>
@@ -72,6 +72,9 @@ export default function ComponentMainNav() {
             className="underline-offset-8 hover:underline"
           >
             Cube
+          </Link>
+          <Link to={"/"} className="underline-offset-8 hover:underline">
+            <Icon icon={"ph:question"} className="text-2xl" />
           </Link>
         </nav>
       </button>
