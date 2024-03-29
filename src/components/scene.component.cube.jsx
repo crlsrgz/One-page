@@ -12,6 +12,7 @@ import {
   Select,
 } from "@react-three/postprocessing";
 import gsap from "gsap";
+import { SceneTitle } from "./general/component.SceneTitle";
 
 function Cube(props) {
   const refCube = useRef();
@@ -71,6 +72,13 @@ export default function SceneCube() {
     }
   }
 
+  /* ::::::::: Page tittle ::::::::: */
+
+  useEffect(() => {
+    document.title =
+      "Interactive Cube Scene - React Three Fiber | 3d.carlosfx.com";
+  }, []);
+
   /* ═══ Sidebar navigation States END ═══ */
   return (
     <div className="relative h-full w-full">
@@ -120,6 +128,8 @@ export default function SceneCube() {
           />
         </div>
       </div>
+
+      <SceneTitle linesArray={["Interactive", "Cube"]} scenDescription={[""]} />
 
       {/* ═══  ═══ */}
       <Canvas

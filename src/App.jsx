@@ -19,17 +19,28 @@ const App = () => {
       <Suspense fallback={<LoadPercent />}>
         <div className="canvas-element h-full w-full select-none ">
           <BrowserRouter basename="/dev/">
-            <header className="h-18 fixed z-50 flex w-full  flex-row  items-center justify-center gap-4 px-12 pb-2  pt-2 ">
+            <header className=" fixed z-50 flex h-24 w-full  flex-row  items-center justify-center gap-4 px-12 pb-2  pt-2 ">
               <ComponentMainNav />
             </header>
             <div className="flex h-full w-full flex-grow ">
               <Routes>
                 <Route path={"/"} element={<SceneHomepage />} />
-                <Route path={"/cube"} element={<SceneCube />} />
-                <Route path={"/detail"} element={<SceneDetail />} />
-                <Route path={"/product"} element={<SceneProduct />} />
-                <Route path={"/building"} element={<SceneBuilding />} />
-                <Route path={"/landscape"} element={<SceneLandscape />} />
+                <Route
+                  path={"/3d-interactive-cube-scene"}
+                  element={<SceneCube />}
+                />
+                <Route
+                  path={"/interactive-eave-detail"}
+                  element={<SceneDetail />}
+                />
+                <Route
+                  path={"/wood-stove-product"}
+                  element={<SceneProduct />}
+                />
+                <Route
+                  path={"/3d-bavarian-church"}
+                  element={<SceneBuilding />}
+                />
               </Routes>
             </div>
           </BrowserRouter>

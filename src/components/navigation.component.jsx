@@ -28,32 +28,50 @@ export default function ComponentMainNav() {
   }, []);
   return (
     <>
-      <h1 className="cursor-pointer select-none font-yeseva text-6xl">
-        <Link to={"/"}>Cubos</Link>
-      </h1>{" "}
+      <h1 className="cursor-pointer select-none font-urbanistMedium">
+        <Link to={"/"}>
+          <div className="flex flex-row items-center gap-5">
+            <Icon icon="ph:cube-duotone" className="text-6xl" />
+            <div className="flex flex-col gap-0">
+              <span className="text-4xl">Cubes</span>
+              <span className="mx-1 text-sm">carlosfx</span>
+            </div>
+          </div>
+        </Link>
+      </h1>
       <button
         onMouseLeave={hideNavigationDesktop}
         onMouseEnter={showNavigationDesktop}
         className={`w-full px-0 md:px-2 ${menuVisibleDesktop}`}
       >
         <nav className="mx-2 hidden h-full w-full flex-row justify-end gap-3 text-xl sm:flex md:mx-6 md:gap-6">
-          <Link to={"/cube"} className="underline-offset-8 hover:underline">
-            Cube
-          </Link>
-          <Link to={"/detail"} className="underline-offset-8 hover:underline">
-            Detail
-          </Link>
-          <Link to={"/product"} className="underline-offset-8 hover:underline">
-            Product
-          </Link>
-          <Link to={"/building"} className="underline-offset-8 hover:underline">
-            Building
+          <Link to={"/"} className="underline-offset-8 hover:underline">
+            Home
           </Link>
           <Link
-            to={"/landscape"}
+            to={"/interactive-eave-detail"}
             className="underline-offset-8 hover:underline"
           >
-            Landscape
+            Detail
+          </Link>
+          <Link
+            to={"/wood-stove-product"}
+            className="underline-offset-8 hover:underline"
+          >
+            Wood Stove
+          </Link>
+          <Link
+            to={"/3d-bavarian-church"}
+            className="underline-offset-8 hover:underline"
+          >
+            Building
+          </Link>
+
+          <Link
+            to={"/3d-interactive-cube-scene"}
+            className="underline-offset-8 hover:underline"
+          >
+            Cube
           </Link>
         </nav>
       </button>
@@ -93,18 +111,14 @@ export default function ComponentMainNav() {
         >
           <ul className="flex w-full flex-col items-center justify-start gap-2 ">
             <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
-              <Link
-                className="block h-24"
-                to={"/cube"}
-                onClick={hideNavigation}
-              >
-                Cube
+              <Link className="block h-24" to={"/"} onClick={hideNavigation}>
+                Home
               </Link>
             </li>
             <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
               <Link
                 className="block h-24"
-                to={"/detail"}
+                to={"/interactive-eave-detail"}
                 onClick={hideNavigation}
               >
                 Detail
@@ -113,16 +127,16 @@ export default function ComponentMainNav() {
             <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
               <Link
                 className="block h-24"
-                to={"/product"}
+                to={"/wood-stove-product"}
                 onClick={hideNavigation}
               >
-                Product
+                Wood Stove
               </Link>
             </li>
             <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
               <Link
                 className="block h-24"
-                to={"/building"}
+                to={"/3d-bavarian-church"}
                 onClick={hideNavigation}
               >
                 Building
@@ -131,10 +145,10 @@ export default function ComponentMainNav() {
             <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
               <Link
                 className="block h-24"
-                to={"/landscape"}
+                to={"/3d-interactive-cube-scene"}
                 onClick={hideNavigation}
               >
-                Landscape
+                Cube
               </Link>
             </li>
           </ul>

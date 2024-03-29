@@ -1,6 +1,6 @@
 import { Environment, SpotLight } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Perf } from "r3f-perf";
 import gsap from "gsap";
 
@@ -51,6 +51,11 @@ export default function SceneProduct() {
       setSpotLightsOn(true);
     }
   }
+  /* ::::::::: Page tittle ::::::::: */
+  useEffect(() => {
+    document.title =
+      "Interactive Scene of a Wood Stove - React Three Fiber | 3d.carlosfx.com";
+  }, []);
 
   return (
     <>

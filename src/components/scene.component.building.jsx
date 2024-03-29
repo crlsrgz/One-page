@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import { ACESFilmicToneMapping } from "three";
 import { SceneTitle } from "./general/component.SceneTitle";
 import { checkScreen } from "../globals/screen";
+import { useEffect } from "react";
 
 export default function SceneBuilding() {
   /* ═══ Model ═══ */
@@ -13,6 +14,12 @@ export default function SceneBuilding() {
   const cameraPosition =
     checkScreen.width >= 567 ? [-80, 90, -80] : [-80, 90, -80];
   /* ═══ Sidebar navigation States END ═══ */
+  /* ::::::::: Page tittle ::::::::: */
+  useEffect(() => {
+    document.title =
+      "Old Bavarian Church, Gothic Revival - React Three Fiber | 3d.carlosfx.com";
+  }, []);
+
   return (
     <div className="relative h-full w-full">
       <SceneTitle

@@ -55,8 +55,6 @@ export default function SceneHomepage(props) {
         }}
         shadows={true}
       >
-        <Perf position="bottom-left" />
-
         <ScrollControls pages={4} damping={0.1} distance={0.5}>
           <EnvControls />
 
@@ -135,7 +133,7 @@ export default function SceneHomepage(props) {
               </p>
               <button className="scene mt-6 w-64 rounded-xl bg-zinc-300 p-4 text-2xl text-orange-700  ">
                 <a
-                  href="./detail"
+                  href="./interactive-eave-detail"
                   className=" -mt-1 flex flex-row items-center justify-center gap-4"
                 >
                   <>
@@ -158,7 +156,7 @@ export default function SceneHomepage(props) {
                 </p>
                 <button className="scene mt-6 w-64 rounded-xl bg-zinc-300 p-4 text-2xl text-orange-700  ">
                   <a
-                    href="./product"
+                    href="./wood-stove-product"
                     className=" -mt-1 flex flex-row items-center justify-center gap-4"
                   >
                     <>
@@ -183,7 +181,7 @@ export default function SceneHomepage(props) {
               </p>
               <button className="scene mt-6 w-64 rounded-xl bg-zinc-300 p-4 text-2xl text-orange-700  ">
                 <a
-                  href="./building"
+                  href="./3d-bavarian-church"
                   className=" -mt-1 flex flex-row items-center justify-center gap-4"
                 >
                   <>
@@ -205,7 +203,7 @@ export default function SceneHomepage(props) {
               </p>
               <button className="scene mt-6 w-64 rounded-xl bg-zinc-300 p-4 text-2xl text-orange-700  ">
                 <a
-                  href="./cube"
+                  href="./3d-interactive-cube-scene"
                   className=" -mt-1 flex flex-row items-center justify-center gap-4"
                 >
                   <>

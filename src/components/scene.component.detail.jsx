@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ACESFilmicToneMapping } from "three";
 
 //: SVG Import
@@ -22,6 +22,13 @@ export default function SceneDetail() {
   const [explodeModel, setExplodeModel] = useState(false);
   const [resetCamera, setResetCamera] = useState(false);
   const [buttonExplodeClicked, setButtonExplodedClicked] = useState(false);
+
+  /* ::::::::: Page tittle ::::::::: */
+
+  useEffect(() => {
+    document.title =
+      "Interactive Roof Eave Detail Wood construction - React Three Fiber | 3d.carlosfx.com";
+  }, []);
 
   return (
     <div className="relative h-full w-full">
