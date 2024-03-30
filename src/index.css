@@ -16,7 +16,8 @@
 }
 
 body {
-  background-color: #323333;
+  background-color: #312f2b;
+  /* background-color: #323333; */
   color: #f4f4f4;
 }
 
@@ -53,7 +54,7 @@ animation: animation-background 4s ease 0s infinite  forwards;
 .button-back-color:hover{
 
    color: #fff7ed;
-   background-color: #c2410c;
+   background-color: #fdba74;
    animation: animation-background 4s ease 2s infinite  forwards;
    outline: solid 4px #c2410c;
 }
@@ -88,15 +89,13 @@ animation: animation-background 4s ease 0s infinite  forwards;
   }
   45% {
 
-   color: #fff7ed;
   }
   50% {
-   background-color: #c2410c;
+   background-color: #fdba74;
    
   }
   55% {
 
-   color: #fff7ed;
   }
   100% {
    background-color: #fff7ed;

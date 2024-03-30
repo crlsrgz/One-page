@@ -9,6 +9,7 @@ import SceneCube from "./components/scene.component.cube";
 import SceneLandscape from "./components/scene.component.landscape";
 import SceneBuilding from "./components/scene.component.building";
 import LoadPercent from "./components/component.loadPercent";
+import SceneAbout from "./components/scene-about/component.scene.about";
 const App = () => {
   //  document.querySelector("body").style["overflow"] = "hidden";
   return (
@@ -41,6 +42,7 @@ const App = () => {
                   path={"/3d-bavarian-church"}
                   element={<SceneBuilding />}
                 />
+                <Route path={"/about"} element={<SceneAbout />} />
               </Routes>
             </div>
           </BrowserRouter>

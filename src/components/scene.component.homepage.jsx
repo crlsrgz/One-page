@@ -50,7 +50,7 @@ export default function SceneHomepage(props) {
 
   return (
     <>
-      <div className="t-0 fixed z-20 h-24 w-full bg-[#323333] "></div>
+      <div className="t-0 fixed z-20 h-24 w-full bg-[#312f2b] "></div>
       <Canvas
         camera={{
           position: [6, 1, 0],
@@ -162,7 +162,7 @@ export default function SceneHomepage(props) {
                   It is reliable for heating and offers a romantic way of life
                   because it remind us the relationship between humnas and fire.
                 </p>
-                <button className="scene mt-6 w-64 rounded-xl bg-zinc-300 p-4 text-2xl text-orange-700  ">
+                <button className="button-back-color scene mt-6 w-64 rounded-2xl p-4 text-2xl ">
                   <a
                     href="./wood-stove-product"
                     className=" -mt-1 flex flex-row items-center justify-center gap-4"
@@ -187,7 +187,7 @@ export default function SceneHomepage(props) {
                 It is a mid-19th century stone building with a tiled roof and a
                 copper-clad clock tower.
               </p>
-              <button className="scene mt-6 w-64 rounded-xl bg-zinc-300 p-4 text-2xl text-orange-700  ">
+              <button className="button-back-color scene mt-6 w-64 rounded-2xl p-4 text-2xl ">
                 <a
                   href="./3d-bavarian-church"
                   className=" -mt-1 flex flex-row items-center justify-center gap-4"
@@ -209,7 +209,7 @@ export default function SceneHomepage(props) {
                 It is just here as a reminder that a small idea can move the
                 ball a long way.
               </p>
-              <button className="scene mt-6 w-64 rounded-xl bg-zinc-300 p-4 text-2xl text-orange-700  ">
+              <button className="button-back-color scene mt-6 w-64 rounded-2xl p-4 text-2xl ">
                 <a
                   href="./3d-interactive-cube-scene"
                   className=" -mt-1 flex flex-row items-center justify-center gap-4"

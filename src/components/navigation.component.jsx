@@ -73,7 +73,7 @@ export default function ComponentMainNav() {
           >
             Cube
           </Link>
-          <Link to={"/"} className="underline-offset-8 hover:underline">
+          <Link to={"/about"} className="underline-offset-8 hover:underline">
             <Icon icon={"ph:question"} className="text-2xl" />
           </Link>
         </nav>
@@ -153,6 +153,16 @@ export default function ComponentMainNav() {
                 onClick={hideNavigation}
               >
                 Cube
+              </Link>
+            </li>
+
+            <li className="h-24 w-full py-8 text-center underline-offset-8 transition-all hover:bg-neutral-600 hover:underline">
+              <Link
+                to={"/about"}
+                className="block h-24"
+                onClick={hideNavigation}
+              >
+                About
               </Link>
             </li>
           </ul>
