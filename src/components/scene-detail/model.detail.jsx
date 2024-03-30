@@ -175,7 +175,9 @@ function ModelParts(props) {
           position={[0, 0, 0]}
           center
           distanceFactor={undefined}
-          className="flex w-72 flex-col items-start gap-4 pb-24"
+          className={`flex w-72 flex-col items-start gap-4 pb-24 ${
+            nameVisible ? "" : "hidden"
+          }`}
         >
           <div
             className="mb-96 flex h-auto w-full flex-col items-baseline gap-4

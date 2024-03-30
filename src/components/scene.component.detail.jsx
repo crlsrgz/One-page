@@ -31,10 +31,10 @@ export default function SceneDetail() {
   }, []);
 
   return (
-    <div className="relative h-[90%] w-screen">
+    <div className="relative h-[100%] w-screen">
       <div
         id="sidebar-nav"
-        className={`absolute bottom-16 left-6 z-30 flex h-1/2  w-24 select-none flex-row items-end justify-start gap-4 rounded-md bg-none outline-2 sm:left-0 sm:top-32 sm:flex-col sm:items-center`}
+        className={`absolute bottom-16 z-30 flex h-16 w-full select-none flex-row items-end justify-center gap-4 rounded-md bg-none outline-2 sm:left-0 sm:top-32 sm:w-24 sm:flex-col sm:items-center sm:justify-start`}
       >
         <ButtonSideDetail
           handleClick={() => {

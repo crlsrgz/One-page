@@ -23,7 +23,7 @@ export const SceneTitle = ({
   };
 
   useEffect(() => {
-    // hidePageTitle();
+    hidePageTitle();
   }, []);
   /* ::::::::: Page title END ::::::::: */
   //Review the logic of the position of the title
@@ -32,7 +32,7 @@ export const SceneTitle = ({
       <div
         id="page-title"
         className={`fixed ${
-          positionY ? "bottom-48" : "bottom-0"
+          positionY ? "bottom-16" : "bottom-0"
         } right-0 z-40 p-8  `}
         style={{ color: color ? color : "" }}
       >
