@@ -9,6 +9,7 @@ export const SceneTitle = ({
   hideDelay = 2000,
   scenDescription = [" ", " "],
   color,
+  position = { x: 0, y: 0 },
 }) => {
   /* ::::::::: Page title  ::::::::: */
   const longestWord = searchLongestWord(linesArray).length;
@@ -29,7 +30,7 @@ export const SceneTitle = ({
     <>
       <div
         id="page-title"
-        className={`fixed bottom-0 right-0 z-10 p-8  `}
+        className={`fixed bottom-${position.y} right-${position.x} z-10 p-8  `}
         // className={`fixed bottom-0 right-0 z-40 p-8 font-urbanistMedium text-5xl sm:text-12xl ${displayPageTitle}`}
         style={{ color: color ? color : "" }}
       >
