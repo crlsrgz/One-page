@@ -31,10 +31,10 @@ export default function SceneDetail() {
   }, []);
 
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-[90%] w-screen">
       <div
         id="sidebar-nav"
-        className={`absolute bottom-16 left-6 z-30 flex h-full w-24 select-none flex-row items-end justify-start gap-4 rounded-md bg-none outline-2 sm:left-0 sm:top-32 sm:flex-col sm:items-center`}
+        className={`absolute bottom-16 left-6 z-30 flex h-1/2  w-24 select-none flex-row items-end justify-start gap-4 rounded-md bg-none outline-2 sm:left-0 sm:top-32 sm:flex-col sm:items-center`}
       >
         <ButtonSideDetail
           handleClick={() => {
@@ -90,6 +90,7 @@ export default function SceneDetail() {
       <SceneTitle
         linesArray={["Roof", "Eave", "Detail"]}
         scenDescription={["Pitched Roof", "wide overhang"]}
+        position={{ x: 1, y: 1 }}
       />
       <Canvas
         camera={{
@@ -110,25 +111,6 @@ export default function SceneDetail() {
 
         <Detail explodedModel={explodeModel} resetMe={resetCamera} />
       </Canvas>
-      <div
-        id="detail-description-container"
-        className="fixed bottom-48 left-0 hidden h-36  w-full px-6 transition-all sm:hidden "
-      >
-        <div className=" shadow-lg shadow-zinc-800">
-          <div
-            id="detailTitle"
-            className="h-auto w-full rounded-t-lg bg-zinc-900 bg-opacity-80 px-6 pt-2 text-xl shadow-xl "
-          >
-            {" "}
-          </div>
-          <div
-            id="detailText"
-            className="h-36 w-full rounded-b-lg bg-zinc-900 bg-opacity-80 px-6 pt-2 text-sm shadow-xl "
-          >
-            {" "}
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
