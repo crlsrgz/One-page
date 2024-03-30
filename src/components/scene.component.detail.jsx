@@ -90,7 +90,7 @@ export default function SceneDetail() {
       <SceneTitle
         linesArray={["Roof", "Eave", "Detail"]}
         scenDescription={["Pitched Roof", "wide overhang"]}
-        position={{ x: 1, y: 1 }}
+        positionY={true}
       />
       <Canvas
         camera={{

@@ -9,7 +9,7 @@ export const SceneTitle = ({
   hideDelay = 2000,
   scenDescription = [" ", " "],
   color,
-  position = { x: 0, y: 0 },
+  positionY = false,
 }) => {
   /* ::::::::: Page title  ::::::::: */
   const longestWord = searchLongestWord(linesArray).length;
@@ -23,15 +23,17 @@ export const SceneTitle = ({
   };
 
   useEffect(() => {
-    hidePageTitle();
+    // hidePageTitle();
   }, []);
   /* ::::::::: Page title END ::::::::: */
+  //Review the logic of the position of the title
   return (
     <>
       <div
         id="page-title"
-        className={`fixed bottom-${position.y} right-${position.x} z-10 p-8  `}
-        // className={`fixed bottom-0 right-0 z-40 p-8 font-urbanistMedium text-5xl sm:text-12xl ${displayPageTitle}`}
+        className={`fixed ${
+          positionY ? "bottom-48" : "bottom-0"
+        } right-0 z-40 p-8  `}
         style={{ color: color ? color : "" }}
       >
         <h1

@@ -101,11 +101,12 @@ export default function ComponentMainNav() {
             />
           </button>
         </div>
+        {/*:: MENU mobile ::*/}
 
         <div
           className={`
           
-          fixed left-0 top-0 z-30  h-screen w-screen cursor-pointer bg-neutral-800 p-4 pt-20 text-xl  transition-all
+          fixed left-0 top-0 z-30  h-screen w-screen cursor-pointer bg-neutral-800 p-4 pt-12 text-xl  transition-all
           ${
             menuVisibleMobile
               ? "animate-mobile-menu-in"

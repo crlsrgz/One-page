@@ -14,7 +14,7 @@ export default function InfoTags({
       <Html center zIndexRange={10} position={position}>
         <button
           id={idString}
-          className={`border-2x shadow-zinc-95 relative box-border h-16 w-16  cursor-pointer rounded-md bg-zinc-900 bg-opacity-70 font-urbanistMedium text-xl shadow-xl outline outline-1 outline-zinc-100 hover:animate-pulse-slow hover:bg-zinc-600 `}
+          className={`border-2x shadow-zinc-95 relative box-border h-16 w-16  cursor-pointer rounded-md bg-zinc-900 bg-opacity-70 font-urbanistMedium text-xl shadow-lg shadow-zinc-900  outline outline-1 outline-zinc-100 hover:animate-pulse hover:bg-zinc-950  active:shadow-zinc-800`}
           onClick={handleClick}
         >
           <p className="absolute flex w-full -translate-y-1/2 justify-center text-center">

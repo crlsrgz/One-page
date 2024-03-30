@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import {
   Environment,
   Lightformer,
@@ -18,6 +18,11 @@ import { Color, BackSide } from "three";
 
 export default function SceneHomepage(props) {
   const [isMobile, _] = useState(checkScreen.width < 567 ? true : false);
+
+  useEffect(() => {
+    document.title =
+      "Cubes, an Interactiion Experiment - React Three Fiber | 3d.carlosfx.com";
+  }, []);
 
   function EnvControls() {
     const hdrMap = useLoader(RGBELoader, "./noga.hdr?url");
@@ -131,14 +136,17 @@ export default function SceneHomepage(props) {
                 The Detail is part of a timber frame construction, isolation to
                 keep the warmth and weather sealed in the outside.
               </p>
-              <button className="scene mt-6 w-64 rounded-xl bg-zinc-300 p-4 text-2xl text-orange-700  ">
+              <button className="button-back-color scene mt-6 w-64 rounded-2xl p-4 text-2xl ">
                 <a
                   href="./interactive-eave-detail"
                   className=" -mt-1 flex flex-row items-center justify-center gap-4"
                 >
                   <>
                     {"Open scene"}{" "}
-                    <Icon icon="ph:arrow-right" className="mt-2" />
+                    <Icon
+                      icon="ph:arrow-right"
+                      className="mt-2 animate-pulse"
+                    />
                   </>
                 </a>
               </button>

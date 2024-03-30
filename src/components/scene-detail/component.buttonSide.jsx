@@ -17,7 +17,7 @@ export function ButtonSideDetail({ handleClick, textContent, tooltipContent }) {
   return (
     <div className=" flex h-20 w-20 flex-row items-center justify-center">
       <button
-        className="h-16 w-16 rounded-lg  bg-zinc-900 bg-opacity-80 shadow-xl shadow-zinc-950"
+        className="h-16 w-16 rounded-lg  bg-zinc-900 bg-opacity-80 shadow-xl shadow-zinc-950 hover:bg-zinc-950  active:shadow-zinc-800"
         onClick={handleClick}
         onPointerOver={() => setTooltip(true)}
         onPointerLeave={() => setTooltip(false)}

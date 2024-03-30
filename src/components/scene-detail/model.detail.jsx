@@ -9,6 +9,7 @@ import { checkScreen } from "../../globals/screen";
 import explodedModelPositions from "./lerpPositions";
 /*:: Models ::*/
 import detailModel from "/wall.glb?url";
+import { Icon } from "@iconify/react";
 
 function ModelParts(props) {
   const [hover, setHover] = useState(false);
@@ -90,9 +91,9 @@ function ModelParts(props) {
       }
     }
 
-    detailInfoBoxMobileContainer.classList.remove("hidden");
-    detailInfoBoxMobile.textContent = objectName[0];
-    detailInfoBoxMobileText.textContent = objectName[1];
+    // detailInfoBoxMobileContainer.classList.remove("hidden");
+    // detailInfoBoxMobile.textContent = objectName[0];
+    // detailInfoBoxMobileText.textContent = objectName[1];
   }
 
   //: The switch is used to run the effect after clicking on the mesh,
@@ -103,7 +104,7 @@ function ModelParts(props) {
   useEffect(() => {
     displayName();
     if (!switchToDisplayName) {
-      detailInfoBoxMobileContainer.classList.add("hidden");
+      // detailInfoBoxMobileContainer.classList.add("hidden");
     }
   }, [switchToDisplayName]);
 
@@ -111,7 +112,7 @@ function ModelParts(props) {
     e.stopPropagation();
     setNameVisible(false);
     setAlternatePosition(props.position);
-    detailInfoBoxMobileContainer.classList.add("hidden");
+    // detailInfoBoxMobileContainer.classList.add("hidden");
   }
 
   return (
@@ -144,6 +145,7 @@ function ModelParts(props) {
       {nameVisible && checkScreen.width > 640 ? (
         <>
           <Html
+            // Description for desktop
             position={alternatePosition}
             distanceFactor={undefined}
             className="flex  w-72 flex-col items-start gap-4"
@@ -167,6 +169,35 @@ function ModelParts(props) {
             </div>
           </Html>
         </>
+      ) : nameVisible && checkScreen.width < 640 ? (
+        <Html
+          // Description for small devices
+          position={[0, 0, 0]}
+          center
+          distanceFactor={undefined}
+          className="flex w-72 flex-col items-start gap-4 pb-24"
+        >
+          <div
+            className="mb-96 flex h-auto w-full flex-col items-baseline gap-4
+              rounded-md bg-zinc-900 bg-opacity-80 px-4 pb-6 pt-4 shadow-xl shadow-zinc-900"
+          >
+            <div className="flex flex-row items-baseline gap-2 pt-4">
+              <span className=" h-3 w-3 bg-zinc-100"></span>
+              <h3 id="title-description" className="text-xl">
+                {objectName[0] ? objectName[0] : ""}
+              </h3>
+              <button className="absolute right-3 top-3  text-2xl hover:animate-pulse active:animate-pulse ">
+                <Icon icon="ph:x" />
+              </button>
+            </div>
+            <p
+              id="detail-description"
+              className="h-auto w-full break-before-auto whitespace-pre-line text-sm "
+            >
+              {objectName[1] ? objectName[1] : ""}
+            </p>
+          </div>
+        </Html>
       ) : (
         ""
       )}
